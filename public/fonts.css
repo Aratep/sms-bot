@@ -1,0 +1,24 @@
+@font-face {
+  font-family: SFProTextRegular;
+  src: url(./fonts/SFProText-Regular.ttf);
+}
+
+@font-face {
+  font-family: SFProTextLight;
+  src: url(./fonts/SFProText-Light.ttf);
+}
+
+@font-face {
+  font-family: SFProTextSemiBold;
+  src: url(./fonts/SFProText-Semibold.ttf);
+}
+
+@font-face {
+  font-family: SFProTextBold;
+  src: url(./fonts/SFProText-Bold.ttf);
+}
+
+/*@font-face {*/
+/*  font-family: SFProTextLight;*/
+/*  src: url(./fonts/SFProText-Light.ttf);*/
+/*}*/

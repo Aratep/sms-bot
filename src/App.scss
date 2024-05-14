@@ -1,0 +1,23 @@
+@import "assets/scss/mixins";
+
+body {
+  height: 100vh;
+}
+
+body * {
+  font-family: SFProTextRegular;
+  color: #ffffff;
+}
+
+#root {
+  height: 100%;
+
+  .main {
+    height: 100%;
+    background: #000000;
+    position: relative;
+    padding: 0 1rem 0 1rem;
+    @include flexAlignCenter;
+    flex-direction: column;
+  }
+}

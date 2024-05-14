@@ -1,0 +1,33 @@
+.header {
+  width: 100%;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  margin-top: 1rem;
+  @include flexAlignCenter;
+
+  &__logo {
+    margin: 0.5rem;
+
+    .sm-image {
+      img {
+        height: 70px;
+        width: 70px;
+      }
+    }
+  }
+
+  &__info {
+    @include flexColumn;
+
+    span:nth-child(1) {
+      color: #fff;
+      font-size: 22px;
+      font-style: normal;
+    }
+
+    span:nth-child(2) {
+      color: #ffaa13;
+      font-size: 17px;
+    }
+  }
+}

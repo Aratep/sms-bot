@@ -1,0 +1,17 @@
+.nav-bar {
+  position: fixed;
+  z-index: 1;
+  bottom: 1rem;
+  width: 100%;
+  @include flexContentCenter;
+  height: fit-content;
+  background-color: transparent;
+
+  &__wrapper {
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    width: 40%;
+    @include spaceAround;
+    padding: 0.5rem;
+  }
+}

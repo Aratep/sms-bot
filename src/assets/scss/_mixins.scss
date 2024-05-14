@@ -1,0 +1,93 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexContentCenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flexAlignCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flexAlignStart {
+  display: flex;
+  align-items: flex-start;
+}
+
+@mixin spaceAround {
+  display: flex;
+  justify-content: space-around;
+}
+
+@mixin spaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flexWrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex($align, $justify) {
+  display: flex;
+
+  @if $align != null {
+    align-items: $align;
+  }
+  @if $justify != null {
+    justify-content: $justify;
+  }
+}
+
+@mixin modalStyle {
+  background-color: #292337;
+  border-radius: 3.5rem;
+  box-shadow: 0 0 0.8rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == 280 {
+    @media only screen and (max-width: 17.5em) {
+      @content;
+    }
+    //280px
+  }
+  @if $breakpoint == 600 {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+    //600px
+  }
+  @if $breakpoint == 900 {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+    //900px
+  }
+  @if $breakpoint == 1200 {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+    //1200px
+  }
+  // @if $breakpoint == big-desktop {
+  // 	 @media only screen and (min-width: 112.5em) { @content };    //1800
+  // }
+}

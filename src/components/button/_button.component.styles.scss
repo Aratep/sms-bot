@@ -1,0 +1,29 @@
+.sm-button {
+  border-radius: 40px;
+  background: #ffaa13;
+  @include flexCenter;
+
+  button {
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    background-color: transparent;
+    padding: 1rem;
+  }
+
+  &__light {
+    background-color: #ffaa13;
+
+    button {
+      color: #000000;
+    }
+  }
+
+  &__dark {
+    background-color: #000000;
+
+    button {
+      color: #ffaa13;
+    }
+  }
+}

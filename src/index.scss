@@ -1,3 +1,4 @@
+@import "assets/scss/_mixins.scss";
 @import "components/_components.styles.scss";
 @import "screens/_screens.styles.scss";
 @import "pages/_pages.styles.scss";
@@ -9,9 +10,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
