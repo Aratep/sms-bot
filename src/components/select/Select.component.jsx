@@ -15,6 +15,7 @@ import wa from "assets/imgs/wa.png"; // temporary
 
 const Select = ({
   name,
+  value,
   handleChange,
   inputVariant,
   label,
@@ -89,7 +90,7 @@ const Select = ({
       <IsVisible isVisible={!isOptionClicked}>
         <Input
           name={name}
-          value={inputState[name]}
+          value={value}
           error={invalidMessages}
           onChange={handleInputChange}
           onInvalid={handleInvalidMessage}

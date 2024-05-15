@@ -1,4 +1,20 @@
-.container-row {
+.container {
   padding: 0.5rem 0;
   width: 100%;
+
+  &__row {
+    @include flexRow;
+  }
+
+  &__col {
+    @include flexColumn;
+  }
+
+  &__between {
+    justify-content: space-between;
+  }
+
+  &__around {
+    justify-content: space-around;
+  }
 }

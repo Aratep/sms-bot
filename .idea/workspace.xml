@@ -5,62 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-BoldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-Heavy.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-HeavyItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-LightItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-MediumItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-RegularItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-Semibold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/SFProText-SemiboldItalic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sm-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/container/Container.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/container/_container.component.styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/AccountIcon.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/SmsIcon.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/image/Image.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/image/_image.component.styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/input/Input.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/select/_select.component.styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/effects/useStore.effect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/nav-bar/NavBar.screen.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/nav-bar/_nav-bar.screen.styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/scss/_utils.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/order/components/order-item/OrderItem.component.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/order/components/order-item/_order-item.component.styles.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_components.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_components.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-wrapper/PageWrapper.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-wrapper/PageWrapper.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-wrapper/_page-wrapper.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-wrapper/_page-wrapper.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/Button.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/Container.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/Container.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/_container.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/_container.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/Input.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/Input.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/country/Country.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/country/Country.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/language/Language.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/language/Language.page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/my-orders/MyOrders.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/my-orders/MyOrders.page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/referral/Referral.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/referral/Referral.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/repeat-code/RepeatCode.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/repeat-code/RepeatCode.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/service/Service.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/service/Service.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/settings/Settings.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/settings/Settings.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/support/Support.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/support/Support.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/_screens.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/_screens.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/footer/Footer.screen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/footer/_footer.screen.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/header/Header.screen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/header/Header.screen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order/_order.page.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/_order.page.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +70,9 @@
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/order/components/order-item" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -127,7 +91,8 @@
       <updated>1715608823565</updated>
       <workItem from="1715608824662" duration="7111000" />
       <workItem from="1715665431406" duration="24412000" />
-      <workItem from="1715699601831" duration="15233000" />
+      <workItem from="1715699601831" duration="15836000" />
+      <workItem from="1715753499511" duration="19801000" />
     </task>
     <servers />
   </component>

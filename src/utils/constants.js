@@ -1,6 +1,8 @@
 // IMAGES
 import wa from "assets/imgs/wa.png"; // temporary
 
+export const initialCounter = 900000;
+
 export const accountRoutes = [
   "/my-orders",
   "/settings",

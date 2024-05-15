@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
-import { ContainerRow } from "components/container/Container.component";
+import { Container } from "components/container/Container.component";
 import Select from "components/select/Select.component";
 import Button from "components/button/Button.component";
 // EFFECTS
@@ -12,6 +13,7 @@ import IsVisible from "../../components/is-visible/IsVisible.component";
 const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
   const [isFormReady, setIsFormReady] = useState(false);
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (formData.service !== "" && formData.country !== "") {
@@ -21,16 +23,19 @@ const MainPage = () => {
     }
   }, [formData]);
 
-  const handleInputChange = (event) => {
+  function handleInputChange(event) {
     const { name, value } = event;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
-  };
+  }
 
-  console.log(formData, isFormReady);
+  function onButtonClick() {
+    navigate("/order");
+    console.log(formData, isFormReady);
+  }
 
   return (
     <PageWrapper className="">
-      <ContainerRow>
+      <Container>
         <Select
           label="Select a service:"
           placeholder="Find a service"
@@ -39,8 +44,8 @@ const MainPage = () => {
           handleChange={handleInputChange}
           list={countriesList}
         />
-      </ContainerRow>
-      <ContainerRow>
+      </Container>
+      <Container>
         <Select
           label="Select a country:"
           placeholder="Find a country"
@@ -49,11 +54,11 @@ const MainPage = () => {
           handleChange={handleInputChange}
           list={countriesList}
         />
-      </ContainerRow>
+      </Container>
       <IsVisible isVisible={isFormReady}>
-        <ContainerRow>
-          <Button text="BUY 1,5 USDT" />
-        </ContainerRow>
+        <Container>
+          <Button onClick={onButtonClick} text="BUY 1,5 USDT" />
+        </Container>
       </IsVisible>
     </PageWrapper>
   );
