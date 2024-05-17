@@ -7,7 +7,7 @@ import Button from "components/button/Button.component";
 import MoneyInput from "components/money-input/MoneyInput.component";
 
 const TopUpPage = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
 
   function handleChange(e) {
     setAmount(e.value);

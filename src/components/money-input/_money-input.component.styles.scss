@@ -2,13 +2,21 @@
   @include flexCenter;
   width: 200px;
 
-  span {
+  &__first {
+    font-size: 30px;
+  }
+
+  &__last {
+    font-size: 20px;
+  }
+
+  label {
     padding-right: 10px;
     font-size: 35px;
   }
 
   input {
-    width: 40%;
+    width: 0;
     border: none;
     outline: none;
     background: none;

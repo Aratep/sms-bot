@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/money-input/_money-input.component.styles.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/imgs/crypto.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_components.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_components.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/Button.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/referral/Referral.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/referral/Referral.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/support/Support.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/support/Support.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/money-input/_money-input.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/_money-input.component.styles.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +83,7 @@
       <workItem from="1715784489013" duration="7499000" />
       <workItem from="1715839559584" duration="1000" />
       <workItem from="1715881802119" duration="352000" />
-      <workItem from="1715931865791" duration="21571000" />
+      <workItem from="1715931865791" duration="23306000" />
     </task>
     <servers />
   </component>

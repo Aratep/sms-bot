@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
+import IsVisible from "../is-visible/IsVisible.component";
 
-const MoneyInput = ({ name, value, onChange, ...rest }) => {
+const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -14,15 +15,33 @@ const MoneyInput = ({ name, value, onChange, ...rest }) => {
     onChange(event.target);
   }
 
+  // function formatNumber(str) {
+  //   const numArr = str.split(".");
+  //   return [numArr[0], numArr[1]];
+  // }
+
+  // const integral = formatNumber(value)[0];
+  // const decimal = formatNumber(value)[1];
+
+  console.log(typeof value);
+
   return (
     <div className="money-input">
-      <span>$</span>
+      <label htmlFor={id}>$</label>
+      <IsVisible isVisible={!!value}>
+        <div className="money-input__text">
+          <span className="money-input__first">{value}</span>
+          {/*{decimal && <span className="money-input__last">{decimal}</span>}*/}
+        </div>
+      </IsVisible>
       <input
         ref={inputRef}
+        id={id}
         name={name}
         value={value}
         onChange={handleInputChange}
         type="number"
+        step="0.01"
         {...rest}
       />
     </div>
