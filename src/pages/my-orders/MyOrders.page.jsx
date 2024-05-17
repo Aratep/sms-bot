@@ -7,7 +7,7 @@ import { myOrdersItems } from "utils/constants";
 
 const MyOrdersPage = () => {
   return (
-    <PageWrapper className="" headerType="settings">
+    <PageWrapper headerType="settings">
       <Container>
         <List
           title="my orders"

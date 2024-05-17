@@ -34,7 +34,7 @@ const MainPage = () => {
   }
 
   return (
-    <PageWrapper className="">
+    <PageWrapper>
       <Container>
         <Select
           label="Select a service:"

@@ -3,8 +3,6 @@ import { Routes, Route } from "react-router-dom";
 
 // PAGES
 import MainPage from "pages/main/Main.page";
-import ServicePage from "pages/service/Service.page";
-import CountryPage from "pages/country/Country.page";
 import OrderPage from "pages/order/Order.page";
 import RepeatCodePage from "pages/repeat-code/RepeatCode.page";
 import SettingsPage from "pages/settings/Settings.page";
@@ -21,8 +19,6 @@ function App() {
     <React.Fragment>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/service" element={<ServicePage />} />
-        <Route path="/country" element={<CountryPage />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/repeat-code" element={<RepeatCodePage />} />
         <Route path="/settings" element={<SettingsPage />} />

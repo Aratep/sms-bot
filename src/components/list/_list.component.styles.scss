@@ -14,22 +14,27 @@
   &__container {
     &-item {
       @include flexAlignCenter;
+      @include spaceBetween;
       height: 47px;
       padding: 0 8px 0 9px;
       margin-bottom: 2px;
       background: rgba(255, 255, 255, 0.1);
 
-      span {
-        font-size: 16px;
-      }
+      & > div {
+        @include flexAlignCenter;
 
-      .sm-image {
-        padding-right: 14px;
+        span {
+          font-size: 16px;
+        }
 
-        img {
-          height: 29px;
-          width: 29px;
-          border-radius: 50%;
+        .sm-image {
+          padding-right: 14px;
+
+          img {
+            height: 29px;
+            width: 29px;
+            border-radius: 50%;
+          }
         }
       }
 
@@ -42,7 +47,7 @@
       }
 
       &__cont {
-        padding: 5px 0 5px 40px;
+        padding: 7px 0 7px 40px;
 
         div {
           span:first-child {
@@ -54,6 +59,11 @@
             font-size: 15px;
           }
         }
+      }
+
+      &__active {
+        border-radius: 20px !important;
+        background-color: rgba(255, 255, 255, 0.2);
       }
     }
   }

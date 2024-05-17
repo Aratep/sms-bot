@@ -40,7 +40,7 @@ const OrderPage = () => {
   // console.log("ISLOADINGGGGGGG", isLoading);
 
   return (
-    <PageWrapper className="">
+    <PageWrapper>
       <Container>
         <OrderItem />
       </Container>

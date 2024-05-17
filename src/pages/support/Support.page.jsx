@@ -5,7 +5,7 @@ import Button from "components/button/Button.component";
 
 const SupportPage = () => {
   return (
-    <PageWrapper className="" headerType="settings">
+    <PageWrapper headerType="settings">
       <Container variant="col">
         <label>SUPPORT</label>
         <div>

@@ -2,7 +2,7 @@
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
 
 const RepeatCodePage = () => {
-  return <PageWrapper className="">RepeatCodePage</PageWrapper>;
+  return <PageWrapper>RepeatCodePage</PageWrapper>;
 };
 
 export default RepeatCodePage;

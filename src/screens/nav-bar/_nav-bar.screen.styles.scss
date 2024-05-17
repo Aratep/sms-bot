@@ -1,17 +1,27 @@
 .nav-bar {
   position: fixed;
   z-index: 1;
-  bottom: 1rem;
-  width: 100%;
+  bottom: 30px;
   @include flexContentCenter;
-  height: fit-content;
-  background-color: transparent;
+  height: 60px;
 
   &__wrapper {
-    border-radius: 50px;
+    border-radius: 30px;
     background: rgba(255, 255, 255, 0.15);
-    width: 40%;
-    @include spaceAround;
+    width: 157px;
+    @include flexContentCenter;
+    @include flexAlignCenter;
     padding: 0.5rem;
+
+    & > div {
+      height: 30px;
+      width: 30px;
+      padding: 0 16px;
+      @include flexContentCenter;
+
+      svg {
+        height: 100%;
+      }
+    }
   }
 }

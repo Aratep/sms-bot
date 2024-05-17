@@ -7,18 +7,6 @@ import SmsIcon from "components/icons/SmsIcon.component";
 import { getActiveItem } from "utils/helper-functions";
 import { mainRoutes, accountRoutes } from "utils/constants";
 
-// const List = ({ list, Elem }) => {
-//   return (
-//     <React.Fragment>
-//       {
-//         list.map((item, index) => (
-//           <Elem key={index} item={item} />
-//         ))
-//       }
-//     </React.Fragment>
-//   );
-// };
-
 const NavBar = () => {
   let navigate = useNavigate();
   const { pathname } = useLocation();

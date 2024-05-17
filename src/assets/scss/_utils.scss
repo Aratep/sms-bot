@@ -19,3 +19,35 @@
 .arrow-up {
   transform: rotate(180deg);
 }
+
+.label-text {
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 0 0 20px 19px;
+  font-size: 18px;
+}
+
+.color-grey {
+  color: var(--Gray, #676767);
+}
+
+.pd-b-20 {
+  padding-bottom: 20px;
+}
+
+.pd-b-25 {
+  padding-bottom: 25px;
+}
+
+.pd-l-19 {
+  padding-left: 19px;
+}
+
+.close-btn {
+  height: 29px;
+  width: 29px;
+
+  img {
+    height: 100%;
+  }
+}

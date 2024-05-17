@@ -2,13 +2,16 @@
   border-radius: 40px;
   background: #ffaa13;
   @include flexCenter;
+  height: 47px;
+  padding: 0 15px;
 
   button {
+    @include flexCenter;
     outline: none;
     border: none;
     text-transform: uppercase;
     background-color: transparent;
-    padding: 1rem 2rem;
+    //padding: 1rem 2rem;
     font-weight: bold;
     font-size: 16px;
   }

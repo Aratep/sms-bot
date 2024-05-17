@@ -8,11 +8,9 @@ import Button from "components/button/Button.component";
 const TopUpPage = () => {
   const [amount, setAmount] = useState(0);
   return (
-    <PageWrapper className="" headerType="settings">
-      <Container>
-        <label>TOP UP BALANCE</label>
-      </Container>
-      <Container>
+    <PageWrapper headerType="settings">
+      <Container variant="col">
+        <label className="label-text">TOP UP BALANCE</label>
         <Button text={`PAY ${amount} USDT`} hasIcon={true} />
       </Container>
     </PageWrapper>

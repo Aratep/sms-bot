@@ -22,14 +22,7 @@ export const accountRoutes = [
   "/referral",
   "/top-up",
 ];
-export const mainRoutes = [
-  "/",
-  "/main",
-  "/service",
-  "/country",
-  "/order",
-  "/repeat-code",
-];
+export const mainRoutes = ["/", "/main", "/order", "/repeat-code"];
 
 export const countriesList = [
   { id: 1, title: "Telegram", from: "1,5", src: wa },
