@@ -1,0 +1,17 @@
+.money-input {
+  @include flexCenter;
+  width: 200px;
+
+  span {
+    padding-right: 10px;
+    font-size: 35px;
+  }
+
+  input {
+    width: 40%;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 30px;
+  }
+}

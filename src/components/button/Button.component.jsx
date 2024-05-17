@@ -4,7 +4,7 @@ import classNames from "classnames";
 import IsVisible from "components/is-visible/IsVisible.component";
 import Image from "components/image/Image.component";
 // IMAGES
-import crypto from "assets/imgs/crypto.svg";
+import crypto from "assets/imgs/crypto.png";
 
 const Button = ({ text, variant = "light", hasIcon, ...rest }) => {
   const buttonClasses = classNames("sm-button", {

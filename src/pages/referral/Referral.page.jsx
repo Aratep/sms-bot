@@ -22,7 +22,9 @@ const ReferralPage = () => {
           </CopyToClipboard>
         </Container>
         <Container space="center">
-          <Button text="COPY LINK" />
+          <CopyToClipboard text={tgLing}>
+            <Button text="COPY LINK" />
+          </CopyToClipboard>
         </Container>
       </Container>
     </PageWrapper>

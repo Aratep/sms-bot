@@ -6,8 +6,8 @@ import Button from "components/button/Button.component";
 const SupportPage = () => {
   return (
     <PageWrapper headerType="settings">
-      <Container variant="col">
-        <label>SUPPORT</label>
+      <Container variant="col" className="pd-b-25">
+        <label className="label-text">SUPPORT</label>
         <div>
           If you have technical problems with the bot or other issues, you need
           to write to <span>@popoze</span>

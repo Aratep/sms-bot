@@ -27,7 +27,6 @@ const Select = ({
   const [isOptionClicked, setIsOptionClicked] = useState(false);
   const [filteredList, setFilteredList] = useState(initialList);
   const {
-    inputState,
     handleInput,
     updateInputState,
     handleInvalidMessage,
