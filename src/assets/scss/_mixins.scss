@@ -45,6 +45,11 @@
   flex-direction: row;
 }
 
+@mixin flexAlignEnd {
+  display: flex;
+  align-items: flex-end;
+}
+
 @mixin flex($align, $justify) {
   display: flex;
 

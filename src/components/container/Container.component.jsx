@@ -7,6 +7,7 @@ export const Container = ({ children, className, variant, space }) => {
     container__col: variant === "col",
     container__between: space === "between",
     container__around: space === "around",
+    container__center: space === "center",
   });
   return <div className={rowClasses}>{children}</div>;
 };

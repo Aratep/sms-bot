@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import classNames from "classnames";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Countdown from "react-countdown";
@@ -13,7 +13,7 @@ import spinner from "assets/imgs/input/spinner.png";
 import sad from "assets/imgs/input/sad.png";
 
 const Input = (props) => {
-  const [isCompleted, setIsCompleted] = useState(false);
+  // const [isCompleted, setIsCompleted] = useState(false);
   const {
     className,
     wrapperClass,

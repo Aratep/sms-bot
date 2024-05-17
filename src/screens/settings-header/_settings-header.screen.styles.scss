@@ -1,0 +1,56 @@
+.settings-header {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  width: 100%;
+  margin-top: 1rem;
+  @include flexRow;
+  @include spaceBetween;
+  @include flexAlignCenter;
+
+  height: 66px;
+
+  &__left {
+    @include flexRow;
+    @include flexAlignCenter;
+    margin: 8px;
+
+    .name-block {
+      @include flexColumn;
+
+      span:nth-child(1) {
+        font-size: 18px;
+      }
+
+      span:nth-child(2) {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .sm-image {
+      margin: 0 15px 0 0;
+
+      img {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+
+  &__right {
+    margin: 8px 20px;
+    @include flexColumn;
+    @include flexAlignEnd;
+
+    span:first-child {
+      font-size: 14px;
+      padding-bottom: 9px;
+    }
+
+    span:nth-child(2) {
+      color: #ffaa13;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  }
+}

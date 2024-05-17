@@ -1,23 +1,22 @@
+import { useState } from "react";
+
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
 import { Container } from "components/container/Container.component";
 import Button from "components/button/Button.component";
 
-const SupportPage = () => {
+const TopUpPage = () => {
+  const [amount, setAmount] = useState(0);
   return (
     <PageWrapper className="" headerType="settings">
-      <Container variant="col">
-        <label>SUPPORT</label>
-        <div>
-          If you have technical problems with the bot or other issues, you need
-          to write to <span>@popoze</span>
-        </div>
+      <Container>
+        <label>TOP UP BALANCE</label>
       </Container>
-      <Container space="center">
-        <Button text="SUPPORT" />
+      <Container>
+        <Button text={`PAY ${amount} USDT`} hasIcon={true} />
       </Container>
     </PageWrapper>
   );
 };
 
-export default SupportPage;
+export default TopUpPage;

@@ -17,4 +17,9 @@
   &__around {
     justify-content: space-around;
   }
+
+  &__center {
+    display: flex;
+    justify-content: center;
+  }
 }

@@ -1,0 +1,38 @@
+.settings-menu {
+  width: 100%;
+  @include flexColumn;
+
+  &__label {
+    padding-left: 1rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding-bottom: 1rem;
+  }
+
+  &__wrapper {
+    &-item {
+      @include flexRow;
+      @include flexAlignCenter;
+      padding: 0.7rem;
+      margin: 0.3rem 0;
+      background: rgba(255, 255, 255, 0.1);
+
+      .sm-image {
+        padding-right: 1rem;
+
+        img {
+          border-radius: 50%;
+          height: 30px;
+        }
+      }
+
+      &:first-child {
+        border-radius: 20px 20px 2px 2px;
+      }
+
+      &:last-child {
+        border-radius: 2px 2px 20px 20px;
+      }
+    }
+  }
+}
