@@ -81,7 +81,7 @@ const Select = ({
               onClick={onCloseBtnClick}
               className="sm-select__selected-container__btn"
             >
-              <Image src={close} alt="close" />
+              <Image src={close} alt="close" className="close-btn" />
             </div>
           </div>
         </div>

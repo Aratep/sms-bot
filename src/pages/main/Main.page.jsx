@@ -35,7 +35,7 @@ const MainPage = () => {
 
   return (
     <PageWrapper>
-      <Container>
+      <Container className="pd-b-20">
         <Select
           label="Select a service:"
           placeholder="Find a service"
@@ -45,7 +45,7 @@ const MainPage = () => {
           list={countriesList}
         />
       </Container>
-      <Container>
+      <Container className="pd-b-25">
         <Select
           label="Select a country:"
           placeholder="Find a country"
@@ -56,7 +56,7 @@ const MainPage = () => {
         />
       </Container>
       <IsVisible isVisible={isFormReady}>
-        <Container>
+        <Container space="center">
           <Button onClick={onButtonClick} text="BUY 1,5 USDT" />
         </Container>
       </IsVisible>

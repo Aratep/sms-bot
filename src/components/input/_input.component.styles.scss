@@ -4,9 +4,9 @@
 
   &__wrapper {
     height: fit-content;
-    border-radius: 30px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    padding-left: 1rem !important;
+    border-radius: 17px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 15px !important;
     @include flexAlignCenter;
 
     &--img-label {
@@ -23,16 +23,17 @@
       font-weight: 100;
       box-sizing: border-box;
       width: 100%;
-      padding: 0.8rem 0.5rem;
+      padding: 0 0.5rem;
       background-color: transparent;
       color: #ffffff;
-      font-size: 20px;
+      font-size: 14px;
       border: none;
+      height: 47px;
 
       &::placeholder {
         font-style: normal;
         font-weight: 100;
-        font-size: 20px;
+        font-size: 14px;
         color: rgba(255, 255, 255, 0.2);
       }
     }
@@ -48,13 +49,12 @@
   }
 
   &__label {
-    font-size: 22px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     color: #ffffff;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
+    padding: 0 0 20px 19px;
   }
 
   &__error {

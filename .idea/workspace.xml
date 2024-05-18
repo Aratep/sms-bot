@@ -6,9 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/money-input/_money-input.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/_money-input.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_utils.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_utils.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/_select.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/_select.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +88,7 @@
       <workItem from="1715839559584" duration="1000" />
       <workItem from="1715881802119" duration="352000" />
       <workItem from="1715931865791" duration="23306000" />
+      <workItem from="1716013863638" duration="4495000" />
     </task>
     <servers />
   </component>

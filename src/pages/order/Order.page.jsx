@@ -6,11 +6,11 @@ import PageWrapper from "components/page-wrapper/PageWrapper.component";
 import Input from "components/input/Input.component";
 import Button from "components/button/Button.component";
 import { Container } from "components/container/Container.component";
-import OrderItem from "./components/order-item/OrderItem.component";
+import List from "components/list/List.component";
 // EFFECTS
 import useInput from "effects/useInput.effect";
 // UTILS
-import { initialCounter } from "utils/constants";
+import { initialCounter, orders } from "utils/constants";
 
 const OrderPage = () => {
   const [counter, setCounter] = useState(9000);
@@ -41,10 +41,10 @@ const OrderPage = () => {
 
   return (
     <PageWrapper>
-      <Container>
-        <OrderItem />
+      <Container className="pd-b-25">
+        <List title="YOUR ORDER" items={orders} />
       </Container>
-      <Container>
+      <Container className="pd-b-25">
         <Input
           label="YOUR NUMBER"
           name="phone"
@@ -58,7 +58,7 @@ const OrderPage = () => {
           onCounterEnd={onCounterEnd}
         />
       </Container>
-      <Container>
+      <Container className="pd-b-10">
         <Input
           label="YOUR SMS CODE"
           name="sms"
@@ -73,12 +73,12 @@ const OrderPage = () => {
           hasLoader={true}
         />
       </Container>
-      <Container>
+      <Container className="pd-b-25">
         <div className="sm-code-text">
           If the SMS code has not arrived within 3 minutes, change the number
         </div>
       </Container>
-      <Container variant="row" space="around">
+      <Container variant="row" space="center" className="m-l-r">
         <Button text="CANCEL" variant="dark" onClick={onCancellClick} />
         <Button text="CHANGE NUMBER" variant="light" onClick={onChangeClick} />
       </Container>

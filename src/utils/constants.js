@@ -11,6 +11,7 @@ import ru from "assets/imgs/lang/ru.png";
 import en from "assets/imgs/lang/en.png";
 // order images
 import ca from "assets/imgs/ca.png";
+import am from "assets/imgs/am.png";
 
 export const initialCounter = 900000;
 
@@ -43,6 +44,11 @@ export const settingsMenuItems = [
   { id: 3, icon: referral, title: "Referral program", route: "/referral" },
   { id: 4, icon: settings, title: "Support", route: "/support" },
   { id: 5, icon: language, title: "Language", route: "/language" },
+];
+
+export const orders = [
+  { id: 1, title: "Amazon", src: am },
+  { id: 2, title: "Canada", src: ca },
 ];
 
 export const myOrdersItems = [
