@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
 import { Container } from "components/container/Container.component";
@@ -21,6 +23,16 @@ const MainPage = () => {
   const [isFormReady, setIsFormReady] = useState(false);
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  const notify = (text) => toast(text, {
+    position: "top-right",
+    autoClose: false,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
 
   const { loading, data } = useSelector(countriesSelector);
   console.log({ loading, data });
@@ -39,7 +51,7 @@ const MainPage = () => {
       checkDataString: checkDataString,
     };
 
-    alert(JSON.stringify(dataToSend));
+    notify(JSON.stringify(dataToSend));
 
     console.log("DATA TO SEND", dataToSend);
   }

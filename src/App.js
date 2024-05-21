@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 // PAGES
 import MainPage from "pages/main/Main.page";
@@ -13,6 +14,7 @@ import SupportPage from "pages/support/Support.page";
 import TopUpPage from "pages/top-up/TopUp.page";
 // STYLES
 import "./App.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
         <Route path="/support" element={<SupportPage />} />
         <Route path="/top-up" element={<TopUpPage />} />
       </Routes>
+      <ToastContainer />
     </React.Fragment>
   );
 }
