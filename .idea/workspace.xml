@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/context/IsFocused.context.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/effects/useDevice.effect.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/Input.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/Input.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/page-wrapper/PageWrapper.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-wrapper/PageWrapper.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helper-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +83,7 @@
       <workItem from="1715931865791" duration="23306000" />
       <workItem from="1716013863638" duration="6665000" />
       <workItem from="1716229966460" duration="1108000" />
-      <workItem from="1716282089912" duration="12337000" />
+      <workItem from="1716282089912" duration="12537000" />
     </task>
     <servers />
   </component>

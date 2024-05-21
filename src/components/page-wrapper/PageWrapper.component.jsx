@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import classNames from "classnames";
-import { isMobile } from "react-device-detect";
+// import { isMobile } from "react-device-detect";
 
 // COMPONENTS
 import IsVisible from "components/is-visible/IsVisible.component";
@@ -29,7 +29,7 @@ const PageWrapper = ({ children, headerType = "header", className }) => {
       <section id="section" className={sectionClass}>
         {children}
       </section>
-      <IsVisible isVisible={isMobile && !isFocused}>
+      <IsVisible isVisible={!isFocused}>
         <NavBar />
       </IsVisible>
     </main>
