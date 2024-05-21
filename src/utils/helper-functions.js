@@ -29,6 +29,6 @@ export function notify(text, opts) {
     theme: "dark",
   };
   const options = { ...defOptions, ...opts };
-  console.log(options);
+
   return toast(text, options);
 }

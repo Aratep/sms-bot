@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import classNames from "classnames";
+import { isMobile } from "react-device-detect";
 
 // COMPONENTS
 import IsVisible from "components/is-visible/IsVisible.component";
@@ -6,8 +8,12 @@ import IsVisible from "components/is-visible/IsVisible.component";
 import Header from "screens/header/Header.screen";
 import SettingsHeader from "screens/settings-header/SettingsHeader.screen";
 import NavBar from "screens/nav-bar/NavBar.screen";
+// CONTEXT
+import { FocusedContext } from "context/IsFocused.context";
 
 const PageWrapper = ({ children, headerType = "header", className }) => {
+  const { isFocused } = useContext(FocusedContext);
+
   const sectionClass = classNames("page-wrapper__children", {
     [className]: !!className,
   });
@@ -23,7 +29,9 @@ const PageWrapper = ({ children, headerType = "header", className }) => {
       <section id="section" className={sectionClass}>
         {children}
       </section>
-      <NavBar />
+      <IsVisible isVisible={isMobile && !isFocused}>
+        <NavBar />
+      </IsVisible>
     </main>
   );
 };

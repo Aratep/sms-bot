@@ -13,6 +13,8 @@ import MyOrdersPage from "pages/my-orders/MyOrders.page";
 import ReferralPage from "pages/referral/Referral.page";
 import SupportPage from "pages/support/Support.page";
 import TopUpPage from "pages/top-up/TopUp.page";
+// CONTEXT
+import { FocusedProvider } from "context/IsFocused.context";
 // ACTIONS
 import { setTgHash } from "store/common/common.actions";
 // STYLES
@@ -28,18 +30,20 @@ function App() {
 
   return (
     <React.Fragment>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/order" element={<OrderPage />} />
-        <Route path="/repeat-code" element={<RepeatCodePage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/language" element={<LanguagePage />} />
-        <Route path="/my-orders" element={<MyOrdersPage />} />
-        <Route path="/referral" element={<ReferralPage />} />
-        <Route path="/support" element={<SupportPage />} />
-        <Route path="/top-up" element={<TopUpPage />} />
-      </Routes>
-      <ToastContainer />
+      <FocusedProvider>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/order" element={<OrderPage />} />
+          <Route path="/repeat-code" element={<RepeatCodePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/language" element={<LanguagePage />} />
+          <Route path="/my-orders" element={<MyOrdersPage />} />
+          <Route path="/referral" element={<ReferralPage />} />
+          <Route path="/support" element={<SupportPage />} />
+          <Route path="/top-up" element={<TopUpPage />} />
+        </Routes>
+        <ToastContainer />
+      </FocusedProvider>
     </React.Fragment>
   );
 }

@@ -54,7 +54,6 @@ const MainPage = () => {
 
   function onButtonClick() {
     navigate("/order");
-    console.log(formData, isFormReady);
   }
 
   return (

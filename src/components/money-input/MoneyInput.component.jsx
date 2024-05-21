@@ -23,8 +23,6 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
   // const integral = formatNumber(value)[0];
   // const decimal = formatNumber(value)[1];
 
-  console.log(typeof value);
-
   return (
     <div className="money-input">
       <label htmlFor={id}>$</label>

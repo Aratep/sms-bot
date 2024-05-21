@@ -1,10 +1,12 @@
-// import { useState } from "react";
+import { useContext } from "react";
 import classNames from "classnames";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Countdown from "react-countdown";
 
 // BASE COMPONENTS
 import IsVisible from "components/is-visible/IsVisible.component";
+// CONTEXT
+import { FocusedContext } from "context/IsFocused.context";
 // IMAGES
 import phoneIcon from "assets/imgs/input/phone.png";
 import searchIcon from "assets/imgs/input/search.png";
@@ -33,6 +35,7 @@ const Input = (props) => {
     ...otherProps
   } = props;
   const { name } = props;
+  const { toggleFocused } = useContext(FocusedContext);
   const inputClasses = classNames({
     "sm-input": true,
     [className]: !!className,
@@ -62,6 +65,14 @@ const Input = (props) => {
 
   const handleSelect = (event) => {
     if (error) onInvalid(event, "");
+  };
+
+  const handleFocus = () => {
+    toggleFocused(true);
+  };
+
+  const handleBlur = () => {
+    toggleFocused(false);
   };
 
   const iconVariants = {
@@ -97,6 +108,8 @@ const Input = (props) => {
             onChange={handleChange}
             onInvalid={onInvalid}
             onSelect={handleSelect}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             id={id}
             {...otherProps}
           />

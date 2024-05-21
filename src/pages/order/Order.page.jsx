@@ -24,7 +24,6 @@ const OrderPage = () => {
   }
 
   function onCounterEnd(event) {
-    console.log(event);
     setIsLoading(false);
   }
 
@@ -33,7 +32,6 @@ const OrderPage = () => {
   }
 
   function onChangeClick() {
-    console.log("CLICK");
     setCounter(initialCounter);
   }
 
