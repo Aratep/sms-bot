@@ -14,7 +14,7 @@ const SettingsMenu = ({ title, items }) => {
     <div className="settings-menu">
       <label className="settings-menu__label">{title}</label>
       <div className="settings-menu__wrapper">
-        {items.map((item, i) => {
+        {items.map((item) => {
           return (
             <div
               className="settings-menu__wrapper-item"

@@ -37,8 +37,6 @@ const OrderPage = () => {
     setCounter(initialCounter);
   }
 
-  // console.log("ISLOADINGGGGGGG", isLoading);
-
   return (
     <PageWrapper>
       <Container className="pd-b-25">

@@ -3,6 +3,7 @@ import { useState } from "react";
 const useInput = (initialState = {}) => {
   const [inputState, setState] = useState(initialState);
   const [invalidMessages, setInvalidMessages] = useState({});
+  const [isFocused, setIsFocused] = useState(false);
   const handleInput = (event) => {
     const { value, name, type, checked } = event.target;
     if (invalidMessages[name]) {
@@ -66,6 +67,14 @@ const useInput = (initialState = {}) => {
     }
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBloor = () => {
+    setIsFocused(false);
+  };
+
   return {
     inputState,
     handleInput,
@@ -73,6 +82,9 @@ const useInput = (initialState = {}) => {
     setInputState,
     invalidMessages,
     handleInvalidMessage,
+    handleFocus,
+    handleBloor,
+    isFocused,
   };
 };
 

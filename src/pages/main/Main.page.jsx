@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
@@ -17,44 +16,16 @@ import { countriesSelector } from "store/countries/countries.slice";
 import { getCountries } from "store/countries/countries.actions";
 // UTILS
 import { countriesList } from "utils/constants";
+// import { generateTgHash, notify } from "utils/helper-functions";
 
 const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
   const [isFormReady, setIsFormReady] = useState(false);
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const notify = (text) => toast(text, {
-    position: "top-right",
-    autoClose: false,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-  });
 
   const { loading, data } = useSelector(countriesSelector);
   console.log({ loading, data });
-
-  function generateToken() {
-    const WebApp = window.Telegram.WebApp;
-    let initDataURLSP = new URLSearchParams(WebApp.initData);
-    const hash = initDataURLSP.get("hash");
-
-    initDataURLSP.delete("hash");
-    initDataURLSP.sort();
-    const checkDataString = initDataURLSP.toString().replaceAll("&", "\n");
-
-    let dataToSend = {
-      hash: hash,
-      checkDataString: checkDataString,
-    };
-
-    notify(JSON.stringify(dataToSend));
-
-    console.log("DATA TO SEND", dataToSend);
-  }
 
   // const {
   //   dispatch,
@@ -64,7 +35,8 @@ const MainPage = () => {
   // console.log(countriesStore);
   useEffect(() => {
     // dispatch(getCountries({ name: "rus" }));
-    generateToken();
+    // generateToken();
+    // notify(JSON.stringify(generateTgHash()));
   }, []);
 
   useEffect(() => {
@@ -92,6 +64,7 @@ const MainPage = () => {
           label="Select a service:"
           placeholder="Find a service"
           name="service"
+          value={formData.service}
           inputVariant="search"
           handleChange={handleInputChange}
           list={countriesList}
@@ -102,6 +75,7 @@ const MainPage = () => {
           label="Select a country:"
           placeholder="Find a country"
           name="country"
+          value={formData.country}
           inputVariant="search"
           handleChange={handleInputChange}
           list={countriesList}
