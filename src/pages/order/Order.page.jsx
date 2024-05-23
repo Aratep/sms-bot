@@ -52,7 +52,6 @@ const OrderPage = () => {
           wrapperClass="sm-border-none sm-bg-grey"
           counter={counter}
           onCounterEnd={onCounterEnd}
-          type="number"
         />
       </Container>
       <Container className="pd-b-10">
