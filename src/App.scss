@@ -7,6 +7,14 @@ body {
 body * {
   font-family: SFProTextRegular;
   color: #ffffff;
+
+  // remove scrollbar
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 
 #root {
