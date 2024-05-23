@@ -16,7 +16,7 @@ const OrderPage = () => {
   const [counter, setCounter] = useState(9000);
   const [isLoading, setIsLoading] = useState(true);
   const { inputState, handleInput, handleInvalidMessage, invalidMessages } =
-    useInput();
+    useInput({ phone: "+1 403 656 66 44" });
   let navigate = useNavigate();
 
   function handleInputChange(event) {
@@ -44,7 +44,7 @@ const OrderPage = () => {
         <Input
           label="YOUR NUMBER"
           name="phone"
-          value={inputState.phone || "+1 403 656 66 44"}
+          value={inputState.phone}
           onChange={handleInputChange}
           onInvalid={handleInvalidMessage}
           error={invalidMessages}
@@ -52,6 +52,7 @@ const OrderPage = () => {
           wrapperClass="sm-border-none sm-bg-grey"
           counter={counter}
           onCounterEnd={onCounterEnd}
+          type="number"
         />
       </Container>
       <Container className="pd-b-10">
