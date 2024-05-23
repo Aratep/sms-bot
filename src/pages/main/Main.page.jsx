@@ -8,7 +8,6 @@ import { Container } from "components/container/Container.component";
 import Select from "components/select/Select.component";
 import Button from "components/button/Button.component";
 import IsVisible from "components/is-visible/IsVisible.component";
-import Input from "../../components/input/Input.component";
 // EFFECTS
 // import useToolkit from "effects/useStore.effect";
 // SLICES
@@ -71,14 +70,14 @@ const MainPage = () => {
         />
       </Container>
       <Container className="pd-b-25">
-        <Input
+        <Select
           label="Select a country:"
           placeholder="Find a country"
           name="country"
           value={formData.country}
           inputVariant="search"
           handleChange={handleInputChange}
-          // list={countriesList}
+          list={countriesList}
         />
       </Container>
       <IsVisible isVisible={isFormReady}>
