@@ -39,12 +39,12 @@ export function notify(text, variant = "info", opts) {
 export function generateList(list) {
   let res = [];
   list.length > 0 &&
-  list.forEach((item) => {
-    res.push({
-      id: item.id,
-      title: item.name,
-      src: `${API_URL}${item.image_url}`,
+    list.forEach((item) => {
+      res.push({
+        id: item.id,
+        title: item.name,
+        src: `${API_URL}${item.image_url}`,
+      });
     });
-  });
   return res;
 }

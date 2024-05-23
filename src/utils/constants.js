@@ -1,5 +1,3 @@
-// IMAGES
-import wa from "assets/imgs/wa.png"; // temporary
 // settings images
 import wallet from "assets/imgs/settings/wallett.png";
 import folder from "assets/imgs/settings/folder.png";
