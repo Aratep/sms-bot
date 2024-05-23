@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/sms-bot/static/css/main.e8a8bee0.css",
-    "main.js": "/sms-bot/static/js/main.6fea4bf2.js",
+    "main.js": "/sms-bot/static/js/main.6a8edd53.js",
     "static/js/453.599d749c.chunk.js": "/sms-bot/static/js/453.599d749c.chunk.js",
     "static/media/avatar.png": "/sms-bot/static/media/avatar.e7f3875752d3f00928da.png",
     "index.html": "/sms-bot/index.html",
     "main.e8a8bee0.css.map": "/sms-bot/static/css/main.e8a8bee0.css.map",
-    "main.6fea4bf2.js.map": "/sms-bot/static/js/main.6fea4bf2.js.map",
+    "main.6a8edd53.js.map": "/sms-bot/static/js/main.6a8edd53.js.map",
     "453.599d749c.chunk.js.map": "/sms-bot/static/js/453.599d749c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e8a8bee0.css",
-    "static/js/main.6fea4bf2.js"
+    "static/js/main.6a8edd53.js"
   ]
 }
