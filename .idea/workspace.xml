@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/effects/useDebouncedValue.effect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/services/services.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/services/services.slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/Input.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/Input.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/IsFocused.context.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/IsFocused.context.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/countries/countries.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/countries/countries.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/root-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/root-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helper-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +100,7 @@
       <workItem from="1716013863638" duration="6665000" />
       <workItem from="1716229966460" duration="1108000" />
       <workItem from="1716282089912" duration="12710000" />
-      <workItem from="1716447458838" duration="4619000" />
+      <workItem from="1716447458838" duration="12085000" />
     </task>
     <servers />
   </component>

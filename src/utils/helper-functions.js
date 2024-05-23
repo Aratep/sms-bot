@@ -1,5 +1,8 @@
 import { toast } from "react-toastify";
 
+// CONSTANTS
+import { API_URL } from "./constants";
+
 export const getActiveItem = (routes, path) => !!routes.includes(path);
 
 export function generateTgHash() {
@@ -31,4 +34,17 @@ export function notify(text, opts) {
   const options = { ...defOptions, ...opts };
 
   return toast(text, options);
+}
+
+export function generateList(list) {
+  let res = [];
+  list.length > 0 &&
+    list.forEach((item) => {
+      res.push({
+        id: item.id,
+        title: item.name,
+        src: `${API_URL}${item.image_url}`,
+      });
+    });
+  return res;
 }

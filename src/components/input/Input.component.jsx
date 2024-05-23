@@ -13,7 +13,6 @@ import searchIcon from "assets/imgs/input/search.png";
 import messageIcon from "assets/imgs/input/message.png";
 import spinner from "assets/imgs/input/spinner.png";
 import sad from "assets/imgs/input/sad.png";
-import { useEffect } from "react";
 
 const Input = (props) => {
   // const [isCompleted, setIsCompleted] = useState(false);

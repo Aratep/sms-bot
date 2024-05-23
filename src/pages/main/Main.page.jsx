@@ -9,13 +9,15 @@ import Select from "components/select/Select.component";
 import Button from "components/button/Button.component";
 import IsVisible from "components/is-visible/IsVisible.component";
 // EFFECTS
-// import useToolkit from "effects/useStore.effect";
+import useDebouncedValue from "effects/useDebouncedValue.effect";
 // SLICES
 import { countriesSelector } from "store/countries/countries.slice";
+import { servicesSelector } from "store/services/services.slice";
 // ACTIONS
 import { getCountries } from "store/countries/countries.actions";
+import { getServices } from "store/services/services.actions";
 // UTILS
-import { countriesList } from "utils/constants";
+import { generateList } from "utils/helper-functions";
 
 const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
@@ -23,18 +25,30 @@ const MainPage = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, data } = useSelector(countriesSelector);
-  console.log({ loading, data });
+  const { loading: countriesLoading, data: countriesData } =
+    useSelector(countriesSelector);
+  const { loading: servicesLoading, data: servicesData } =
+    useSelector(servicesSelector);
 
-  // const {
-  //   dispatch,
-  //   reduxStore: { countries: countriesStore },
-  // } = useToolkit("countries");
-  //
-  // console.log(countriesStore);
+  const debouncedCountryTerm = useDebouncedValue(formData.country, 500);
+  const debouncedServiceTerm = useDebouncedValue(formData.service, 500);
+
+  // initial list of countries and services
   useEffect(() => {
-    dispatch(getCountries({ name: "rus" }));
+    dispatch(getCountries({ name: "" }));
+    dispatch(getServices({ name: "" }));
+    // eslint-disable-next-line
   }, []);
+
+  // debounced search of countries and services
+  useEffect(() => {
+    dispatch(getCountries({ name: formData.country }));
+    // eslint-disable-next-line
+  }, [debouncedCountryTerm]);
+  useEffect(() => {
+    dispatch(getServices({ name: formData.service }));
+    // eslint-disable-next-line
+  }, [debouncedServiceTerm]);
 
   useEffect(() => {
     if (formData.service !== "" && formData.country !== "") {
@@ -63,7 +77,8 @@ const MainPage = () => {
           value={formData.service}
           inputVariant="search"
           handleChange={handleInputChange}
-          list={countriesList}
+          list={generateList(servicesData)}
+          isLoading={servicesLoading}
         />
       </Container>
       <Container className="pd-b-25">
@@ -74,7 +89,8 @@ const MainPage = () => {
           value={formData.country}
           inputVariant="search"
           handleChange={handleInputChange}
-          list={countriesList}
+          list={generateList(countriesData)}
+          isLoading={countriesLoading}
         />
       </Container>
       <IsVisible isVisible={isFormReady}>

@@ -5,13 +5,13 @@ import classNames from "classnames";
 import Input from "components/input/Input.component";
 import Image from "components/image/Image.component";
 import IsVisible from "components/is-visible/IsVisible.component";
+import Loader from "components/loader/Loader.component";
 // EFFECTS
 import useInput from "effects/useInput.effect";
 // IMAGES
 import usdt from "assets/imgs/select/usdt.png";
 import arrow from "assets/imgs/select/arrow.png";
 import close from "assets/imgs/select/close.png";
-import wa from "assets/imgs/wa.png"; // temporary
 
 const Select = ({
   name,
@@ -22,11 +22,13 @@ const Select = ({
   placeholder,
   list,
   inputType = "text",
+  isLoading,
 }) => {
   const initialList = list.slice(0, 3);
   const [isMore, setIsMore] = useState(false);
+  const [selectedOption, setSelectedOption] = useState({});
   const [isOptionClicked, setIsOptionClicked] = useState(false);
-  const [filteredList, setFilteredList] = useState(initialList);
+  const [filteredList, setFilteredList] = useState([]);
   const {
     handleInput,
     updateInputState,
@@ -43,6 +45,11 @@ const Select = ({
     // eslint-disable-next-line
   }, [isMore]);
 
+  useEffect(() => {
+    setFilteredList(initialList);
+    // eslint-disable-next-line
+  }, [list]);
+
   function handleInputChange(event) {
     handleInput(event);
     handleChange(event.target);
@@ -56,6 +63,7 @@ const Select = ({
   function onOptionClick(target) {
     setIsOptionClicked(true);
     handleChange(target);
+    setSelectedOption(target);
   }
 
   function onCloseBtnClick() {
@@ -75,8 +83,8 @@ const Select = ({
           <label className="sm-select__selected-label">{label}</label>
           <div className="sm-select__selected-container">
             <div className="sm-select__selected-container__icon">
-              <Image src={wa} alt="wa" />
-              <span>Telegram</span>
+              <Image src={selectedOption.src} alt="icon" />
+              <span>{selectedOption.value}</span>
             </div>
             <div
               onClick={onCloseBtnClick}
@@ -99,35 +107,41 @@ const Select = ({
           iconVariant={inputVariant}
           type={inputType}
         />
-        <div className="sm-select__options">
-          {filteredList.map((option) => (
-            <div
-              className="sm-select__options-item"
-              onClick={() => onOptionClick({ name, value: option.title })}
-              key={option.id}
-            >
-              <div className="sm-select__options-item__logo">
-                <Image src={option.src} alt="wa" />
-                <span>{option.title}</span>
-              </div>
-              <div className="sm-select__options-item__info">
-                <div>
-                  <span className="from">from {option.from}</span>
-                  <Image src={usdt} alt="usdt" />
+        <Loader isLoading={isLoading}>
+          <div className="sm-select__options">
+            {filteredList.map((option) => (
+              <div
+                className="sm-select__options-item"
+                onClick={() =>
+                  onOptionClick({ name, value: option.title, src: option.src })
+                }
+                key={option.id}
+              >
+                <div className="sm-select__options-item__logo">
+                  <Image src={option.src} alt="wa" />
+                  <span>{option.title}</span>
+                </div>
+                <div className="sm-select__options-item__info">
+                  <div>
+                    <span className="from">from {option.from}</span>
+                    <Image src={usdt} alt="usdt" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className="sm-select__more-less" onClick={onArrowClick}>
-          <IsVisible isVisible={isMore}>
-            <span>Show less</span>
-          </IsVisible>
-          <IsVisible isVisible={!isMore}>
-            <span>Show all</span>
-          </IsVisible>
-          <Image src={arrow} alt="arrow" className={arrowClasses} />
-        </div>
+            ))}
+          </div>
+        </Loader>
+        <IsVisible isVisible={filteredList.length >= 3}>
+          <div className="sm-select__more-less" onClick={onArrowClick}>
+            <IsVisible isVisible={isMore}>
+              <span>Show less</span>
+            </IsVisible>
+            <IsVisible isVisible={!isMore}>
+              <span>Show all</span>
+            </IsVisible>
+            <Image src={arrow} alt="arrow" className={arrowClasses} />
+          </div>
+        </IsVisible>
       </IsVisible>
     </div>
   );

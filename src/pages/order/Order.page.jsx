@@ -23,7 +23,7 @@ const OrderPage = () => {
     handleInput(event);
   }
 
-  function onCounterEnd(event) {
+  function onCounterEnd() {
     setIsLoading(false);
   }
 
