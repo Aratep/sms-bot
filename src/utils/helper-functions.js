@@ -20,7 +20,7 @@ export function generateTgHash() {
   };
 }
 
-export function notify(text, opts) {
+export function notify(text, variant = "info", opts) {
   const defOptions = {
     position: "top-right",
     autoClose: false,
@@ -33,18 +33,18 @@ export function notify(text, opts) {
   };
   const options = { ...defOptions, ...opts };
 
-  return toast(text, options);
+  return toast[variant](text, options);
 }
 
 export function generateList(list) {
   let res = [];
   list.length > 0 &&
-    list.forEach((item) => {
-      res.push({
-        id: item.id,
-        title: item.name,
-        src: `${API_URL}${item.image_url}`,
-      });
+  list.forEach((item) => {
+    res.push({
+      id: item.id,
+      title: item.name,
+      src: `${API_URL}${item.image_url}`,
     });
+  });
   return res;
 }

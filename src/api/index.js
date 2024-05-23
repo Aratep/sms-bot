@@ -4,6 +4,6 @@ import axios from "axios";
 import { API } from "utils/constants";
 
 export const smAPI = {
-  fetchCountries: (name) => axios.post(`${API}/countries/list`, { name }),
+  fetchCountries: (name) => axios.post(`${API}/countries/listff`, { name }),
   fetchServices: (name) => axios.post(`${API}/services/list`, { name }),
 };

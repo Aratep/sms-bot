@@ -27,14 +27,6 @@ export const accountRoutes = [
 ];
 export const mainRoutes = ["/", "/main", "/order", "/repeat-code"];
 
-export const countriesList = [
-  { id: 1, title: "Telegram", from: "1,5", src: wa },
-  { id: 2, title: "Whatsapp", from: "1,5", src: wa },
-  { id: 3, title: "Spotify", from: "1,5", src: wa },
-  { id: 4, title: "Amazon", from: "1,5", src: wa },
-  { id: 5, title: "Aliexpress", from: "1,5", src: wa },
-];
-
 export const languages = [
   { id: 1, title: "English", src: en },
   { id: 2, title: "Russian", src: ru },

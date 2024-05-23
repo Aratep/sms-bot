@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // ACTIONS
 import { getCountries } from "store/countries/countries.actions";
+// UTILS
+import { notify } from "utils/helper-functions";
 
 const initialState = {
   data: [],
@@ -26,6 +28,8 @@ export const countriesSlice = createSlice({
     builder.addCase(getCountries.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
+      console.log(action.error);
+      notify(action.error.message, "error");
     });
   },
 });

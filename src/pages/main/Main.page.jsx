@@ -33,15 +33,9 @@ const MainPage = () => {
   const debouncedCountryTerm = useDebouncedValue(formData.country, 500);
   const debouncedServiceTerm = useDebouncedValue(formData.service, 500);
 
-  // initial list of countries and services
-  useEffect(() => {
-    dispatch(getCountries({ name: "" }));
-    dispatch(getServices({ name: "" }));
-    // eslint-disable-next-line
-  }, []);
-
   // debounced search of countries and services
   useEffect(() => {
+    console.log("DEBOUNCED");
     dispatch(getCountries({ name: formData.country }));
     // eslint-disable-next-line
   }, [debouncedCountryTerm]);
