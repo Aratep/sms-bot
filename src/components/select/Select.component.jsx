@@ -14,15 +14,15 @@ import close from "assets/imgs/select/close.png";
 import wa from "assets/imgs/wa.png"; // temporary
 
 const Select = ({
-                  name,
-                  value,
-                  handleChange,
-                  inputVariant,
-                  label,
-                  placeholder,
-                  list,
-                  inputType = "text",
-                }) => {
+  name,
+  value,
+  handleChange,
+  inputVariant,
+  label,
+  placeholder,
+  list,
+  inputType = "text",
+}) => {
   const initialList = list.slice(0, 3);
   const [isMore, setIsMore] = useState(false);
   const [isOptionClicked, setIsOptionClicked] = useState(false);

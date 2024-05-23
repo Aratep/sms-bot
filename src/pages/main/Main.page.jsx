@@ -16,7 +16,6 @@ import { countriesSelector } from "store/countries/countries.slice";
 import { getCountries } from "store/countries/countries.actions";
 // UTILS
 import { countriesList } from "utils/constants";
-// import { generateTgHash, notify } from "utils/helper-functions";
 
 const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
@@ -34,9 +33,7 @@ const MainPage = () => {
   //
   // console.log(countriesStore);
   useEffect(() => {
-    // dispatch(getCountries({ name: "rus" }));
-    // generateToken();
-    // notify(JSON.stringify(generateTgHash()));
+    dispatch(getCountries({ name: "rus" }));
   }, []);
 
   useEffect(() => {
