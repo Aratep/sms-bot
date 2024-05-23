@@ -16,6 +16,7 @@ import { servicesSelector } from "store/services/services.slice";
 // ACTIONS
 import { getCountries } from "store/countries/countries.actions";
 import { getServices } from "store/services/services.actions";
+import { setSelectedOption } from "store/common/common.actions";
 // UTILS
 import { generateList } from "utils/helper-functions";
 
@@ -35,12 +36,13 @@ const MainPage = () => {
 
   // debounced search of countries and services
   useEffect(() => {
-    console.log("DEBOUNCED");
     dispatch(getCountries({ name: formData.country }));
     // eslint-disable-next-line
   }, [debouncedCountryTerm]);
   useEffect(() => {
     dispatch(getServices({ name: formData.service }));
+    // dispatch(setSelectedOption({ name: "service", value: formData.service }));
+    // dispatch(setSelectedOption({ name: "country", value: formData.country }));
     // eslint-disable-next-line
   }, [debouncedServiceTerm]);
 
@@ -50,6 +52,8 @@ const MainPage = () => {
     } else {
       setIsFormReady(false);
     }
+    dispatch(setSelectedOption({ name: "service", value: formData.service }));
+    dispatch(setSelectedOption({ name: "country", value: formData.country }));
   }, [formData]);
 
   function handleInputChange(event) {
@@ -59,6 +63,13 @@ const MainPage = () => {
 
   function onButtonClick() {
     navigate("/order");
+  }
+
+  function handleOptionClick(target) {
+    const { name, value, src } = target;
+    console.log("TARGETTTTTT", target);
+    dispatch(setSelectedOption({ name, value: { value, src } }));
+    // dispatch(setSelectedOption({ name: "country", value: formData.country }));
   }
 
   return (
@@ -73,6 +84,7 @@ const MainPage = () => {
           handleChange={handleInputChange}
           list={generateList(servicesData)}
           isLoading={servicesLoading}
+          handleOptionClick={handleOptionClick}
         />
       </Container>
       <Container className="pd-b-25">
@@ -85,6 +97,7 @@ const MainPage = () => {
           handleChange={handleInputChange}
           list={generateList(countriesData)}
           isLoading={countriesLoading}
+          handleOptionClick={handleOptionClick}
         />
       </Container>
       <IsVisible isVisible={isFormReady}>

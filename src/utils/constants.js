@@ -12,8 +12,8 @@ import ca from "assets/imgs/ca.png";
 import am from "assets/imgs/am.png";
 
 export const initialCounter = 900000;
-export const API = "http://147.45.159.97:8084/api";
-export const API_URL = "http://147.45.159.97:8084";
+export const API = "http://147.45.159.97:8080/api";
+export const API_URL = "http://147.45.159.97:8080";
 
 export const accountRoutes = [
   "/my-orders",
