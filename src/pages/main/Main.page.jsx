@@ -35,7 +35,7 @@ const MainPage = () => {
     useSelector(countriesSelector);
   const { loading: servicesLoading, data: servicesData } =
     useSelector(servicesSelector);
-  const { loading: pricesLoading } = useSelector(pricesSelector);
+  const { loading: pricesLoading, data: priceData } = useSelector(pricesSelector);
   const { selectedOptions, tgHash } = useSelector(commonSelector);
 
   const debouncedCountryTerm = useDebouncedValue(formData.country, 500);
@@ -123,7 +123,7 @@ const MainPage = () => {
           <Button
             onClick={onButtonClick}
             isLoading={pricesLoading}
-            text="BUY 1,5 USDT"
+            text={`BUY ${priceData.price} USDT`}
           />
         </Container>
       </IsVisible>

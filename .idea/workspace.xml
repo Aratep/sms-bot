@@ -5,29 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/order/order.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/order/order.slice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/prices/prices.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/prices/prices.slice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_utils.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_utils.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/Button.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/Input.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/Input.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/common/common.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/common/common.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/common/common.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/common/common.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/countries/countries.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/countries/countries.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/countries/countries.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/countries/countries.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/root-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/root-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/services/services.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/services/services.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/services/services.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/services/services.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helper-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +88,7 @@
       <workItem from="1716282089912" duration="12710000" />
       <workItem from="1716447458838" duration="18850000" />
       <workItem from="1716489007818" duration="1942000" />
-      <workItem from="1716526922788" duration="7931000" />
+      <workItem from="1716526922788" duration="10496000" />
     </task>
     <servers />
   </component>
