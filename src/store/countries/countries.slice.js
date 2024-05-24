@@ -28,8 +28,7 @@ export const countriesSlice = createSlice({
     builder.addCase(getCountries.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
-      console.log(action.error);
-      notify(action.error.message, "error");
+      notify(`Countries: ${action.error.message}`, "error");
     });
   },
 });

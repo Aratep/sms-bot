@@ -7,6 +7,8 @@ import Countdown from "react-countdown";
 import IsVisible from "components/is-visible/IsVisible.component";
 // CONTEXT
 import { FocusedContext } from "context/IsFocused.context";
+// UTILS
+import { notify } from "utils/helper-functions";
 // IMAGES
 import phoneIcon from "assets/imgs/input/phone.png";
 import searchIcon from "assets/imgs/input/search.png";
@@ -15,7 +17,6 @@ import spinner from "assets/imgs/input/spinner.png";
 import sad from "assets/imgs/input/sad.png";
 
 const Input = (props) => {
-  // const [isCompleted, setIsCompleted] = useState(false);
   const {
     className,
     wrapperClass,
@@ -31,6 +32,7 @@ const Input = (props) => {
     isLoading,
     hasLoader = false,
     counter,
+    copiable = false,
     ...otherProps
   } = props;
   const { name } = props;
@@ -74,6 +76,13 @@ const Input = (props) => {
     toggleFocused(false);
   };
 
+  const onCopy = () => {
+    notify("Copied!", "success", {
+      autoClose: 5000,
+      position: "bottom-center",
+    });
+  };
+
   const iconVariants = {
     phone: phoneIcon,
     message: messageIcon,
@@ -99,7 +108,23 @@ const Input = (props) => {
             </IsVisible>
           </label>
         </IsVisible>
-        <CopyToClipboard text={value}>
+        <IsVisible isVisible={copiable}>
+          <CopyToClipboard text={value} onCopy={onCopy}>
+            <input
+              className={nativeInputClasses}
+              autoComplete="off"
+              value={value || ""}
+              onChange={handleChange}
+              onInvalid={onInvalid}
+              onSelect={handleSelect}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              id={id}
+              {...otherProps}
+            />
+          </CopyToClipboard>
+        </IsVisible>
+        <IsVisible isVisible={!copiable}>
           <input
             className={nativeInputClasses}
             autoComplete="off"
@@ -112,7 +137,7 @@ const Input = (props) => {
             id={id}
             {...otherProps}
           />
-        </CopyToClipboard>
+        </IsVisible>
         <IsVisible isVisible={!!counter}>
           <Countdown
             renderer={({ minutes, seconds, completed }) => {

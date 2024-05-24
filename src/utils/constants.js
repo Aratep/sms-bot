@@ -1,5 +1,5 @@
 // settings images
-import wallet from "assets/imgs/settings/wallett.png";
+import wallet from "assets/imgs/settings/wallet.jpg";
 import folder from "assets/imgs/settings/folder.png";
 import referral from "assets/imgs/settings/referral.png";
 import settings from "assets/imgs/settings/settings.png";

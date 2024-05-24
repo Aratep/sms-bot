@@ -81,17 +81,4 @@
   input[type="number"] {
     -moz-appearance: textfield;
   }
-
-  .spinner-gif {
-    animation: rotation 1.5s infinite linear;
-  }
-
-  @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
-  }
 }

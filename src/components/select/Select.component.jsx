@@ -14,17 +14,17 @@ import arrow from "assets/imgs/select/arrow.png";
 import close from "assets/imgs/select/close.png";
 
 const Select = ({
-                  name,
-                  value,
-                  handleChange,
-                  handleOptionClick,
-                  inputVariant,
-                  label,
-                  placeholder,
-                  list,
-                  inputType = "text",
-                  isLoading,
-                }) => {
+  name,
+  value,
+  handleChange,
+  handleOptionClick,
+  inputVariant,
+  label,
+  placeholder,
+  list,
+  inputType = "text",
+  isLoading,
+}) => {
   const initialList = list.slice(0, 3);
   const [isMore, setIsMore] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
@@ -72,6 +72,7 @@ const Select = ({
     setIsOptionClicked(false);
     updateInputState({ [name]: "" });
     handleChange({ name, value: "" });
+    handleOptionClick({ name, value: "", src: "", id: "" });
   }
 
   const arrowClasses = classNames({
@@ -115,7 +116,12 @@ const Select = ({
               <div
                 className="sm-select__options-item"
                 onClick={() =>
-                  onOptionClick({ name, value: option.title, src: option.src })
+                  onOptionClick({
+                    id: option.id,
+                    name,
+                    value: option.title,
+                    src: option.src,
+                  })
                 }
                 key={option.id}
               >

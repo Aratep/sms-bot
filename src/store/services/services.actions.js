@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // API
-import { smAPI } from "api";
+import { smsAPI } from "api";
 
 export const getServices = createAsyncThunk(
   "fetch/services",
   async ({ name }) => {
-    const res = await smAPI.fetchServices(name);
+    const res = await smsAPI.fetchServices(name);
     return res.data;
   }
 );

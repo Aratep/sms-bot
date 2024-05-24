@@ -13,9 +13,13 @@ import useDebouncedValue from "effects/useDebouncedValue.effect";
 // SLICES
 import { countriesSelector } from "store/countries/countries.slice";
 import { servicesSelector } from "store/services/services.slice";
+import { pricesSelector } from "store/prices/prices.slice";
+import { commonSelector } from "store/common/common.slice";
 // ACTIONS
 import { getCountries } from "store/countries/countries.actions";
 import { getServices } from "store/services/services.actions";
+import { getPrice } from "store/prices/prices.actions";
+// import { makeOrder } from "store/order/order.actions";
 import { setSelectedOption } from "store/common/common.actions";
 // UTILS
 import { generateList } from "utils/helper-functions";
@@ -23,6 +27,7 @@ import { generateList } from "utils/helper-functions";
 const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
   const [isFormReady, setIsFormReady] = useState(false);
+  const [formState, setFormState] = useState({ service: "", country: "" });
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,6 +35,8 @@ const MainPage = () => {
     useSelector(countriesSelector);
   const { loading: servicesLoading, data: servicesData } =
     useSelector(servicesSelector);
+  const { loading: pricesLoading } = useSelector(pricesSelector);
+  const { selectedOptions, tgHash } = useSelector(commonSelector);
 
   const debouncedCountryTerm = useDebouncedValue(formData.country, 500);
   const debouncedServiceTerm = useDebouncedValue(formData.service, 500);
@@ -41,20 +48,31 @@ const MainPage = () => {
   }, [debouncedCountryTerm]);
   useEffect(() => {
     dispatch(getServices({ name: formData.service }));
-    // dispatch(setSelectedOption({ name: "service", value: formData.service }));
-    // dispatch(setSelectedOption({ name: "country", value: formData.country }));
     // eslint-disable-next-line
   }, [debouncedServiceTerm]);
 
   useEffect(() => {
-    if (formData.service !== "" && formData.country !== "") {
+    if (formState.service !== "" && formState.country !== "") {
       setIsFormReady(true);
     } else {
       setIsFormReady(false);
     }
-    dispatch(setSelectedOption({ name: "service", value: formData.service }));
-    dispatch(setSelectedOption({ name: "country", value: formData.country }));
-  }, [formData]);
+  }, [formState]);
+
+  useEffect(() => {
+    if (isFormReady === true) {
+      const params = {
+        auth_data: {
+          auth: tgHash.checkDataString,
+          hash: tgHash.hash,
+        },
+        country_id: selectedOptions.country.id,
+        service_id: selectedOptions.service.id,
+      };
+      dispatch(getPrice(params));
+    }
+    // eslint-disable-next-line
+  }, [isFormReady]);
 
   function handleInputChange(event) {
     const { name, value } = event;
@@ -63,13 +81,13 @@ const MainPage = () => {
 
   function onButtonClick() {
     navigate("/order");
+    setFormState({ service: "", country: "" });
   }
 
   function handleOptionClick(target) {
-    const { name, value, src } = target;
-    console.log("TARGETTTTTT", target);
-    dispatch(setSelectedOption({ name, value: { value, src } }));
-    // dispatch(setSelectedOption({ name: "country", value: formData.country }));
+    const { name, value, src, id } = target;
+    dispatch(setSelectedOption({ name, value: { value, src, id } }));
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
   }
 
   return (
@@ -102,7 +120,11 @@ const MainPage = () => {
       </Container>
       <IsVisible isVisible={isFormReady}>
         <Container space="center">
-          <Button onClick={onButtonClick} text="BUY 1,5 USDT" />
+          <Button
+            onClick={onButtonClick}
+            isLoading={pricesLoading}
+            text="BUY 1,5 USDT"
+          />
         </Container>
       </IsVisible>
     </PageWrapper>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
@@ -7,10 +8,13 @@ import Input from "components/input/Input.component";
 import Button from "components/button/Button.component";
 import { Container } from "components/container/Container.component";
 import List from "components/list/List.component";
+// SLICES
+import { commonSelector } from "store/common/common.slice";
 // EFFECTS
 import useInput from "effects/useInput.effect";
 // UTILS
-import { initialCounter, orders } from "utils/constants";
+import { initialCounter } from "utils/constants";
+import { generateOrderOptions } from "utils/helper-functions";
 
 const OrderPage = () => {
   const [counter, setCounter] = useState(9000);
@@ -18,6 +22,7 @@ const OrderPage = () => {
   const { inputState, handleInput, handleInvalidMessage, invalidMessages } =
     useInput({ phone: "+1 403 656 66 44" });
   let navigate = useNavigate();
+  const { selectedOptions } = useSelector(commonSelector);
 
   function handleInputChange(event) {
     handleInput(event);
@@ -38,7 +43,10 @@ const OrderPage = () => {
   return (
     <PageWrapper>
       <Container className="pd-b-25">
-        <List title="YOUR ORDER" items={orders} />
+        <List
+          title="YOUR ORDER"
+          items={generateOrderOptions(selectedOptions)}
+        />
       </Container>
       <Container className="pd-b-25">
         <Input
@@ -52,6 +60,7 @@ const OrderPage = () => {
           wrapperClass="sm-border-none sm-bg-grey"
           counter={counter}
           onCounterEnd={onCounterEnd}
+          copiable={true}
         />
       </Container>
       <Container className="pd-b-10">
@@ -67,6 +76,7 @@ const OrderPage = () => {
           wrapperClass="sm-border-none sm-bg-grey"
           isLoading={isLoading}
           hasLoader={true}
+          copiable={true}
         />
       </Container>
       <Container className="pd-b-25">

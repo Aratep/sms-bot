@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tgHash: "",
+  tgHash: {
+    hash: "",
+    checkDataString: "",
+  },
   selectedOptions: {
     country: { value: "", src: "" },
     service: { value: "", src: "" },
@@ -16,12 +19,15 @@ export const commonSlice = createSlice({
       state.tgHash = action.payload;
     },
     setSelectedOptionReducer: (state, action) => {
-      console.log("LJFKSDLKJFKLDF =======>>>>", action.payload);
-      state.selectedOptions = { ...state.selectedOptions, [action.payload.name]: action.payload.value };
+      state.selectedOptions = {
+        ...state.selectedOptions,
+        [action.payload.name]: action.payload.value,
+      };
     },
   },
 });
 
-export const { setTgHashReducer, setSelectedOptionReducer } = commonSlice.actions;
+export const { setTgHashReducer, setSelectedOptionReducer } =
+  commonSlice.actions;
 
 export const commonSelector = (state) => state.common;

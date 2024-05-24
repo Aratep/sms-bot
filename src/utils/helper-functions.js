@@ -22,7 +22,7 @@ export function generateTgHash() {
 
 export function notify(text, variant = "info", opts) {
   const defOptions = {
-    position: "top-right",
+    position: "top-center",
     autoClose: false,
     hideProgressBar: false,
     closeOnClick: true,
@@ -44,6 +44,20 @@ export function generateList(list) {
         id: item.id,
         title: item.name,
         src: `${API_URL}${item.image_url}`,
+      });
+    });
+  return res;
+}
+
+export function generateOrderOptions(data) {
+  const options = Object.values(data);
+  let res = [];
+  options.length > 0 &&
+    options.forEach((item, idx) => {
+      res.push({
+        id: idx,
+        title: item.value,
+        src: item.src,
       });
     });
   return res;

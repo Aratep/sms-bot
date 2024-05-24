@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // ACTIONS
-import { getServices } from "store/services/services.actions";
+import { getPrice } from "store/prices/prices.actions";
 // UTILS
 import { notify } from "utils/helper-functions";
 
@@ -11,23 +11,23 @@ const initialState = {
   error: "",
 };
 
-export const servicesSlice = createSlice({
-  name: "services",
+export const pricesSlice = createSlice({
+  name: "prices",
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(getServices.pending, (state) => {
+    builder.addCase(getPrice.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getServices.fulfilled, (state, action) => {
+    builder.addCase(getPrice.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
     });
-    builder.addCase(getServices.rejected, (state, action) => {
+    builder.addCase(getPrice.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
-      notify(`Services: ${action.error.message}`, "error");
+      notify(`Prices: ${action.error.message}`, "error");
     });
   },
 });
 
-export const servicesSelector = (state) => state.services;
+export const pricesSelector = (state) => state.prices;
