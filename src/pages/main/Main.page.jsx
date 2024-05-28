@@ -19,7 +19,7 @@ import { commonSelector } from "store/common/common.slice";
 import { getCountries } from "store/countries/countries.actions";
 import { getServices } from "store/services/services.actions";
 import { getPrice } from "store/prices/prices.actions";
-// import { makeOrder } from "store/order/order.actions";
+import { makeOrder } from "store/order/order.actions";
 import { setSelectedOption } from "store/common/common.actions";
 // UTILS
 import { generateList } from "utils/helper-functions";
@@ -35,7 +35,8 @@ const MainPage = () => {
     useSelector(countriesSelector);
   const { loading: servicesLoading, data: servicesData } =
     useSelector(servicesSelector);
-  const { loading: pricesLoading, data: priceData } = useSelector(pricesSelector);
+  const { loading: pricesLoading, data: priceData } =
+    useSelector(pricesSelector);
   const { selectedOptions, tgHash } = useSelector(commonSelector);
 
   const debouncedCountryTerm = useDebouncedValue(formData.country, 500);
@@ -80,6 +81,16 @@ const MainPage = () => {
   }
 
   function onButtonClick() {
+    const params = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      country_id: selectedOptions.country.id,
+      service_id: selectedOptions.service.id,
+    };
+
+    dispatch(makeOrder(params));
     navigate("/order");
     setFormState({ service: "", country: "" });
   }
@@ -124,6 +135,7 @@ const MainPage = () => {
             onClick={onButtonClick}
             isLoading={pricesLoading}
             text={`BUY ${priceData.price} USDT`}
+            disabled={pricesLoading}
           />
         </Container>
       </IsVisible>
