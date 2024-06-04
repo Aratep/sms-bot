@@ -5,8 +5,8 @@ import { smsAPI } from "api";
 
 export const getCountries = createAsyncThunk(
   "fetch/countries",
-  async ({ name }) => {
-    const res = await smsAPI.fetchCountries(name);
+  async (params) => {
+    const res = await smsAPI.fetchCountries(params);
     return res.data;
   }
 );

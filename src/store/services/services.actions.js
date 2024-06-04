@@ -5,8 +5,8 @@ import { smsAPI } from "api";
 
 export const getServices = createAsyncThunk(
   "fetch/services",
-  async ({ name }) => {
-    const res = await smsAPI.fetchServices(name);
+  async (params) => {
+    const res = await smsAPI.fetchServices(params);
     return res.data;
   }
 );

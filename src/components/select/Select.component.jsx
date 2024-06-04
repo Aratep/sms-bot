@@ -43,12 +43,10 @@ const Select = ({
     } else {
       setFilteredList(initialList);
     }
-    // eslint-disable-next-line
   }, [isMore]);
 
   useEffect(() => {
     setFilteredList(initialList);
-    // eslint-disable-next-line
   }, [list]);
 
   function handleInputChange(event) {

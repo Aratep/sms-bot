@@ -1,21 +1,32 @@
+import { useSelector } from "react-redux";
+
+// COMPONENTS
+import Loader from "components/loader/Loader.component";
 import Image from "components/image/Image.component";
-// IMAGES
-import avatar from "assets/imgs/settings/avatar.png";
+// SLICES
+import { userSelector } from "store/user/user.slice";
+// UTILS
+import { formatUserData } from "utils/helper-functions";
 
 const SettingsHeader = () => {
+  const { loading: userLoading, data: userData } = useSelector(userSelector);
+  const user = formatUserData(userData);
+
   return (
     <div className="settings-header">
-      <div className="settings-header__left">
-        <Image src={avatar} alt="Avatar" />
-        <div className="name-block">
-          <span>Alex Smith</span>
-          <span>@aleko</span>
+      <Loader isLoading={userLoading}>
+        <div className="settings-header__left">
+          <Image src={user.image_url} alt="Avatar" />
+          <div className="name-block">
+            <span>{user.name}</span>
+            <span>@{user.username}</span>
+          </div>
         </div>
-      </div>
-      <div className="settings-header__right">
-        <span>$ 0,00</span>
-        <span>Balance in usdt</span>
-      </div>
+        <div className="settings-header__right">
+          <span>$ {user.balance}</span>
+          <span>Balance in usdt</span>
+        </div>
+      </Loader>
     </div>
   );
 };

@@ -26,7 +26,6 @@ function App() {
 
   useEffect(() => {
     dispatch(setTgHash());
-    // eslint-disable-next-line
   }, []);
 
   return (

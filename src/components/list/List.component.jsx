@@ -21,7 +21,6 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
     } else {
       setFilteredItems(initialItems);
     }
-    // eslint-disable-next-line
   }, [isMore]);
 
   const handleTouchEnd = (id) => {
@@ -74,10 +73,6 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
               </div>
               <IsVisible isVisible={selectedItemId === item.id}>
                 <div className="sm-list__container-item__cont">
-                  <div>
-                    <span>Code:</span>
-                    <span>{item.code}</span>
-                  </div>
                   <div>
                     <span>Date:</span>
                     <span>{item.date}</span>

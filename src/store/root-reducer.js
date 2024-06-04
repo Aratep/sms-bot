@@ -7,6 +7,7 @@ import { countriesSlice } from "store/countries/countries.slice";
 import { servicesSlice } from "store/services/services.slice";
 import { pricesSlice } from "store/prices/prices.slice";
 import { orderSlice } from "store/order/order.slice";
+import { userSlice } from "store/user/user.slice";
 
 // PERSIST CONFIG
 import { persistConfig } from "store/persist-config";
@@ -17,6 +18,7 @@ const rootReducers = combineReducers({
   services: servicesSlice.reducer,
   prices: pricesSlice.reducer,
   order: orderSlice.reducer,
+  user: userSlice.reducer,
 });
 
 export default persistReducer(persistConfig, rootReducers);
