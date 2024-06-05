@@ -7,9 +7,6 @@ import language from "assets/imgs/settings/globe.png";
 // languages images
 import ru from "assets/imgs/lang/ru.png";
 import en from "assets/imgs/lang/en.png";
-// order images
-import ca from "assets/imgs/ca.png";
-import am from "assets/imgs/am.png";
 
 export const initialCounter = 900000;
 export const API =

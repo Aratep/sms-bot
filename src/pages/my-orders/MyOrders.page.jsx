@@ -20,9 +20,6 @@ const MyOrdersPage = () => {
   const { tgHash } = useSelector(commonSelector);
   const orders = generateOrders(userOrders);
 
-  console.log("USER ORDERS", userOrders);
-  console.log("GENERATED", orders);
-
   useEffect(() => {
     const params = {
       auth_data: {
