@@ -8,7 +8,11 @@ export const smsAPI = {
     axios.post(`${API}/countries/list`, { ...params }),
   fetchServices: (params) => axios.post(`${API}/services/list`, { ...params }),
   fetchPrice: (params) => axios.post(`${API}/order/price`, { ...params }),
-  fetchOrder: (params) => axios.post(`${API}/order`, { ...params }),
   fetchUser: (params) => axios.post(`${API}/user/get`, { ...params }),
   fetchUserOrders: (params) => axios.post(`${API}/order/list`, { ...params }),
+  fetchOrderCreate: (params) =>
+    axios.post(`${API}/order/create`, { ...params }),
+  fetchOrderGet: (params) => axios.post(`${API}/order/get`, { ...params }),
+  fetchOrderCancel: (params) =>
+    axios.post(`${API}/order/cancel`, { ...params }),
 };

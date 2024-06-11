@@ -12,6 +12,7 @@
     @include flexContentCenter;
     @include flexAlignCenter;
     padding: 0.5rem;
+    backdrop-filter: blur(5px);
 
     & > div {
       height: 30px;

@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-wrapper/_page-wrapper.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-wrapper/_page-wrapper.component.styles.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/header/Header.screen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/header/Header.screen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/nav-bar/_nav-bar.screen.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/nav-bar/_nav-bar.screen.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/order/order.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/order/order.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.slice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +102,8 @@
       <workItem from="1717402755724" duration="9775000" />
       <workItem from="1717475732324" duration="10872000" />
       <workItem from="1717574057129" duration="1227000" />
-      <workItem from="1717943462502" duration="1843000" />
+      <workItem from="1717943462502" duration="4861000" />
+      <workItem from="1718092678347" duration="6900000" />
     </task>
     <servers />
   </component>

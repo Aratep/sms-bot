@@ -127,12 +127,14 @@ const Select = ({
                   <Image src={option.src} alt="wa" />
                   <span>{option.title}</span>
                 </div>
-                <div className="sm-select__options-item__info">
-                  <div>
-                    <span className="from">from {option.from}</span>
-                    <Image src={usdt} alt="usdt" />
+                <IsVisible isVisible={!!option.from}>
+                  <div className="sm-select__options-item__info">
+                    <div>
+                      <span className="from">from {option.from}</span>
+                      <Image src={usdt} alt="usdt" />
+                    </div>
                   </div>
-                </div>
+                </IsVisible>
               </div>
             ))}
           </div>

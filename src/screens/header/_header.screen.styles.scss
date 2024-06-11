@@ -1,10 +1,21 @@
 .header {
   width: 100%;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.15);
   margin-top: 1rem;
   height: 66px;
   @include flexAlignCenter;
+  position: absolute;
+  justify-content: center;
+
+  > div {
+    padding: 0 16px;
+    @include flexAlignCenter;
+    justify-content: center;
+    background: #262626;
+    border-radius: 20px;
+    width: 100%;
+    margin: 0 16px;
+  }
 
   &__logo {
     margin: 8px;
