@@ -4,6 +4,7 @@
   overflow-y: auto;
   @include flexAlignCenter;
   @include flexColumn;
+  padding-bottom: 7rem;
   //height: 74%;
 
   //@media only screen and (max-width: 400px) {
