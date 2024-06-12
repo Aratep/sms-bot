@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-wrapper/_page-wrapper.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-wrapper/_page-wrapper.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/common/common.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/common/common.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helper-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/home/devolon/Desktop/sms-bot/node_modules/prettier",
     "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/snap/webstorm/377/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/snap/webstorm/384/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -97,7 +97,8 @@
       <workItem from="1717574057129" duration="1227000" />
       <workItem from="1717943462502" duration="4861000" />
       <workItem from="1718092678347" duration="7561000" />
-      <workItem from="1718202888240" duration="599000" />
+      <workItem from="1718202888240" duration="1552000" />
+      <workItem from="1718205801354" duration="2853000" />
     </task>
     <servers />
   </component>

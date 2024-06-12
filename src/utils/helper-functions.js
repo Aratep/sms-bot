@@ -15,7 +15,7 @@ export function generateTgHash() {
 
   initDataURLSP.delete("hash");
   initDataURLSP.sort();
-  const checkDataString = initDataURLSP.toString().replaceAll("&", "\n");
+  const checkDataString = initDataURLSP.toString().replaceAll("&", "\\n");
 
   return {
     hash: hash,
