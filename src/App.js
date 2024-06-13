@@ -26,6 +26,7 @@ function App() {
 
   useEffect(() => {
     dispatch(setTgHash());
+    if (window.Telegram !== undefined) window.Telegram.WebApp.expand();
   }, []);
 
   return (
