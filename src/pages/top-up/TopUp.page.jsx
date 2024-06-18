@@ -15,7 +15,7 @@ import { commonSelector } from "store/common/common.slice";
 import { notify } from "utils/helper-functions";
 
 const TopUpPage = () => {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState("0");
   const dispatch = useDispatch();
 
   const { data: priceData } = useSelector(pricesSelector);

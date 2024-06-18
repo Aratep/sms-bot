@@ -47,6 +47,7 @@ export function generateList(list) {
         id: item.id,
         title: item.name,
         src: `${API_URL}${item.image_url}`,
+        from: item?.price?.toString(),
       });
     });
   return res;

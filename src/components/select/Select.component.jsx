@@ -112,7 +112,7 @@ const Select = ({
           <div className="sm-select__options">
             {filteredList.map((option) => (
               <div
-                className="sm-select__options-item"
+                className={`sm-select__options-item ${filteredList.length <= 1 ? "rounded" : "semi-rounded"}`}
                 onClick={() =>
                   onOptionClick({
                     id: option.id,
@@ -127,7 +127,7 @@ const Select = ({
                   <Image src={option.src} alt="wa" />
                   <span>{option.title}</span>
                 </div>
-                <IsVisible isVisible={!!option.from}>
+                <IsVisible isVisible={!!option.from && option.from !== ""}>
                   <div className="sm-select__options-item__info">
                     <div>
                       <span className="from">from {option.from}</span>
