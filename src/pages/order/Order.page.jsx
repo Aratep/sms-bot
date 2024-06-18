@@ -13,7 +13,12 @@ import IsVisible from "components/is-visible/IsVisible.component";
 import { commonSelector } from "store/common/common.slice";
 import { orderSelector } from "store/order/order.slice";
 // ACTIONS
-import { getOrderInfo, cancelOrder } from "store/order/order.actions";
+import {
+  cancelOrder,
+  resetOrderInfo,
+  setIsFirstCode,
+  getSecondCode,
+} from "store/order/order.actions";
 // EFFECTS
 import useInput from "effects/useInput.effect";
 // UTILS
@@ -21,33 +26,32 @@ import { initialCounter } from "utils/constants";
 import { generateOrderOptions } from "utils/helper-functions";
 
 const OrderPage = () => {
-  const [counter, setCounter] = useState(9000);
-  const [isLoading, setIsLoading] = useState(true);
+  const [counter, setCounter] = useState(720000);
+  const [hasCounter, setHasCounter] = useState(true);
+  const [isRepeatClicked, setIsRepeatClicked] = useState(false);
   const { inputState, handleInput, handleInvalidMessage, invalidMessages } =
-    useInput({ phone: "+1 403 656 66 44" });
+    useInput({ phone: "" });
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { selectedOptions, tgHash } = useSelector(commonSelector);
-  const { orderId, orderInfoLoading, orderInfo } = useSelector(orderSelector);
-
-  const params = {
-    auth_data: {
-      auth: tgHash.checkDataString,
-      hash: tgHash.hash,
-    },
-    id: orderId,
-  };
+  const {
+    orderId,
+    orderInfoLoading,
+    orderInfo,
+    isFirstCodeSet,
+    secondCode,
+    secondCodeLoading,
+  } = useSelector(orderSelector);
 
   useEffect(() => {
-    const fetchOrderInfo = () => {
-      dispatch(getOrderInfo(params));
-    };
+    if (isFirstCodeSet === true) {
+      setHasCounter(false);
+    }
+  }, [isFirstCodeSet]);
 
-    fetchOrderInfo(); // Initial fetch
-    // const intervalId = setInterval(fetchOrderInfo, 2000); // Fetch every 2 seconds
-
-    // return () => clearInterval(intervalId); // Clear interval on unmount
+  useEffect(() => {
+    return () => dispatch(setIsFirstCode(false));
   }, []);
 
   function handleInputChange(event) {
@@ -55,16 +59,44 @@ const OrderPage = () => {
   }
 
   function onCounterEnd() {
-    setIsLoading(false);
+    setHasCounter(false);
+    onCancellClick();
   }
 
   function onCancellClick() {
+    const params = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      id: orderId,
+    };
     dispatch(cancelOrder(params));
+    dispatch(resetOrderInfo());
+    dispatch(setIsFirstCode(false));
     navigate("/");
   }
 
   function onChangeClick() {
     setCounter(initialCounter);
+  }
+
+  function onRepeatCode() {
+    const params = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      order_id: orderId,
+    };
+    dispatch(getSecondCode(params));
+    setIsRepeatClicked(true);
+  }
+
+  function onDoneClik() {
+    dispatch(resetOrderInfo());
+    dispatch(setIsFirstCode(false));
+    navigate("/");
   }
 
   return (
@@ -79,18 +111,22 @@ const OrderPage = () => {
         <Input
           label="YOUR NUMBER"
           name="phone"
-          value={inputState.phone}
+          value={orderInfo?.phone ? orderInfo?.phone : inputState.phone}
+          placeholder="+1 403 656 66 44"
           onChange={handleInputChange}
           onInvalid={handleInvalidMessage}
           error={invalidMessages}
           iconVariant="phone"
           wrapperClass="sm-border-none sm-bg-grey"
+          hasCounter={hasCounter}
           counter={counter}
           onCounterEnd={onCounterEnd}
           copiable={true}
         />
       </Container>
-      <Container className="pd-b-10">
+      <Container
+        className={`pd-b-10 ${isRepeatClicked ? "sms-code__wrapper" : ""}`}
+      >
         <Input
           label="YOUR SMS CODE"
           name="sms"
@@ -98,13 +134,28 @@ const OrderPage = () => {
           onChange={handleInputChange}
           onInvalid={handleInvalidMessage}
           error={invalidMessages}
-          placeholder={orderInfoLoading ? "Wait" : "Sorry, no SMS received"}
+          placeholder={orderInfoLoading ? "" : "Wait"}
           disabled={orderInfoLoading}
           wrapperClass="sm-border-none sm-bg-grey"
-          isLoading={orderInfoLoading}
+          isLoading={!orderInfo?.first_code}
           hasLoader={true}
           copiable={true}
         />
+        <IsVisible isVisible={isRepeatClicked}>
+          <Input
+            name="secondCode"
+            value={secondCode?.toString()}
+            onChange={handleInputChange}
+            onInvalid={handleInvalidMessage}
+            error={invalidMessages}
+            placeholder={secondCodeLoading ? "Wait" : ""}
+            disabled={secondCodeLoading}
+            wrapperClass="sm-border-none sm-bg-grey"
+            isLoading={secondCodeLoading}
+            hasLoader={true}
+            copiable={true}
+          />
+        </IsVisible>
       </Container>
       <Container className="pd-b-25">
         <div className="sm-code-text">
@@ -112,16 +163,17 @@ const OrderPage = () => {
         </div>
       </Container>
       <Container variant="row" space="center" className="m-l-r">
-        <Button text="CANCEL" variant="dark" onClick={onCancellClick} />
-        <IsVisible isVisible={orderInfo?.first_code === ""}>
+        <IsVisible isVisible={!isFirstCodeSet}>
+          <Button text="CANCEL" variant="dark" onClick={onCancellClick} />
           <Button
             text="CHANGE NUMBER"
             variant="light"
             onClick={onChangeClick}
           />
         </IsVisible>
-        <IsVisible isVisible={orderInfo?.first_code !== ""}>
-          <Button text="DONE" variant="light" />
+        <IsVisible isVisible={isFirstCodeSet}>
+          <Button text="REPEAT" variant="dark" onClick={onRepeatCode} />
+          <Button text="DONE" variant="light" onClick={onDoneClik} />
         </IsVisible>
       </Container>
     </PageWrapper>

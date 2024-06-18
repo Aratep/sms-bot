@@ -6,8 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/header/_header.screen.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/Input.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/Input.component.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/effects/useStore.effect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order/_order.page.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/_order.page.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/order/order.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/order/order.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/persist-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/persist-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/prices/prices.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/prices/prices.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/root-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/root-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/user.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/user.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helper-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +113,11 @@
       <workItem from="1718205801354" duration="3134000" />
       <workItem from="1718255229720" duration="482000" />
       <workItem from="1718255793959" duration="401000" />
-      <workItem from="1718270075013" duration="105000" />
+      <workItem from="1718270075013" duration="6460000" />
+      <workItem from="1718612453905" duration="9216000" />
+      <workItem from="1718643920773" duration="1061000" />
+      <workItem from="1718647507242" duration="762000" />
+      <workItem from="1718688984200" duration="24493000" />
     </task>
     <servers />
   </component>

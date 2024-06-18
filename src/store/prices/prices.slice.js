@@ -6,7 +6,7 @@ import { getPrice } from "store/prices/prices.actions";
 import { notify } from "utils/helper-functions";
 
 const initialState = {
-  data: [],
+  data: {},
   loading: false,
   error: "",
 };

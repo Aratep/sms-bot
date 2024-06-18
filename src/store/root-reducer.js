@@ -10,14 +10,19 @@ import { orderSlice } from "store/order/order.slice";
 import { userSlice } from "store/user/user.slice";
 
 // PERSIST CONFIG
-import { persistConfig } from "store/persist-config";
+import { persistConfig, orderPersistConfig } from "store/persist-config";
+
+const persistedAuthReducer = persistReducer(
+  orderPersistConfig,
+  orderSlice.reducer
+);
 
 const rootReducers = combineReducers({
   common: commonSlice.reducer,
   countries: countriesSlice.reducer,
   services: servicesSlice.reducer,
   prices: pricesSlice.reducer,
-  order: orderSlice.reducer,
+  order: persistedAuthReducer,
   user: userSlice.reducer,
 });
 

@@ -14,7 +14,6 @@ import phoneIcon from "assets/imgs/input/phone.png";
 import searchIcon from "assets/imgs/input/search.png";
 import messageIcon from "assets/imgs/input/message.png";
 import spinner from "assets/imgs/input/spinner.png";
-import sad from "assets/imgs/input/sad.png";
 
 const Input = (props) => {
   const {
@@ -33,6 +32,7 @@ const Input = (props) => {
     hasLoader = false,
     counter,
     copiable = false,
+    hasCounter = false,
     ...otherProps
   } = props;
   const { name } = props;
@@ -101,7 +101,7 @@ const Input = (props) => {
         <IsVisible isVisible={hasLoader}>
           <label htmlFor={id} className="sm-input__wrapper--img-label">
             <IsVisible isVisible={!isLoading}>
-              <img src={sad} alt="spinner" />
+              <img src={messageIcon} alt="spinner" />
             </IsVisible>
             <IsVisible isVisible={isLoading}>
               <img src={spinner} alt="spinner" className="spinner-gif" />
@@ -138,7 +138,7 @@ const Input = (props) => {
             {...otherProps}
           />
         </IsVisible>
-        <IsVisible isVisible={!!counter}>
+        <IsVisible isVisible={hasCounter}>
           <Countdown
             renderer={({ minutes, seconds, completed }) => {
               return completed ? (

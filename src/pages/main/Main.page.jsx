@@ -44,10 +44,10 @@ const MainPage = () => {
 
   // debounced search of countries and services
   useEffect(() => {
-    dispatch(getCountries({ name: formData.country, limit: 50, offset: 50 }));
+    dispatch(getCountries({ name: formData.country }));
   }, [debouncedCountryTerm]);
   useEffect(() => {
-    dispatch(getServices({ name: formData.service, limit: 50, offset: 50 }));
+    dispatch(getServices({ name: formData.service }));
   }, [debouncedServiceTerm]);
 
   useEffect(() => {
@@ -57,6 +57,12 @@ const MainPage = () => {
       setIsFormReady(false);
     }
   }, [formState]);
+
+  useEffect(() => {
+    if (priceData?.availability === false) {
+      navigate("/top-up");
+    }
+  }, [priceData]);
 
   useEffect(() => {
     if (isFormReady === true) {
@@ -87,14 +93,24 @@ const MainPage = () => {
       service_id: selectedOptions.service.id,
     };
 
-    dispatch(makeOrder(params));
+    dispatch(makeOrder({ params }));
     navigate("/order");
     setFormState({ service: "", country: "" });
+  }
+
+  function reFetchData(name, id) {
+    if (id !== "") {
+      if (name === "service")
+        dispatch(getCountries({ name: formData.country, service_id: id }));
+      if (name === "country")
+        dispatch(getServices({ name: formData.service, country_id: id }));
+    }
   }
 
   function handleOptionClick(target) {
     const { name, value, src, id } = target;
     dispatch(setSelectedOption({ name, value: { value, src, id } }));
+    reFetchData(name, id);
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   }
 
@@ -126,7 +142,7 @@ const MainPage = () => {
           handleOptionClick={handleOptionClick}
         />
       </Container>
-      <IsVisible isVisible={isFormReady}>
+      <IsVisible isVisible={isFormReady && priceData?.availability === true}>
         <Container space="center">
           <Button
             onClick={onButtonClick}

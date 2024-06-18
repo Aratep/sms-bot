@@ -1,1 +1,17 @@
 @import "./components/order-item/_order-item.component.styles";
+
+.sms-code__wrapper {
+  .sm-input {
+    margin-bottom: 2px;
+
+    .sm-input__wrapper {
+      &:nth-child(2) {
+        border-radius: 20px 20px 2px 2px;
+      }
+
+      &:nth-child(1) {
+        border-radius: 2px 2px 20px 20px;
+      }
+    }
+  }
+}

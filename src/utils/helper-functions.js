@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 // CONSTANTS
 import { API_URL } from "./constants";
 // IMAGES
-import defaultAvatar from "assets/imgs/settings/profile-default.svg";
+import defaultAvatar from "assets/imgs/header-logo.png";
 
 export const getActiveItem = (routes, path) => !!routes.includes(path);
 
@@ -26,8 +26,8 @@ export function generateTgHash() {
 export function notify(text, variant = "info", opts) {
   const defOptions = {
     position: "top-center",
-    autoClose: false,
-    hideProgressBar: false,
+    autoClose: 5000,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
