@@ -77,6 +77,7 @@ export function formatUserData(data) {
     ? (newData.image_url = data?.image_url)
     : (newData.image_url = defaultAvatar);
   data?.username ? (newData.username = `${data?.username}`) : "--";
+  newData.balance = formatNumberToString(data?.balance);
 
   return newData;
 }
@@ -90,6 +91,8 @@ export function generateOrders(orders) {
       src: `${API_URL}${order?.country?.image_url}`,
       title: formatPhone(order?.phone),
       date: formatDate(order?.date),
+      firstCode: order?.first_code,
+      secondCode: order?.second_code,
     });
   });
 
@@ -113,4 +116,10 @@ function formatDate(dateStr) {
 function formatPhone(phoneStr) {
   const formattedPhone = `+ ${phoneStr}`;
   return formattedPhone;
+}
+
+function formatNumberToString(num) {
+  const stringifiedNumber = num.toLocaleString();
+  const [beforeComma, afterComma] = stringifiedNumber.split(",");
+  return { firstPart: beforeComma, lastPart: afterComma ? afterComma : "00" };
 }

@@ -7,6 +7,7 @@ import {
   resetOrderInfoReducer,
   setOrderInfoReducer,
   setFirstCodeReducer,
+  setSecondCodeReducer,
 } from "./order.slice";
 
 export const makeOrder = createAsyncThunk(
@@ -50,8 +51,26 @@ export const cancelOrder = createAsyncThunk(
 
 export const getSecondCode = createAsyncThunk(
   "fetch/second/code",
-  async (params) => {
+  async (params, { dispatch }) => {
     const res = await smsAPI.fetchSecondCode(params);
+    const orderInfoParams = {
+      auth_data: params.auth_data,
+      id: params.order_id,
+    };
+
+    const orderRes = await dispatch(getOrderInfo(orderInfoParams)).unwrap();
+    dispatch(setOrderInfo(orderRes));
+
+    const intervalId = setInterval(async () => {
+      const reOrderRes = await dispatch(getOrderInfo(orderInfoParams)).unwrap();
+      const updatedSecondCode = reOrderRes?.second_code;
+
+      if (updatedSecondCode !== undefined && updatedSecondCode !== "") {
+        dispatch(setOrderInfo(reOrderRes));
+        dispatch(setIsSecondCode(true));
+        clearInterval(intervalId);
+      }
+    }, 2000);
     return res.data;
   }
 );
@@ -74,4 +93,8 @@ export const setOrderInfo = (payload) => (dispatch) => {
 
 export const setIsFirstCode = (payload) => (dispatch) => {
   dispatch(setFirstCodeReducer(payload));
+};
+
+export const setIsSecondCode = (payload) => (dispatch) => {
+  dispatch(setSecondCodeReducer(payload));
 };

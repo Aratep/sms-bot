@@ -27,6 +27,7 @@ const initialState = {
   invoiceDataError: "",
   // OTHER PROPS
   isFirstCodeSet: false,
+  isSecondCodeSet: false,
 };
 
 export const orderSlice = createSlice({
@@ -43,6 +44,9 @@ export const orderSlice = createSlice({
     },
     setFirstCodeReducer: (state, action) => {
       state.isFirstCodeSet = action.payload;
+    },
+    setSecondCodeReducer: (state, action) => {
+      state.isSecondCodeSet = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -106,6 +110,7 @@ export const {
   resetOrderInfoReducer,
   setOrderInfoReducer,
   setFirstCodeReducer,
+  setSecondCodeReducer,
 } = orderSlice.actions;
 
 export const orderSelector = (state) => state.order;

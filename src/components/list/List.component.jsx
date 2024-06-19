@@ -30,12 +30,6 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
     setSelectedItemId(null);
   }
 
-  function onArrowClick() {
-    setVisibleCount((prevCount) =>
-      Math.min(prevCount + initialListSize, items.length)
-    );
-  }
-
   function showMore() {
     setVisibleCount((prevCount) =>
       Math.min(prevCount + initialListSize, items.length)
@@ -82,6 +76,12 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
               </div>
               <IsVisible isVisible={selectedItemId === item.id}>
                 <div className="sm-list__container-item__cont">
+                  <div>
+                    <span>Code:</span>
+                    <span>
+                      {item.firstCode} {item.secondCode}
+                    </span>
+                  </div>
                   <div>
                     <span>Date:</span>
                     <span>{item.date}</span>

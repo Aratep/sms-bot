@@ -23,7 +23,11 @@ const SettingsHeader = () => {
           </div>
         </div>
         <div className="settings-header__right">
-          <span>$ {user.balance}</span>
+          <span>
+            <span className="first-part">$</span>{" "}
+            <span className="first-part">{user.balance.firstPart}</span>,
+            <span className="second-part">{user.balance.lastPart}</span>
+          </span>
           <span>Balance in usdt</span>
         </div>
       </Loader>

@@ -17,6 +17,7 @@ import {
   cancelOrder,
   resetOrderInfo,
   setIsFirstCode,
+  setIsSecondCode,
   getSecondCode,
 } from "store/order/order.actions";
 // EFFECTS
@@ -40,8 +41,7 @@ const OrderPage = () => {
     orderInfoLoading,
     orderInfo,
     isFirstCodeSet,
-    secondCode,
-    secondCodeLoading,
+    isSecondCodeSet,
   } = useSelector(orderSelector);
 
   useEffect(() => {
@@ -51,7 +51,10 @@ const OrderPage = () => {
   }, [isFirstCodeSet]);
 
   useEffect(() => {
-    return () => dispatch(setIsFirstCode(false));
+    return () => {
+      dispatch(setIsFirstCode(false));
+      dispatch(setIsSecondCode(false));
+    };
   }, []);
 
   function handleInputChange(event) {
@@ -74,6 +77,7 @@ const OrderPage = () => {
     dispatch(cancelOrder(params));
     dispatch(resetOrderInfo());
     dispatch(setIsFirstCode(false));
+    dispatch(setIsSecondCode(false));
     navigate("/");
   }
 
@@ -96,6 +100,7 @@ const OrderPage = () => {
   function onDoneClik() {
     dispatch(resetOrderInfo());
     dispatch(setIsFirstCode(false));
+    dispatch(setIsSecondCode(false));
     navigate("/");
   }
 
@@ -130,12 +135,11 @@ const OrderPage = () => {
         <Input
           label="YOUR SMS CODE"
           name="sms"
-          value={orderInfoLoading ? inputState.sms : orderInfo?.first_code}
+          value={orderInfo?.first_code}
           onChange={handleInputChange}
           onInvalid={handleInvalidMessage}
           error={invalidMessages}
           placeholder={orderInfoLoading ? "" : "Wait"}
-          disabled={orderInfoLoading}
           wrapperClass="sm-border-none sm-bg-grey"
           isLoading={!orderInfo?.first_code}
           hasLoader={true}
@@ -144,14 +148,13 @@ const OrderPage = () => {
         <IsVisible isVisible={isRepeatClicked}>
           <Input
             name="secondCode"
-            value={secondCode?.toString()}
+            value={orderInfo?.second_code}
             onChange={handleInputChange}
             onInvalid={handleInvalidMessage}
             error={invalidMessages}
-            placeholder={secondCodeLoading ? "Wait" : ""}
-            disabled={secondCodeLoading}
+            placeholder={!orderInfo?.second_code ? "Wait" : ""}
             wrapperClass="sm-border-none sm-bg-grey"
-            isLoading={secondCodeLoading}
+            isLoading={!orderInfo?.second_code}
             hasLoader={true}
             copiable={true}
           />
@@ -172,7 +175,9 @@ const OrderPage = () => {
           />
         </IsVisible>
         <IsVisible isVisible={isFirstCodeSet}>
-          <Button text="REPEAT" variant="dark" onClick={onRepeatCode} />
+          <IsVisible isVisible={!isSecondCodeSet}>
+            <Button text="REPEAT" variant="dark" onClick={onRepeatCode} />
+          </IsVisible>
           <Button text="DONE" variant="light" onClick={onDoneClik} />
         </IsVisible>
       </Container>

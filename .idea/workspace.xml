@@ -6,16 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/list/List.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/List.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/list/_list.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/_list.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/money-input/_money-input.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/_money-input.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/common/common.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/common/common.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/_select.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/_select.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/settings-header/SettingsHeader.screen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/settings-header/SettingsHeader.screen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/settings-header/_settings-header.screen.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/settings-header/_settings-header.screen.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/order/order.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/order/order.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.slice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helper-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +116,7 @@
       <workItem from="1718726783823" duration="49000" />
       <workItem from="1718728309403" duration="13000" />
       <workItem from="1718731771686" duration="3044000" />
-      <workItem from="1718776448801" duration="11124000" />
+      <workItem from="1718776448801" duration="16558000" />
     </task>
     <servers />
   </component>
