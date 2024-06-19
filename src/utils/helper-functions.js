@@ -71,7 +71,7 @@ export function formatUserData(data) {
   const newData = { ...data };
 
   data?.first_name || data?.last_name
-    ? (newData.name = `${data.first_name} ${data.last_name}`)
+    ? (newData.name = `${data.first_name || ""} ${data.last_name || ""}`)
     : (newData.name = "--");
   data?.image_url !== ""
     ? (newData.image_url = data?.image_url)
@@ -99,14 +99,18 @@ export function generateOrders(orders) {
   return formattedOrders;
 }
 
+export function redirectToBot(url) {
+  window.open(url, "_blank");
+}
+
 function formatDate(dateStr) {
   const date = new Date(dateStr);
 
-  const day = date.getUTCDate().toString().padStart(2, "0");
-  const month = (date.getUTCMonth() + 1).toString().padStart(2, "0"); // Months are zero-based
-  const year = date.getUTCFullYear();
-  const hour = date.getUTCHours().toString().padStart(2, "0");
-  const minute = date.getUTCMinutes().toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getDate() + 1).toString().padStart(2, "0"); // Months are zero-based
+  const year = date.getFullYear();
+  const hour = date.getHours().toString().padStart(2, "0");
+  const minute = date.getMinutes().toString().padStart(2, "0");
 
   const formattedDate = `${day}.${month}.${year} ${hour}:${minute}`;
 

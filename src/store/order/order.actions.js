@@ -9,6 +9,8 @@ import {
   setFirstCodeReducer,
   setSecondCodeReducer,
 } from "./order.slice";
+// UTILS
+import { redirectToBot } from "utils/helper-functions";
 
 export const makeOrder = createAsyncThunk(
   "fetch/create/order",
@@ -79,6 +81,7 @@ export const createInvoice = createAsyncThunk(
   "fetch/create/invoice",
   async (params) => {
     const res = await smsAPI.fetchCreateInvoice(params);
+    redirectToBot(res.data);
     return res.data;
   }
 );

@@ -1,13 +1,18 @@
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useSelector } from "react-redux";
+
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
 import { Container } from "components/container/Container.component";
 import Button from "components/button/Button.component";
+// SLICES
+import { userSelector } from "store/user/user.slice";
 // UTILS
 import { notify } from "utils/helper-functions";
 
 const ReferralPage = () => {
-  const tgLing = "t.me/msketch_smsbot?referal=343";
+  const { data } = useSelector(userSelector);
+  const tgLing = `t.me/msketch_smsbot?referal=${data.id}`;
 
   const onCopy = () => {
     notify("Copied!", "success", {
