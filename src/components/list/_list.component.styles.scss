@@ -66,6 +66,16 @@
         background-color: rgba(255, 255, 255, 0.2);
       }
     }
+
+    .ReactVirtualized__Grid {
+      //height: 100% !important;
+      width: 100% !important;
+
+      .ReactVirtualized__Grid__innerScrollContainer {
+        //height: 100% !important;
+        width: 100% !important;
+      }
+    }
   }
 
   &__show {

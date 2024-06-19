@@ -114,6 +114,14 @@ const MainPage = () => {
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   }
 
+  function onClose(name) {
+    if (name === "service") {
+      dispatch(getCountries({ name: formData.country }));
+    } else {
+      dispatch(getServices({ name: formData.service }));
+    }
+  }
+
   return (
     <PageWrapper>
       <Container className="pd-b-20">
@@ -127,6 +135,7 @@ const MainPage = () => {
           list={generateList(servicesData)}
           isLoading={servicesLoading}
           handleOptionClick={handleOptionClick}
+          onClose={onClose}
         />
       </Container>
       <Container className="pd-b-25">
@@ -140,6 +149,7 @@ const MainPage = () => {
           list={generateList(countriesData)}
           isLoading={countriesLoading}
           handleOptionClick={handleOptionClick}
+          onClose={onClose}
         />
       </Container>
       <IsVisible isVisible={isFormReady && priceData?.availability === true}>

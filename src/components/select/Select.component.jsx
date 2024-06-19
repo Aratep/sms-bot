@@ -24,6 +24,7 @@ const Select = ({
   list,
   inputType = "text",
   isLoading,
+  onClose = () => null,
 }) => {
   const initialList = list.slice(0, 3);
   const [isMore, setIsMore] = useState(false);
@@ -71,6 +72,7 @@ const Select = ({
     updateInputState({ [name]: "" });
     handleChange({ name, value: "" });
     handleOptionClick({ name, value: "", src: "", id: "" });
+    onClose(name);
   }
 
   const arrowClasses = classNames({

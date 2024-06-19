@@ -9,19 +9,16 @@ import arrow from "assets/imgs/select/arrow.png";
 import close from "assets/imgs/select/close.png";
 
 const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
-  const initialItems = items.slice(0, 5);
-  const itemsLength = items.length;
-  const [filteredItems, setFilteredItems] = useState(initialItems);
-  const [isMore, setIsMore] = useState(false);
+  const initialListSize = 5;
+  const [isMore, setIsMore] = useState(true);
   const [selectedItemId, setSelectedItemId] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(initialListSize);
 
   useEffect(() => {
-    if (isMore) {
-      setFilteredItems(items);
-    } else {
-      setFilteredItems(initialItems);
+    if (visibleCount >= items.length) {
+      setIsMore(false);
     }
-  }, [isMore]);
+  }, [visibleCount, items]);
 
   const handleTouchEnd = (id) => {
     if (!isItemClickable) return false;
@@ -34,8 +31,20 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
   }
 
   function onArrowClick() {
-    setIsMore(!isMore);
-    setFilteredItems(items);
+    setVisibleCount((prevCount) =>
+      Math.min(prevCount + initialListSize, items.length)
+    );
+  }
+
+  function showMore() {
+    setVisibleCount((prevCount) =>
+      Math.min(prevCount + initialListSize, items.length)
+    );
+  }
+
+  function showLess() {
+    setVisibleCount(initialListSize);
+    setIsMore(true);
   }
 
   const arrowClasses = classNames({
@@ -48,7 +57,7 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
         <span className="sm-list__title">{title}</span>
       </IsVisible>
       <div className="sm-list__container">
-        {filteredItems.map((item) => {
+        {items.slice(0, visibleCount).map((item) => {
           const listItemClasses = classNames("sm-list__container-item", {
             "sm-list__container-item__active": selectedItemId === item.id,
           });
@@ -83,13 +92,13 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
           );
         })}
       </div>
-      <IsVisible isVisible={isShowAllBtn && itemsLength > 5}>
-        <div className="sm-list__show" onClick={onArrowClick}>
-          <IsVisible isVisible={isMore}>
-            <span>Show less</span>
+      <IsVisible isVisible={isShowAllBtn}>
+        <div className="sm-list__show">
+          <IsVisible isVisible={visibleCount >= items.length}>
+            <span onClick={showLess}>Show less</span>
           </IsVisible>
-          <IsVisible isVisible={!isMore}>
-            <span>Show all</span>
+          <IsVisible isVisible={visibleCount < items.length}>
+            <span onClick={showMore}>Show More</span>
           </IsVisible>
           <Image src={arrow} alt="arrow" className={arrowClasses} />
         </div>

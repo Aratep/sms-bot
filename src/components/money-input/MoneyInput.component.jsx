@@ -40,6 +40,7 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
         onChange={handleInputChange}
         type="number"
         step="0.01"
+        className={`${!value ? "w-20" : "w-0"}`}
         {...rest}
       />
     </div>
