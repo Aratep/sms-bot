@@ -17,7 +17,8 @@
     height: 29px;
   }
 
-  button {
+  button,
+  a {
     @include flexCenter;
     outline: none;
     border: none;
@@ -30,7 +31,8 @@
   &__light {
     background-color: #ffaa13;
 
-    button {
+    button,
+    a {
       color: #000000;
     }
   }
@@ -39,8 +41,13 @@
     background-color: #000000;
     border: 1px solid #ffaa13;
 
-    button {
+    button,
+    a {
       color: #ffaa13;
     }
+  }
+
+  a {
+    text-decoration: none;
   }
 }

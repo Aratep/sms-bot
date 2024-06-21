@@ -1,2 +1,9 @@
-.top-up {
+.top-up__link {
+  padding-top: 5rem;
+  @include flexCenter;
+
+  a {
+    color: #ffaa13;
+    text-align: center;
+  }
 }

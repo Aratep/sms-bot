@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
+import IsVisible from "components/is-visible/IsVisible.component";
 import { Container } from "components/container/Container.component";
 import Button from "components/button/Button.component";
 import MoneyInput from "components/money-input/MoneyInput.component";
@@ -11,6 +12,7 @@ import { createInvoice } from "store/order/order.actions";
 // SLICES
 import { pricesSelector } from "store/prices/prices.slice";
 import { commonSelector } from "store/common/common.slice";
+import { orderSelector } from "store/order/order.slice";
 // UTILS
 import { notify } from "utils/helper-functions";
 
@@ -20,6 +22,7 @@ const TopUpPage = () => {
 
   const { data: priceData } = useSelector(pricesSelector);
   const { tgHash } = useSelector(commonSelector);
+  const { invoiceData, invoiceDataLoading } = useSelector(orderSelector);
 
   useEffect(() => {
     if (priceData?.availability === false) {
@@ -59,7 +62,21 @@ const TopUpPage = () => {
           />
         </Container>
         <Container space="center">
-          <Button text={`PAY ${amount} USDT`} hasIcon={true} onClick={onPay} />
+          <IsVisible isVisible={!!invoiceData === false}>
+            <Button
+              text="Confirm"
+              hasIcon={true}
+              onClick={onPay}
+              isLoading={invoiceDataLoading}
+            />
+          </IsVisible>
+          <IsVisible isVisible={!!invoiceData}>
+            <Button
+              link={invoiceData}
+              hasIcon={true}
+              text={`PAY ${amount} USDT`}
+            />
+          </IsVisible>
         </Container>
       </Container>
     </PageWrapper>

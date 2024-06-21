@@ -100,8 +100,59 @@ export function generateOrders(orders) {
 }
 
 export function redirectToBot(url) {
-  window.open(url, "_blank");
+  window.open(url, "_blank", "noopener,noreferrer");
 }
+
+export const openExternalLink = (url) => {
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.target = "_blank";
+  anchor.rel = "noopener noreferrer"; // For security reasons
+  anchor.click();
+};
+
+export const openExternalLink1 = (url) => {
+  // Create a form element
+  const form = document.createElement("form");
+  // Set the action to the external link
+  form.action = url;
+  // Set the target to _blank to open in a new tab
+  form.target = "_blank";
+  // Append the form to the body
+  document.body.appendChild(form);
+  // Programmatically submit the form to trigger the navigation
+  form.submit();
+  // Remove the form from the DOM after submitting
+  document.body.removeChild(form);
+};
+
+export const openExternalLink2 = (url) => {
+  // Create an anchor element
+  const anchor = document.createElement("a");
+  // Set the href attribute to the external link
+  anchor.href = url;
+  // Set the target to _blank to open in a new tab
+  anchor.target = "_blank";
+  // Add rel attribute for security reasons
+  anchor.rel = "noopener noreferrer";
+  // Append the anchor to the body
+  document.body.appendChild(anchor);
+  // Programmatically click the anchor to trigger the navigation
+  anchor.click();
+  // Remove the anchor from the DOM after clicking
+  document.body.removeChild(anchor);
+};
+
+export const openExternalLinkTg = (url) => {
+  if (window.Telegram?.WebApp) {
+    window.Telegram.WebApp.openLink(url);
+  } else {
+    console.warn("Telegram WebApp is not available");
+    notify("Telegram WebApp is not available");
+    // Fallback to using a regular window.open if Telegram WebApp is not available
+    window.open(url, "_blank", "noopener noreferrer");
+  }
+};
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);

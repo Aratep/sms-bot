@@ -22,7 +22,7 @@ const initialState = {
   secondCodeLoading: false,
   secondCodeError: "",
   // INVVOICE
-  invoiceData: {},
+  invoiceData: "",
   invoiceDataLoading: false,
   invoiceDataError: "",
   // OTHER PROPS

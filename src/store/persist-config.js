@@ -10,5 +10,5 @@ export const persistConfig = {
 export const orderPersistConfig = {
   key: "order",
   storage,
-  blacklist: ["orderId"],
+  blacklist: ["orderId", "invoiceData"],
 };

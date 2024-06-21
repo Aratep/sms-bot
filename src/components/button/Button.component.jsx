@@ -7,7 +7,14 @@ import Image from "components/image/Image.component";
 import crypto from "assets/imgs/crypto.png";
 import spinner from "assets/imgs/input/spinner.png";
 
-const Button = ({ text, isLoading, variant = "light", hasIcon, ...rest }) => {
+const Button = ({
+  text,
+  isLoading,
+  link,
+  variant = "light",
+  hasIcon,
+  ...rest
+}) => {
   const buttonClasses = classNames("sm-button", {
     "sm-button__light": variant === "light",
     "sm-button__dark": variant === "dark",
@@ -21,7 +28,12 @@ const Button = ({ text, isLoading, variant = "light", hasIcon, ...rest }) => {
       <IsVisible isVisible={isLoading}>
         <img src={spinner} alt="spinner" className="spinner-gif" />
       </IsVisible>
-      <button {...rest}>{text}</button>
+      <IsVisible isVisible={!!link === false}>
+        <button {...rest}>{text}</button>
+      </IsVisible>
+      <IsVisible isVisible={!!link}>
+        <a href={link}>{text}</a>
+      </IsVisible>
     </div>
   );
 };
