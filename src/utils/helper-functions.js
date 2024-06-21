@@ -173,8 +173,8 @@ function formatPhone(phoneStr) {
   return formattedPhone;
 }
 
-function formatNumberToString(num) {
-  const stringifiedNumber = num.toLocaleString();
+function formatNumberToString(num = 0) {
+  const stringifiedNumber = num?.toLocaleString();
   const [beforeComma, afterComma] = stringifiedNumber.split(",");
   return { firstPart: beforeComma, lastPart: afterComma ? afterComma : "00" };
 }

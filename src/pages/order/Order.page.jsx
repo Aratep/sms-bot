@@ -144,6 +144,7 @@ const OrderPage = () => {
           isLoading={!orderInfo?.first_code}
           hasLoader={true}
           copiable={true}
+          readOnly={true}
         />
         <IsVisible isVisible={isRepeatClicked}>
           <Input
@@ -157,6 +158,7 @@ const OrderPage = () => {
             isLoading={!orderInfo?.second_code}
             hasLoader={true}
             copiable={true}
+            readOnly={true}
           />
         </IsVisible>
       </Container>

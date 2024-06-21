@@ -1,12 +1,15 @@
-// settings images
-import wallet from "assets/imgs/settings/wallet.jpg";
-import folder from "assets/imgs/settings/folder.png";
-import referral from "assets/imgs/settings/referral.png";
-import settings from "assets/imgs/settings/settings.png";
-import language from "assets/imgs/settings/globe.png";
 // languages images
 import ru from "assets/imgs/lang/ru.png";
 import en from "assets/imgs/lang/en.png";
+
+// icons
+import {
+  BalanceIcon,
+  LanguageIcon,
+  OrderIcon,
+  ReferralIcon,
+  SupportIcon,
+} from "../pages/settings/components/icons";
 
 export const initialCounter = 900000;
 export const API =
@@ -32,9 +35,9 @@ export const languages = [
 ];
 
 export const settingsMenuItems = [
-  { id: 1, icon: wallet, title: "Top up balance", route: "/top-up" },
-  { id: 2, icon: folder, title: "My orders", route: "/my-orders" },
-  { id: 3, icon: referral, title: "Referral program", route: "/referral" },
-  { id: 4, icon: settings, title: "Support", route: "/support" },
-  { id: 5, icon: language, title: "Language", route: "/language" },
+  { id: 1, icon: BalanceIcon, title: "Top up balance", route: "/top-up" },
+  { id: 2, icon: OrderIcon, title: "My orders", route: "/my-orders" },
+  { id: 3, icon: ReferralIcon, title: "Referral program", route: "/referral" },
+  { id: 4, icon: SupportIcon, title: "Support", route: "/support" },
+  { id: 5, icon: LanguageIcon, title: "Language", route: "/language" },
 ];

@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 // PAGES
 import MainPage from "pages/main/Main.page";
 import OrderPage from "pages/order/Order.page";
-import RepeatCodePage from "pages/repeat-code/RepeatCode.page";
 import SettingsPage from "pages/settings/Settings.page";
 import LanguagePage from "pages/language/Language.page";
 import MyOrdersPage from "pages/my-orders/MyOrders.page";
@@ -35,7 +34,6 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/order" element={<OrderPage />} />
-          <Route path="/repeat-code" element={<RepeatCodePage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/language" element={<LanguagePage />} />
           <Route path="/my-orders" element={<MyOrdersPage />} />

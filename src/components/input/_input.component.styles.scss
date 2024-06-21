@@ -13,8 +13,13 @@
       @include flexCenter;
 
       img {
-        height: 17px;
-        width: 17px;
+        height: 25px;
+        width: 25px;
+      }
+
+      .spinner-gif {
+        height: 35px;
+        width: 35px;
       }
     }
 
@@ -26,14 +31,14 @@
       padding: 0 0.5rem;
       background-color: transparent;
       color: #ffffff;
-      font-size: 14px;
+      font-size: 17px;
       border: none;
       height: 47px;
 
       &::placeholder {
         font-style: normal;
         font-weight: 100;
-        font-size: 14px;
+        font-size: 17px;
         color: rgba(255, 255, 255, 0.2);
       }
     }

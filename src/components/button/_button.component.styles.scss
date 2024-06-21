@@ -20,12 +20,17 @@
   button,
   a {
     @include flexCenter;
-    outline: none;
+    outline: revert;
     border: none;
     text-transform: uppercase;
     background-color: transparent;
     font-weight: bold;
     font-size: 16px;
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    text-align: inherit;
   }
 
   &__light {
@@ -34,6 +39,10 @@
     button,
     a {
       color: #000000;
+    }
+
+    &:active {
+      background-color: #f8d394;
     }
   }
 
@@ -44,6 +53,10 @@
     button,
     a {
       color: #ffaa13;
+    }
+
+    &:active {
+      opacity: 0.5;
     }
   }
 

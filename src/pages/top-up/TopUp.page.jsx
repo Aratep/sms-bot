@@ -22,7 +22,7 @@ const TopUpPage = () => {
 
   const { data: priceData } = useSelector(pricesSelector);
   const { tgHash } = useSelector(commonSelector);
-  const { invoiceData, invoiceDataLoading } = useSelector(orderSelector);
+  const { invoiceData } = useSelector(orderSelector);
 
   useEffect(() => {
     if (priceData?.availability === false) {
@@ -63,12 +63,7 @@ const TopUpPage = () => {
         </Container>
         <Container space="center">
           <IsVisible isVisible={!!invoiceData === false}>
-            <Button
-              text="Confirm"
-              hasIcon={true}
-              onClick={onPay}
-              isLoading={invoiceDataLoading}
-            />
+            <Button text="Confirm" onClick={onPay} />
           </IsVisible>
           <IsVisible isVisible={!!invoiceData}>
             <Button

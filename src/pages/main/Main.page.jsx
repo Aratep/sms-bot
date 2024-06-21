@@ -157,7 +157,7 @@ const MainPage = () => {
           <Button
             onClick={onButtonClick}
             isLoading={pricesLoading}
-            text={`BUY ${priceData.price} USDT`}
+            text="Confirm"
             disabled={pricesLoading}
           />
         </Container>
