@@ -8,6 +8,7 @@ import {
   setOrderInfoReducer,
   setFirstCodeReducer,
   setSecondCodeReducer,
+  setIsRepeatClickedReducer,
 } from "./order.slice";
 // UTILS
 // import { openExternalLinkTg, openExternalLink1 } from "utils/helper-functions";
@@ -100,4 +101,8 @@ export const setIsFirstCode = (payload) => (dispatch) => {
 
 export const setIsSecondCode = (payload) => (dispatch) => {
   dispatch(setSecondCodeReducer(payload));
+};
+
+export const setIsRepeatClicked = (payload) => (dispatch) => {
+  dispatch(setIsRepeatClickedReducer(payload));
 };

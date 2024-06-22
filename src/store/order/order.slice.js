@@ -28,6 +28,7 @@ const initialState = {
   // OTHER PROPS
   isFirstCodeSet: false,
   isSecondCodeSet: false,
+  isRepeatClicked: false,
 };
 
 export const orderSlice = createSlice({
@@ -47,6 +48,9 @@ export const orderSlice = createSlice({
     },
     setSecondCodeReducer: (state, action) => {
       state.isSecondCodeSet = action.payload;
+    },
+    setIsRepeatClickedReducer: (state, action) => {
+      state.isRepeatClicked = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -96,7 +100,6 @@ export const orderSlice = createSlice({
     builder.addCase(createInvoice.fulfilled, (state, action) => {
       state.invoiceDataLoading = false;
       state.invoiceData = action.payload;
-      notify("Top Up: Success!");
     });
     builder.addCase(createInvoice.rejected, (state, action) => {
       state.invoiceDataLoading = false;
@@ -111,6 +114,7 @@ export const {
   setOrderInfoReducer,
   setFirstCodeReducer,
   setSecondCodeReducer,
+  setIsRepeatClickedReducer,
 } = orderSlice.actions;
 
 export const orderSelector = (state) => state.order;

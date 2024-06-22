@@ -19,6 +19,7 @@ import {
   setIsFirstCode,
   setIsSecondCode,
   getSecondCode,
+  setIsRepeatClicked,
 } from "store/order/order.actions";
 // EFFECTS
 import useInput from "effects/useInput.effect";
@@ -29,7 +30,7 @@ import { generateOrderOptions } from "utils/helper-functions";
 const OrderPage = () => {
   const [counter, setCounter] = useState(720000);
   const [hasCounter, setHasCounter] = useState(true);
-  const [isRepeatClicked, setIsRepeatClicked] = useState(false);
+  // const [isRepeatClicked, setIsRepeatClicked] = useState(false);
   const { inputState, handleInput, handleInvalidMessage, invalidMessages } =
     useInput({ phone: "" });
   let navigate = useNavigate();
@@ -42,6 +43,7 @@ const OrderPage = () => {
     orderInfo,
     isFirstCodeSet,
     isSecondCodeSet,
+    isRepeatClicked,
   } = useSelector(orderSelector);
 
   useEffect(() => {
@@ -78,6 +80,7 @@ const OrderPage = () => {
     dispatch(resetOrderInfo());
     dispatch(setIsFirstCode(false));
     dispatch(setIsSecondCode(false));
+    dispatch(setIsRepeatClicked(false));
     navigate("/");
   }
 
@@ -94,13 +97,14 @@ const OrderPage = () => {
       order_id: orderId,
     };
     dispatch(getSecondCode(params));
-    setIsRepeatClicked(true);
+    dispatch(setIsRepeatClicked(true));
   }
 
   function onDoneClik() {
     dispatch(resetOrderInfo());
     dispatch(setIsFirstCode(false));
     dispatch(setIsSecondCode(false));
+    dispatch(setIsRepeatClicked(false));
     navigate("/");
   }
 

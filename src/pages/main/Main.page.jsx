@@ -108,8 +108,8 @@ const MainPage = () => {
   }
 
   function handleOptionClick(target) {
-    const { name, value, src, id } = target;
-    dispatch(setSelectedOption({ name, value: { value, src, id } }));
+    const { name, value, src, id, price } = target;
+    dispatch(setSelectedOption({ name, value: { value, src, id, price } }));
     reFetchData(name, id);
     setFormState((prevState) => ({ ...prevState, [name]: value }));
   }
@@ -157,7 +157,7 @@ const MainPage = () => {
           <Button
             onClick={onButtonClick}
             isLoading={pricesLoading}
-            text="Confirm"
+            text="Pay"
             disabled={pricesLoading}
           />
         </Container>

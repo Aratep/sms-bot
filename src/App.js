@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // PAGES
 import MainPage from "pages/main/Main.page";
@@ -16,16 +16,28 @@ import TopUpPage from "pages/top-up/TopUp.page";
 import { FocusedProvider } from "context/IsFocused.context";
 // ACTIONS
 import { setTgHash } from "store/common/common.actions";
+// SLICES
+import { commonSelector } from "./store/common/common.slice";
+// UTILS
+import { areValuesNotEmpty } from "utils/helper-functions";
 // STYLES
 import "./App.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
+  const { selectedOptions } = useSelector(commonSelector);
+  let navigate = useNavigate();
 
   useEffect(() => {
     dispatch(setTgHash());
     if (window.Telegram !== undefined) window.Telegram.WebApp.expand();
+  }, []);
+
+  useEffect(() => {
+    if (areValuesNotEmpty(selectedOptions) === true) {
+      navigate("/order");
+    }
   }, []);
 
   return (

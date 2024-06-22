@@ -71,7 +71,7 @@ const Select = ({
     setIsOptionClicked(false);
     updateInputState({ [name]: "" });
     handleChange({ name, value: "" });
-    handleOptionClick({ name, value: "", src: "", id: "" });
+    handleOptionClick({ name, value: "", src: "", id: "", price: "" });
     onClose(name);
   }
 
@@ -93,6 +93,12 @@ const Select = ({
               onClick={onCloseBtnClick}
               className="sm-select__selected-container__btn"
             >
+              <IsVisible isVisible={!!selectedOption.price}>
+                <div className="price">
+                  <span className="from">{selectedOption.price}</span>
+                  <Image src={usdt} alt="usdt" />
+                </div>
+              </IsVisible>
               <Image src={close} alt="close" className="close-btn" />
             </div>
           </div>
@@ -121,6 +127,7 @@ const Select = ({
                     name,
                     value: option.title,
                     src: option.src,
+                    price: option.from,
                   })
                 }
                 key={option.id}

@@ -53,6 +53,18 @@ export function generateList(list) {
   return res;
 }
 
+export function areValuesNotEmpty(obj) {
+  for (let key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      let value = obj[key].value;
+      if ((value === undefined, value === null, value === "")) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 export function generateOrderOptions(data) {
   const options = Object.values(data);
   let res = [];
@@ -62,6 +74,7 @@ export function generateOrderOptions(data) {
         id: idx,
         title: item.value,
         src: item.src,
+        price: item.price,
       });
     });
   return res;
