@@ -6,9 +6,10 @@ const initialState = {
     checkDataString: "",
   },
   selectedOptions: {
-    country: { value: "", src: "" },
-    service: { value: "", src: "" },
+    country: { value: "", src: "", id: null, price: "" },
+    service: { value: "", src: "", id: null, price: "" },
   },
+  isOrderDone: false,
 };
 
 export const commonSlice = createSlice({
@@ -24,10 +25,20 @@ export const commonSlice = createSlice({
         [action.payload.name]: action.payload.value,
       };
     },
+    resetSelectedOptionReducer: (state) => {
+      state.selectedOptions = initialState.selectedOptions;
+    },
+    setIsOrderDoneReducer: (state, action) => {
+      state.isOrderDone = action.payload;
+    },
   },
 });
 
-export const { setTgHashReducer, setSelectedOptionReducer } =
-  commonSlice.actions;
+export const {
+  setTgHashReducer,
+  setSelectedOptionReducer,
+  resetSelectedOptionReducer,
+  setIsOrderDoneReducer,
+} = commonSlice.actions;
 
 export const commonSelector = (state) => state.common;

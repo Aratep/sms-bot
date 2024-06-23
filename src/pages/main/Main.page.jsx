@@ -123,7 +123,7 @@ const MainPage = () => {
   }
 
   return (
-    <PageWrapper>
+    <PageWrapper className="main-page">
       <Container className="pd-b-20">
         <Select
           label="Select a service:"
@@ -155,6 +155,7 @@ const MainPage = () => {
       <IsVisible isVisible={isFormReady && priceData?.availability === true}>
         <Container space="center">
           <Button
+            className="pay-btn"
             onClick={onButtonClick}
             isLoading={pricesLoading}
             text="Pay"

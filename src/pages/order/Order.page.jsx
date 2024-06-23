@@ -21,6 +21,10 @@ import {
   getSecondCode,
   setIsRepeatClicked,
 } from "store/order/order.actions";
+import {
+  resetSelectedOption,
+  setIsOrderDone,
+} from "store/common/common.actions";
 // EFFECTS
 import useInput from "effects/useInput.effect";
 // UTILS
@@ -30,13 +34,12 @@ import { generateOrderOptions } from "utils/helper-functions";
 const OrderPage = () => {
   const [counter, setCounter] = useState(720000);
   const [hasCounter, setHasCounter] = useState(true);
-  // const [isRepeatClicked, setIsRepeatClicked] = useState(false);
   const { inputState, handleInput, handleInvalidMessage, invalidMessages } =
     useInput({ phone: "" });
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { selectedOptions, tgHash } = useSelector(commonSelector);
+  const { selectedOptions, tgHash, isOrderDone } = useSelector(commonSelector);
   const {
     orderId,
     orderInfoLoading,
@@ -51,13 +54,6 @@ const OrderPage = () => {
       setHasCounter(false);
     }
   }, [isFirstCodeSet]);
-
-  useEffect(() => {
-    return () => {
-      dispatch(setIsFirstCode(false));
-      dispatch(setIsSecondCode(false));
-    };
-  }, []);
 
   function handleInputChange(event) {
     handleInput(event);
@@ -81,6 +77,8 @@ const OrderPage = () => {
     dispatch(setIsFirstCode(false));
     dispatch(setIsSecondCode(false));
     dispatch(setIsRepeatClicked(false));
+    dispatch(resetSelectedOption());
+    dispatch(setIsOrderDone(false));
     navigate("/");
   }
 
@@ -105,6 +103,8 @@ const OrderPage = () => {
     dispatch(setIsFirstCode(false));
     dispatch(setIsSecondCode(false));
     dispatch(setIsRepeatClicked(false));
+    dispatch(resetSelectedOption());
+    dispatch(setIsOrderDone(false));
     navigate("/");
   }
 
@@ -127,7 +127,7 @@ const OrderPage = () => {
           error={invalidMessages}
           iconVariant="phone"
           wrapperClass="sm-border-none sm-bg-grey"
-          hasCounter={hasCounter}
+          hasCounter={!isOrderDone && hasCounter}
           counter={counter}
           onCounterEnd={onCounterEnd}
           copiable={true}

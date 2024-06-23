@@ -10,8 +10,8 @@ import {
   setSecondCodeReducer,
   setIsRepeatClickedReducer,
 } from "./order.slice";
-// UTILS
-// import { openExternalLinkTg, openExternalLink1 } from "utils/helper-functions";
+// ACTIONS
+import { setIsOrderDone } from "store/common/common.actions";
 
 export const makeOrder = createAsyncThunk(
   "fetch/create/order",
@@ -28,6 +28,7 @@ export const makeOrder = createAsyncThunk(
       if (updatedFirstCode !== undefined && updatedFirstCode !== "") {
         dispatch(setOrderInfo(reOrderRes));
         dispatch(setIsFirstCode(true));
+        dispatch(setIsOrderDone(true));
         clearInterval(intervalId);
       }
     }, 2000);
@@ -82,7 +83,6 @@ export const createInvoice = createAsyncThunk(
   "fetch/create/invoice",
   async (params) => {
     const res = await smsAPI.fetchCreateInvoice(params);
-    // openExternalLinkTg(res.data);
     return res.data;
   }
 );

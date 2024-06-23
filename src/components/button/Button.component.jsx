@@ -13,11 +13,13 @@ const Button = ({
   link,
   variant = "light",
   hasIcon,
+  className,
   ...rest
 }) => {
   const buttonClasses = classNames("sm-button", {
     "sm-button__light": variant === "light",
     "sm-button__dark": variant === "dark",
+    [className]: !!className,
   });
 
   return (

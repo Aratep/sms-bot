@@ -18,15 +18,13 @@ import { FocusedProvider } from "context/IsFocused.context";
 import { setTgHash } from "store/common/common.actions";
 // SLICES
 import { commonSelector } from "./store/common/common.slice";
-// UTILS
-import { areValuesNotEmpty } from "utils/helper-functions";
 // STYLES
 import "./App.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
-  const { selectedOptions } = useSelector(commonSelector);
+  const { isOrderDone } = useSelector(commonSelector);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +33,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (areValuesNotEmpty(selectedOptions) === true) {
+    if (isOrderDone === true) {
       navigate("/order");
     }
   }, []);
