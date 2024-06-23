@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/effects/usePriceVisible.effect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button/Button.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/Button.component.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input/_input.component.styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/select/Select.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/select/Select.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/_main.page.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/_main.page.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/common/common.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/common/common.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/common/common.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/common/common.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/order/order.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.actions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +121,7 @@
       <workItem from="1718961334943" duration="5984000" />
       <workItem from="1718987974761" duration="3110000" />
       <workItem from="1719054648557" duration="3356000" />
-      <workItem from="1719132679345" duration="3881000" />
+      <workItem from="1719132679345" duration="10035000" />
     </task>
     <servers />
   </component>

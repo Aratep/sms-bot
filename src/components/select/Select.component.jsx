@@ -25,6 +25,7 @@ const Select = ({
   inputType = "text",
   isLoading,
   onClose = () => null,
+  selectedOptionName,
 }) => {
   const initialList = list.slice(0, 3);
   const [isMore, setIsMore] = useState(false);
@@ -93,7 +94,11 @@ const Select = ({
               onClick={onCloseBtnClick}
               className="sm-select__selected-container__btn"
             >
-              <IsVisible isVisible={!!selectedOption.price}>
+              <IsVisible
+                isVisible={
+                  selectedOptionName === name && !!selectedOption.price
+                }
+              >
                 <div className="price">
                   <span className="from">{selectedOption.price}</span>
                   <Image src={usdt} alt="usdt" />

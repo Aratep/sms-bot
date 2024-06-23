@@ -28,6 +28,7 @@ const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
   const [isFormReady, setIsFormReady] = useState(false);
   const [formState, setFormState] = useState({ service: "", country: "" });
+  const [selectedOptionName, setSelectedOptionName] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -109,9 +110,11 @@ const MainPage = () => {
 
   function handleOptionClick(target) {
     const { name, value, src, id, price } = target;
-    dispatch(setSelectedOption({ name, value: { value, src, id, price } }));
+    const optionObject = { name, value: { value, src, id, price } };
+    dispatch(setSelectedOption(optionObject));
     reFetchData(name, id);
     setFormState((prevState) => ({ ...prevState, [name]: value }));
+    setSelectedOptionName(target.name);
   }
 
   function onClose(name) {
@@ -121,6 +124,8 @@ const MainPage = () => {
       dispatch(getServices({ name: formData.service }));
     }
   }
+
+  // console.log("ISVICIBBBBBLLLLEEEE", isVisible);
 
   return (
     <PageWrapper className="main-page">
@@ -136,6 +141,7 @@ const MainPage = () => {
           isLoading={servicesLoading}
           handleOptionClick={handleOptionClick}
           onClose={onClose}
+          selectedOptionName={selectedOptionName}
         />
       </Container>
       <Container className="pd-b-25">
@@ -150,6 +156,7 @@ const MainPage = () => {
           isLoading={countriesLoading}
           handleOptionClick={handleOptionClick}
           onClose={onClose}
+          selectedOptionName={selectedOptionName}
         />
       </Container>
       <IsVisible isVisible={isFormReady && priceData?.availability === true}>
