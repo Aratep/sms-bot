@@ -65,7 +65,7 @@ export function generateOrderOptions(data) {
         price: item.price,
       });
     });
-  return res?.reverse();
+  return res;
 }
 
 export function formatUserData(data) {
