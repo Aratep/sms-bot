@@ -14,7 +14,7 @@ const SupportPage = () => {
         </div>
       </Container>
       <Container space="center">
-        <Button text="SUPPORT" />
+        <Button link="https://t.me/popoze" text="SUPPORT" />
       </Container>
     </PageWrapper>
   );

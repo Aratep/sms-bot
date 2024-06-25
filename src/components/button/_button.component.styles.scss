@@ -13,14 +13,10 @@
     }
   }
 
-  img {
-    height: 29px;
-  }
-
   button,
   a {
     @include flexCenter;
-    outline: revert;
+    outline: none;
     border: none;
     text-transform: uppercase;
     background-color: transparent;
@@ -31,6 +27,7 @@
     padding: 0;
     border-radius: 0;
     text-align: inherit;
+    -webkit-tap-highlight-color: transparent;
   }
 
   &__light {
@@ -63,4 +60,8 @@
   a {
     text-decoration: none;
   }
+}
+
+.icon-padding {
+  padding: 0 15px 0 10px !important;
 }

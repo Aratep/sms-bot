@@ -1,5 +1,9 @@
 import { useEffect, useRef } from "react";
-import IsVisible from "../is-visible/IsVisible.component";
+
+// COMPONENTS
+import IsVisible from "components/is-visible/IsVisible.component";
+// UTILS
+import { formatTopUpNumber } from "utils/helper-functions";
 
 const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
   const inputRef = useRef(null);
@@ -15,23 +19,21 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
     onChange(event.target);
   }
 
-  // function formatNumber(str) {
-  //   const numArr = str.split(".");
-  //   return [numArr[0], numArr[1]];
-  // }
-
-  // const integral = formatNumber(value)[0];
-  // const decimal = formatNumber(value)[1];
+  const integral = formatTopUpNumber(value)[0];
+  const decimal = formatTopUpNumber(value)[1];
 
   return (
     <div className="money-input">
       <label htmlFor={id}>$</label>
       <IsVisible isVisible={!!value}>
         <div className="money-input__text">
-          <span className="money-input__first">{value}</span>
-          {/*{decimal && <span className="money-input__last">{decimal}</span>}*/}
+          {integral && (
+            <span className="money-input__integral">{integral}</span>
+          )}
+          {decimal && <span className="money-input__decimal">.{decimal}</span>}
         </div>
       </IsVisible>
+
       <input
         ref={inputRef}
         id={id}
@@ -39,10 +41,18 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
         value={value}
         onChange={handleInputChange}
         type="number"
+        pattern="\d*"
+        inputMode="numeric"
         step="0.01"
-        className={`${!value ? "w-20" : "w-0"}`}
+        className="w-0"
         {...rest}
       />
+      <IsVisible isVisible={!value}>
+        <span className="styled-placeholder">
+          <span className="money-input__integral">0.</span>
+          <span className="money-input__decimal">00</span>
+        </span>
+      </IsVisible>
     </div>
   );
 };

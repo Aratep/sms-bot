@@ -25,7 +25,7 @@ const Select = ({
   inputType = "text",
   isLoading,
   onClose = () => null,
-  selectedOptionName,
+  hasFromText = false,
 }) => {
   const initialList = list.slice(0, 3);
   const [isMore, setIsMore] = useState(false);
@@ -94,16 +94,16 @@ const Select = ({
               onClick={onCloseBtnClick}
               className="sm-select__selected-container__btn"
             >
-              <IsVisible
-                isVisible={
-                  selectedOptionName === name && !!selectedOption.price
-                }
-              >
-                <div className="price">
-                  <span className="from">{selectedOption.price}</span>
-                  <Image src={usdt} alt="usdt" />
-                </div>
-              </IsVisible>
+              {/*<IsVisible*/}
+              {/*  isVisible={*/}
+              {/*    selectedOptionName === name && !!selectedOption.price*/}
+              {/*  }*/}
+              {/*>*/}
+              {/*  <div className="price">*/}
+              {/*    <span className="from">{selectedOption.price}</span>*/}
+              {/*    <Image src={usdt} alt="usdt" />*/}
+              {/*  </div>*/}
+              {/*</IsVisible>*/}
               <Image src={close} alt="close" className="close-btn" />
             </div>
           </div>
@@ -144,7 +144,10 @@ const Select = ({
                 <IsVisible isVisible={!!option.from && option.from !== ""}>
                   <div className="sm-select__options-item__info">
                     <div>
-                      <span className="from">from {option.from}</span>
+                      <span className="from">
+                        <IsVisible isVisible={hasFromText}>{"from"} </IsVisible>
+                        {option.from}
+                      </span>
                       <Image src={usdt} alt="usdt" />
                     </div>
                   </div>

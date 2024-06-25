@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import classNames from "classnames";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Countdown from "react-countdown";
@@ -9,11 +9,14 @@ import IsVisible from "components/is-visible/IsVisible.component";
 import { FocusedContext } from "context/IsFocused.context";
 // UTILS
 import { notify } from "utils/helper-functions";
+// ICONS
+import SearchIcon from "components/icons/SearchIcon.component";
 // IMAGES
 import phoneIcon from "assets/imgs/input/phone.png";
-import searchIcon from "assets/imgs/input/search.png";
 import messageIcon from "assets/imgs/input/message.png";
 import spinner from "assets/imgs/input/spinner.png";
+
+const getLocalStorageValue = (s) => localStorage.getItem(s);
 
 const Input = (props) => {
   const {
@@ -37,6 +40,28 @@ const Input = (props) => {
   } = props;
   const { name } = props;
   const { toggleFocused } = useContext(FocusedContext);
+
+  const [data, setData] = useState({
+    date: Date.now(),
+    delay: counter,
+  });
+  const wantedDelay = counter;
+
+  useEffect(() => {
+    const savedDate = getLocalStorageValue("end_date");
+    if (savedDate != null && !isNaN(savedDate)) {
+      const currentTime = Date.now();
+      const delta = parseInt(savedDate, 10) - currentTime;
+
+      if (delta > wantedDelay) {
+        if (localStorage.getItem("end_date").length > 0)
+          localStorage.removeItem("end_date");
+      } else {
+        setData({ date: currentTime, delay: delta });
+      }
+    }
+  }, []);
+
   const inputClasses = classNames({
     "sm-input": true,
     [className]: !!className,
@@ -48,6 +73,11 @@ const Input = (props) => {
 
   const labelClasses = classNames({
     "sm-input__label": true,
+  });
+
+  const imgLabelClasses = classNames({
+    "sm-input__wrapper--img-label": true,
+    "sm-input__wrapper--img-search_label": iconVariant === "search",
   });
 
   const errorMessageBlockClasses = classNames({
@@ -86,16 +116,20 @@ const Input = (props) => {
   const iconVariants = {
     phone: phoneIcon,
     message: messageIcon,
-    search: searchIcon,
   };
 
   return (
     <div className={inputClasses}>
       {label && <div className={labelClasses}>{label}</div>}
       <div className={inputWrapperClasses}>
-        <IsVisible isVisible={!!iconVariant}>
-          <label htmlFor={id} className="sm-input__wrapper--img-label">
+        <IsVisible isVisible={!!iconVariant && iconVariant !== "search"}>
+          <label htmlFor={id} className={imgLabelClasses}>
             <img src={iconVariants[iconVariant]} alt="icon" />
+          </label>
+        </IsVisible>
+        <IsVisible isVisible={iconVariant === "search"}>
+          <label htmlFor={id} className={imgLabelClasses}>
+            <SearchIcon />
           </label>
         </IsVisible>
         <IsVisible isVisible={hasLoader}>
@@ -141,16 +175,29 @@ const Input = (props) => {
         <IsVisible isVisible={hasCounter}>
           <Countdown
             renderer={({ minutes, seconds, completed }) => {
+              const formattedMinutes = minutes === 0 ? `0${minutes}` : minutes;
+              const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
               return completed ? (
                 <span className="sm-input__wrapper-counter">00:00</span>
               ) : (
                 <span className="sm-input__wrapper-counter">
-                  {minutes}:{seconds}
+                  {formattedMinutes}:{formattedSeconds}
                 </span>
               );
             }}
-            date={Date.now() + counter}
-            onComplete={onCounterEnd}
+            date={data.date + data.delay}
+            onStart={() => {
+              if (localStorage.getItem("end_date") == null)
+                localStorage.setItem(
+                  "end_date",
+                  JSON.stringify(data.date + data.delay)
+                );
+            }}
+            onComplete={() => {
+              onCounterEnd();
+              if (localStorage.getItem("end_date") != null)
+                localStorage.removeItem("end_date");
+            }}
           />
         </IsVisible>
       </div>

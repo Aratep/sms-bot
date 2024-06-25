@@ -20,6 +20,7 @@ const Button = ({
     "sm-button__light": variant === "light",
     "sm-button__dark": variant === "dark",
     [className]: !!className,
+    "icon-padding": hasIcon,
   });
 
   return (

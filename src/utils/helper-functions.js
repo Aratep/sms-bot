@@ -53,18 +53,6 @@ export function generateList(list) {
   return res;
 }
 
-export function areValuesNotEmpty(obj) {
-  for (let key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      let value = obj[key].value;
-      if ((value === undefined, value === null, value === "")) {
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
 export function generateOrderOptions(data) {
   const options = Object.values(data);
   let res = [];
@@ -77,7 +65,7 @@ export function generateOrderOptions(data) {
         price: item.price,
       });
     });
-  return res;
+  return res?.reverse();
 }
 
 export function formatUserData(data) {
@@ -93,6 +81,11 @@ export function formatUserData(data) {
   newData.balance = formatNumberToString(data?.balance);
 
   return newData;
+}
+
+export function formatTopUpNumber(str) {
+  const numArr = str.split(".");
+  return [numArr[0], numArr[1]];
 }
 
 export function generateOrders(orders) {
@@ -112,32 +105,9 @@ export function generateOrders(orders) {
   return formattedOrders;
 }
 
-export function redirectToBot(url) {
-  window.open(url, "_blank", "noopener,noreferrer");
+export function resetTimer(timer) {
+  localStorage.removeItem(timer);
 }
-
-export const openExternalLink = (url) => {
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.target = "_blank";
-  anchor.rel = "noopener noreferrer"; // For security reasons
-  anchor.click();
-};
-
-export const openExternalLink1 = (url) => {
-  // Create a form element
-  const form = document.createElement("form");
-  // Set the action to the external link
-  form.action = url;
-  // Set the target to _blank to open in a new tab
-  form.target = "_blank";
-  // Append the form to the body
-  document.body.appendChild(form);
-  // Programmatically submit the form to trigger the navigation
-  form.submit();
-  // Remove the form from the DOM after submitting
-  document.body.removeChild(form);
-};
 
 export const openExternalLink2 = (url) => {
   // Create an anchor element

@@ -58,7 +58,7 @@ const TopUpPage = () => {
             value={amount}
             name="amount"
             onChange={handleChange}
-            placeholder="0"
+            placeholder="0.00"
           />
         </Container>
         <Container space="center">

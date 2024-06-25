@@ -6,8 +6,8 @@ const initialState = {
     checkDataString: "",
   },
   selectedOptions: {
-    country: { value: "", src: "", id: null, price: "" },
     service: { value: "", src: "", id: null, price: "" },
+    country: { value: "", src: "", id: null, price: "" },
   },
   isOrderDone: false,
 };

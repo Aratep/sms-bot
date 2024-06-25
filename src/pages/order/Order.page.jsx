@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -29,7 +29,7 @@ import {
 import useInput from "effects/useInput.effect";
 // UTILS
 import { initialCounter } from "utils/constants";
-import { generateOrderOptions } from "utils/helper-functions";
+import { generateOrderOptions, resetTimer } from "utils/helper-functions";
 
 const OrderPage = () => {
   const [counter, setCounter] = useState(720000);
@@ -39,7 +39,7 @@ const OrderPage = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { selectedOptions, tgHash, isOrderDone } = useSelector(commonSelector);
+  const { selectedOptions, tgHash } = useSelector(commonSelector);
   const {
     orderId,
     orderInfoLoading,
@@ -48,12 +48,6 @@ const OrderPage = () => {
     isSecondCodeSet,
     isRepeatClicked,
   } = useSelector(orderSelector);
-
-  useEffect(() => {
-    if (isFirstCodeSet === true) {
-      setHasCounter(false);
-    }
-  }, [isFirstCodeSet]);
 
   function handleInputChange(event) {
     handleInput(event);
@@ -79,6 +73,7 @@ const OrderPage = () => {
     dispatch(setIsRepeatClicked(false));
     dispatch(resetSelectedOption());
     dispatch(setIsOrderDone(false));
+    resetTimer("end_date");
     navigate("/");
   }
 
@@ -105,6 +100,7 @@ const OrderPage = () => {
     dispatch(setIsRepeatClicked(false));
     dispatch(resetSelectedOption());
     dispatch(setIsOrderDone(false));
+    resetTimer("end_date");
     navigate("/");
   }
 
@@ -127,7 +123,7 @@ const OrderPage = () => {
           error={invalidMessages}
           iconVariant="phone"
           wrapperClass="sm-border-none sm-bg-grey"
-          hasCounter={!isOrderDone && hasCounter}
+          hasCounter={hasCounter}
           counter={counter}
           onCounterEnd={onCounterEnd}
           copiable={true}
@@ -182,9 +178,19 @@ const OrderPage = () => {
         </IsVisible>
         <IsVisible isVisible={isFirstCodeSet}>
           <IsVisible isVisible={!isSecondCodeSet}>
-            <Button text="REPEAT" variant="dark" onClick={onRepeatCode} />
+            <Button
+              text="REPEAT"
+              variant="dark"
+              onClick={onRepeatCode}
+              className="w-75"
+            />
           </IsVisible>
-          <Button text="DONE" variant="light" onClick={onDoneClik} />
+          <Button
+            text="DONE"
+            variant="light"
+            onClick={onDoneClik}
+            className="w-75"
+          />
         </IsVisible>
       </Container>
     </PageWrapper>

@@ -28,7 +28,6 @@ const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
   const [isFormReady, setIsFormReady] = useState(false);
   const [formState, setFormState] = useState({ service: "", country: "" });
-  const [selectedOptionName, setSelectedOptionName] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -114,7 +113,6 @@ const MainPage = () => {
     dispatch(setSelectedOption(optionObject));
     reFetchData(name, id);
     setFormState((prevState) => ({ ...prevState, [name]: value }));
-    setSelectedOptionName(target.name);
   }
 
   function onClose(name) {
@@ -124,8 +122,6 @@ const MainPage = () => {
       dispatch(getServices({ name: formData.service }));
     }
   }
-
-  // console.log("ISVICIBBBBBLLLLEEEE", isVisible);
 
   return (
     <PageWrapper className="main-page">
@@ -141,7 +137,7 @@ const MainPage = () => {
           isLoading={servicesLoading}
           handleOptionClick={handleOptionClick}
           onClose={onClose}
-          selectedOptionName={selectedOptionName}
+          hasFromText={true}
         />
       </Container>
       <Container className="pd-b-25">
@@ -156,7 +152,7 @@ const MainPage = () => {
           isLoading={countriesLoading}
           handleOptionClick={handleOptionClick}
           onClose={onClose}
-          selectedOptionName={selectedOptionName}
+          hasFromText={false}
         />
       </Container>
       <IsVisible isVisible={isFormReady && priceData?.availability === true}>
@@ -165,7 +161,7 @@ const MainPage = () => {
             className="pay-btn"
             onClick={onButtonClick}
             isLoading={pricesLoading}
-            text="Pay"
+            text={`BUY ${priceData.price} USDT`}
             disabled={pricesLoading}
           />
         </Container>
