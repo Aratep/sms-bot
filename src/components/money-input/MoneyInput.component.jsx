@@ -24,16 +24,24 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
 
   return (
     <div className="money-input">
-      <label htmlFor={id}>$</label>
-      <IsVisible isVisible={!!value}>
-        <div className="money-input__text">
-          {integral && (
-            <span className="money-input__integral">{integral}</span>
-          )}
-          {decimal && <span className="money-input__decimal">.{decimal}</span>}
-        </div>
-      </IsVisible>
-
+      <label className="money-input__label" htmlFor={id}>
+        $
+      </label>
+      <label htmlFor={id}>
+        <IsVisible isVisible={!!value}>
+          <div className="money-input__text">
+            {integral && (
+              <span className="money-input__integral">
+                {integral}
+                {!decimal && <span className="money-input__decimal">.00</span>}
+              </span>
+            )}
+            {decimal && (
+              <span className="money-input__decimal">.{decimal}</span>
+            )}
+          </div>
+        </IsVisible>
+      </label>
       <input
         ref={inputRef}
         id={id}
@@ -48,10 +56,10 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
         {...rest}
       />
       <IsVisible isVisible={!value}>
-        <span className="styled-placeholder">
+        <label htmlFor={id} className="styled-placeholder">
           <span className="money-input__integral">0.</span>
           <span className="money-input__decimal">00</span>
-        </span>
+        </label>
       </IsVisible>
     </div>
   );

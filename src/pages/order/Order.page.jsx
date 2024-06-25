@@ -20,6 +20,7 @@ import {
   setIsSecondCode,
   getSecondCode,
   setIsRepeatClicked,
+  makeOrder,
 } from "store/order/order.actions";
 import {
   resetSelectedOption,
@@ -78,7 +79,25 @@ const OrderPage = () => {
   }
 
   function onChangeClick() {
+    const orderParams = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      country_id: selectedOptions.country.id,
+      service_id: selectedOptions.service.id,
+    };
+    const cancelParams = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      id: orderId,
+    };
+    dispatch(cancelOrder(cancelParams));
+    dispatch(makeOrder({ params: orderParams }));
     setCounter(initialCounter);
+    resetTimer("end_date");
   }
 
   function onRepeatCode() {
