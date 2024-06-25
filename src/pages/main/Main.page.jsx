@@ -44,7 +44,13 @@ const MainPage = () => {
 
   // debounced search of countries and services
   useEffect(() => {
-    dispatch(getCountries({ name: formData.country }));
+    if (debouncedCountryTerm === "" && selectedOptions.service.id !== "") {
+      dispatch(
+        getCountries({ name: "", service_id: selectedOptions.service.id })
+      );
+    } else {
+      dispatch(getCountries({ name: formData.country }));
+    }
   }, [debouncedCountryTerm]);
   useEffect(() => {
     dispatch(getServices({ name: formData.service }));
@@ -120,6 +126,7 @@ const MainPage = () => {
       dispatch(getCountries({ name: formData.country }));
     } else {
       dispatch(getServices({ name: formData.service }));
+      // dispatch(getCountries({ name: "", service_id: selectedOptions.service.id }));
     }
   }
 
