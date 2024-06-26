@@ -53,6 +53,17 @@ export function generateList(list) {
   return res;
 }
 
+export function getLocalStorageValue(s) {
+  return localStorage.getItem(s);
+}
+
+export function resetCounter(counter, name, setDateCounterValue) {
+  const newDate = Date.now();
+  const newDelay = counter;
+  localStorage.setItem(name, JSON.stringify(newDate + newDelay));
+  setDateCounterValue({ date: newDate, delay: newDelay });
+}
+
 export function generateOrderOptions(data) {
   const options = Object.values(data);
   let res = [];
@@ -105,7 +116,7 @@ export function generateOrders(orders) {
   return formattedOrders;
 }
 
-export function resetTimer(timer) {
+export function resetTimerToZero(timer) {
   localStorage.removeItem(timer);
 }
 

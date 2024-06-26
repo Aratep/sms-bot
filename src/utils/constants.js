@@ -11,7 +11,7 @@ import {
   SupportIcon,
 } from "../pages/settings/components/icons";
 
-export const initialCounter = 900000;
+export const initialCounter = 10000;
 export const API =
   process.env.NODE_ENV === "development"
     ? "http://147.45.159.97:8080/api"

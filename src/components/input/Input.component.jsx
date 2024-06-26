@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import classNames from "classnames";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Countdown from "react-countdown";
@@ -7,16 +7,15 @@ import Countdown from "react-countdown";
 import IsVisible from "components/is-visible/IsVisible.component";
 // CONTEXT
 import { FocusedContext } from "context/IsFocused.context";
+import { CounterValueContext } from "context/CounterValue.context";
 // UTILS
-import { notify } from "utils/helper-functions";
+import { notify, getLocalStorageValue } from "utils/helper-functions";
 // ICONS
 import SearchIcon from "components/icons/SearchIcon.component";
 // IMAGES
 import phoneIcon from "assets/imgs/input/phone.png";
 import messageIcon from "assets/imgs/input/message.png";
 import spinner from "assets/imgs/input/spinner.png";
-
-const getLocalStorageValue = (s) => localStorage.getItem(s);
 
 const Input = (props) => {
   const {
@@ -40,11 +39,8 @@ const Input = (props) => {
   } = props;
   const { name } = props;
   const { toggleFocused } = useContext(FocusedContext);
+  const { setDateCounterValue, dateCounter } = useContext(CounterValueContext);
 
-  const [data, setData] = useState({
-    date: Date.now(),
-    delay: counter,
-  });
   const wantedDelay = counter;
 
   useEffect(() => {
@@ -57,10 +53,10 @@ const Input = (props) => {
         if (localStorage.getItem("end_date").length > 0)
           localStorage.removeItem("end_date");
       } else {
-        setData({ date: currentTime, delay: delta });
+        setDateCounterValue({ date: currentTime, delay: delta });
       }
     }
-  }, []);
+  }, [wantedDelay]);
 
   const inputClasses = classNames({
     "sm-input": true,
@@ -185,19 +181,24 @@ const Input = (props) => {
                 </span>
               );
             }}
-            date={data.date + data.delay}
+            date={dateCounter.date + dateCounter.delay}
             onStart={() => {
               if (localStorage.getItem("end_date") == null)
                 localStorage.setItem(
                   "end_date",
-                  JSON.stringify(data.date + data.delay)
+                  JSON.stringify(dateCounter.date + dateCounter.delay)
                 );
             }}
             onComplete={() => {
               onCounterEnd();
               if (localStorage.getItem("end_date") != null)
                 localStorage.removeItem("end_date");
+              localStorage.setItem(
+                "end_date",
+                JSON.stringify(dateCounter.date + dateCounter.delay)
+              );
             }}
+            key={dateCounter.date}
           />
         </IsVisible>
       </div>

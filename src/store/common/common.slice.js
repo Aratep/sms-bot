@@ -10,6 +10,7 @@ const initialState = {
     country: { value: "", src: "", id: null, price: "" },
   },
   isOrderDone: false,
+  isTimerEnd: false,
 };
 
 export const commonSlice = createSlice({
@@ -31,6 +32,9 @@ export const commonSlice = createSlice({
     setIsOrderDoneReducer: (state, action) => {
       state.isOrderDone = action.payload;
     },
+    setIsTimerEndReducer: (state, action) => {
+      state.isTimerEnd = action.payload;
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export const {
   setSelectedOptionReducer,
   resetSelectedOptionReducer,
   setIsOrderDoneReducer,
+  setIsTimerEndReducer,
 } = commonSlice.actions;
 
 export const commonSelector = (state) => state.common;

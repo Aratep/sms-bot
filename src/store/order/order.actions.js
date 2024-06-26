@@ -15,14 +15,18 @@ import { setIsOrderDone } from "store/common/common.actions";
 
 export const makeOrder = createAsyncThunk(
   "fetch/create/order",
-  async ({ params }, { dispatch }) => {
+  async ({ params, signal }, { dispatch }) => {
     const res = await smsAPI.fetchOrderCreate(params);
     const orderInfoParams = { auth_data: params.auth_data, id: res.data };
-    const orderRes = await dispatch(getOrderInfo(orderInfoParams)).unwrap();
+    const orderRes = await dispatch(
+      getOrderInfo({ params: orderInfoParams, signal })
+    ).unwrap();
     dispatch(setOrderInfo(orderRes));
 
     const intervalId = setInterval(async () => {
-      const reOrderRes = await dispatch(getOrderInfo(orderInfoParams)).unwrap();
+      const reOrderRes = await dispatch(
+        getOrderInfo({ params: orderInfoParams, signal })
+      ).unwrap();
       const updatedFirstCode = reOrderRes?.first_code;
 
       if (updatedFirstCode !== undefined && updatedFirstCode !== "") {
@@ -39,8 +43,8 @@ export const makeOrder = createAsyncThunk(
 
 export const getOrderInfo = createAsyncThunk(
   "fetch/get/order",
-  async (params) => {
-    const res = await smsAPI.fetchOrderGet(params);
+  async ({ params, signal }) => {
+    const res = await smsAPI.fetchOrderGet(params, signal);
     return res.data;
   }
 );

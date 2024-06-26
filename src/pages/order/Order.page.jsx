@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,6 +9,8 @@ import Button from "components/button/Button.component";
 import { Container } from "components/container/Container.component";
 import List from "components/list/List.component";
 import IsVisible from "components/is-visible/IsVisible.component";
+// CONTEXT
+import { CounterValueContext } from "context/CounterValue.context";
 // SLICES
 import { commonSelector } from "store/common/common.slice";
 import { orderSelector } from "store/order/order.slice";
@@ -25,22 +27,22 @@ import {
 import {
   resetSelectedOption,
   setIsOrderDone,
+  setIsTimerEnd,
 } from "store/common/common.actions";
 // EFFECTS
 import useInput from "effects/useInput.effect";
 // UTILS
 import { initialCounter } from "utils/constants";
-import { generateOrderOptions, resetTimer } from "utils/helper-functions";
+import { generateOrderOptions, resetTimerToZero } from "utils/helper-functions";
 
 const OrderPage = () => {
-  const [counter, setCounter] = useState(720000);
-  const [hasCounter, setHasCounter] = useState(true);
+  const [counter, setCounter] = useState(initialCounter);
   const { inputState, handleInput, handleInvalidMessage, invalidMessages } =
     useInput({ phone: "" });
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { selectedOptions, tgHash } = useSelector(commonSelector);
+  const { selectedOptions, tgHash, isTimerEnd } = useSelector(commonSelector);
   const {
     orderId,
     orderInfoLoading,
@@ -50,13 +52,29 @@ const OrderPage = () => {
     isRepeatClicked,
   } = useSelector(orderSelector);
 
+  const { setDateCounterValue, dateCounter } = useContext(CounterValueContext);
+
+  // const abortController = new AbortController();
+
+  // useEffect(() => {
+  //   const params = {
+  //     auth_data: {
+  //       auth: tgHash.checkDataString,
+  //       hash: tgHash.hash,
+  //     },
+  //     country_id: selectedOptions.country.id,
+  //     service_id: selectedOptions.service.id,
+  //   };
+  //
+  //   dispatch(makeOrder({ params, signal: abortController.signal }));
+  // }, []);
+
   function handleInputChange(event) {
     handleInput(event);
   }
 
   function onCounterEnd() {
-    setHasCounter(false);
-    onCancellClick();
+    dispatch(setIsTimerEnd(true));
   }
 
   function onCancellClick() {
@@ -74,31 +92,39 @@ const OrderPage = () => {
     dispatch(setIsRepeatClicked(false));
     dispatch(resetSelectedOption());
     dispatch(setIsOrderDone(false));
-    resetTimer("end_date");
+    resetTimerToZero("end_date");
     navigate("/");
   }
 
   function onChangeClick() {
-    const orderParams = {
-      auth_data: {
-        auth: tgHash.checkDataString,
-        hash: tgHash.hash,
-      },
-      country_id: selectedOptions.country.id,
-      service_id: selectedOptions.service.id,
-    };
-    const cancelParams = {
-      auth_data: {
-        auth: tgHash.checkDataString,
-        hash: tgHash.hash,
-      },
-      id: orderId,
-    };
-    dispatch(cancelOrder(cancelParams));
-    dispatch(makeOrder({ params: orderParams }));
-    setCounter(initialCounter);
-    resetTimer("end_date");
+    // const orderParams = {
+    //   auth_data: {
+    //     auth: tgHash.checkDataString,
+    //     hash: tgHash.hash,
+    //   },
+    //   country_id: selectedOptions.country.id,
+    //   service_id: selectedOptions.service.id,
+    // };
+    // const cancelParams = {
+    //   auth_data: {
+    //     auth: tgHash.checkDataString,
+    //     hash: tgHash.hash,
+    //   },
+    //   id: orderId,
+    // };
+    // dispatch(cancelOrder(cancelParams));
+    // dispatch(makeOrder({ params: orderParams }));
+    // setCounter(initialCounter);
+    dispatch(setIsTimerEnd(false));
+    resetCounter(counter, "end_date");
   }
+
+  const resetCounter = (counter, name) => {
+    const newDate = Date.now();
+    const newDelay = counter;
+    localStorage.setItem(name, JSON.stringify(newDate + newDelay));
+    setDateCounterValue({ date: newDate, delay: newDelay });
+  };
 
   function onRepeatCode() {
     const params = {
@@ -119,7 +145,8 @@ const OrderPage = () => {
     dispatch(setIsRepeatClicked(false));
     dispatch(resetSelectedOption());
     dispatch(setIsOrderDone(false));
-    resetTimer("end_date");
+    resetTimerToZero("end_date");
+    dispatch(setIsTimerEnd(false));
     navigate("/");
   }
 
@@ -142,10 +169,11 @@ const OrderPage = () => {
           error={invalidMessages}
           iconVariant="phone"
           wrapperClass="sm-border-none sm-bg-grey"
-          hasCounter={hasCounter}
+          hasCounter={true}
           counter={counter}
           onCounterEnd={onCounterEnd}
           copiable={true}
+          readOnly={true}
         />
       </Container>
       <Container
@@ -187,29 +215,38 @@ const OrderPage = () => {
         </div>
       </Container>
       <Container variant="row" space="center" className="m-l-r">
-        <IsVisible isVisible={!isFirstCodeSet}>
-          <Button text="CANCEL" variant="dark" onClick={onCancellClick} />
+        <IsVisible isVisible={isTimerEnd}>
           <Button
             text="CHANGE NUMBER"
             variant="light"
             onClick={onChangeClick}
           />
         </IsVisible>
-        <IsVisible isVisible={isFirstCodeSet}>
-          <IsVisible isVisible={!isSecondCodeSet}>
+        <IsVisible isVisible={!isTimerEnd}>
+          <IsVisible isVisible={!isFirstCodeSet}>
+            <Button text="CANCEL" variant="dark" onClick={onCancellClick} />
             <Button
-              text="REPEAT"
-              variant="dark"
-              onClick={onRepeatCode}
+              text="CHANGE NUMBER"
+              variant="light"
+              onClick={onChangeClick}
+            />
+          </IsVisible>
+          <IsVisible isVisible={isFirstCodeSet}>
+            <IsVisible isVisible={!isSecondCodeSet}>
+              <Button
+                text="REPEAT"
+                variant="dark"
+                onClick={onRepeatCode}
+                className="w-75"
+              />
+            </IsVisible>
+            <Button
+              text="DONE"
+              variant="light"
+              onClick={onDoneClik}
               className="w-75"
             />
           </IsVisible>
-          <Button
-            text="DONE"
-            variant="light"
-            onClick={onDoneClik}
-            className="w-75"
-          />
         </IsVisible>
       </Container>
     </PageWrapper>

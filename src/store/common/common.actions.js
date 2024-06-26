@@ -4,6 +4,7 @@ import {
   setSelectedOptionReducer,
   resetSelectedOptionReducer,
   setIsOrderDoneReducer,
+  setIsTimerEndReducer,
 } from "./common.slice";
 // UTILS
 import { generateTgHash } from "utils/helper-functions";
@@ -33,4 +34,8 @@ export const resetSelectedOption = (payload) => (dispatch) => {
 
 export const setIsOrderDone = (payload) => (dispatch) => {
   dispatch(setIsOrderDoneReducer(payload));
+};
+
+export const setIsTimerEnd = (payload) => (dispatch) => {
+  dispatch(setIsTimerEndReducer(payload));
 };

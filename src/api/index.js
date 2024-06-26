@@ -12,7 +12,8 @@ export const smsAPI = {
   fetchUserOrders: (params) => axios.post(`${API}/order/list`, { ...params }),
   fetchOrderCreate: (params) =>
     axios.post(`${API}/order/create`, { ...params }),
-  fetchOrderGet: (params) => axios.post(`${API}/order/get`, { ...params }),
+  fetchOrderGet: (params, signal) =>
+    axios.post(`${API}/order/get`, { ...params, signal }),
   fetchOrderCancel: (params) =>
     axios.post(`${API}/order/cancel`, { ...params }),
   fetchSecondCode: (params) =>

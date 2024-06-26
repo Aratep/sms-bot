@@ -19,8 +19,11 @@ import { commonSelector } from "store/common/common.slice";
 import { getCountries } from "store/countries/countries.actions";
 import { getServices } from "store/services/services.actions";
 import { getPrice } from "store/prices/prices.actions";
-import { makeOrder } from "store/order/order.actions";
-import { setSelectedOption } from "store/common/common.actions";
+// import { makeOrder } from "store/order/order.actions";
+import {
+  setSelectedOption,
+  resetSelectedOption,
+} from "store/common/common.actions";
 // UTILS
 import { generateList } from "utils/helper-functions";
 
@@ -28,6 +31,7 @@ const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
   const [isFormReady, setIsFormReady] = useState(false);
   const [formState, setFormState] = useState({ service: "", country: "" });
+  const [firstClickedOption, setFirstClickedOption] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -42,6 +46,14 @@ const MainPage = () => {
   const debouncedCountryTerm = useDebouncedValue(formData.country, 500);
   const debouncedServiceTerm = useDebouncedValue(formData.service, 500);
 
+  useEffect(() => {
+    if (window.performance) {
+      if (performance.navigation.type == 1) {
+        dispatch(resetSelectedOption());
+      }
+    }
+  }, []);
+
   // debounced search of countries and services
   useEffect(() => {
     if (debouncedCountryTerm === "" && selectedOptions.service.id !== "") {
@@ -53,7 +65,13 @@ const MainPage = () => {
     }
   }, [debouncedCountryTerm]);
   useEffect(() => {
-    dispatch(getServices({ name: formData.service }));
+    if (debouncedServiceTerm === "" && selectedOptions.country.id !== "") {
+      dispatch(
+        getServices({ name: "", country_id: selectedOptions.country.id })
+      );
+    } else {
+      dispatch(getServices({ name: formData.service }));
+    }
   }, [debouncedServiceTerm]);
 
   useEffect(() => {
@@ -90,16 +108,16 @@ const MainPage = () => {
   }
 
   function onButtonClick() {
-    const params = {
-      auth_data: {
-        auth: tgHash.checkDataString,
-        hash: tgHash.hash,
-      },
-      country_id: selectedOptions.country.id,
-      service_id: selectedOptions.service.id,
-    };
-
-    dispatch(makeOrder({ params }));
+    // const params = {
+    //   auth_data: {
+    //     auth: tgHash.checkDataString,
+    //     hash: tgHash.hash,
+    //   },
+    //   country_id: selectedOptions.country.id,
+    //   service_id: selectedOptions.service.id,
+    // };
+    //
+    // dispatch(makeOrder({ params, signal: abortController.signal }));
     navigate("/order");
     setFormState({ service: "", country: "" });
   }
@@ -119,6 +137,7 @@ const MainPage = () => {
     dispatch(setSelectedOption(optionObject));
     reFetchData(name, id);
     setFormState((prevState) => ({ ...prevState, [name]: value }));
+    setFirstClickedOption(name);
   }
 
   function onClose(name) {
@@ -126,8 +145,8 @@ const MainPage = () => {
       dispatch(getCountries({ name: formData.country }));
     } else {
       dispatch(getServices({ name: formData.service }));
-      // dispatch(getCountries({ name: "", service_id: selectedOptions.service.id }));
     }
+    setFirstClickedOption("");
   }
 
   return (
@@ -144,7 +163,7 @@ const MainPage = () => {
           isLoading={servicesLoading}
           handleOptionClick={handleOptionClick}
           onClose={onClose}
-          hasFromText={true}
+          hasFromText={firstClickedOption !== "country"}
         />
       </Container>
       <Container className="pd-b-25">
