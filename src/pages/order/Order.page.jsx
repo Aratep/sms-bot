@@ -22,7 +22,9 @@ import {
   setIsSecondCode,
   getSecondCode,
   setIsRepeatClicked,
-  makeOrder,
+  makeOrderAsync,
+  abortOrder,
+  resetFirstCode,
 } from "store/order/order.actions";
 import {
   resetSelectedOption,
@@ -36,7 +38,7 @@ import { initialCounter } from "utils/constants";
 import { generateOrderOptions, resetTimerToZero } from "utils/helper-functions";
 
 const OrderPage = () => {
-  const [counter, setCounter] = useState(initialCounter);
+  const [counter] = useState(initialCounter);
   const { inputState, handleInput, handleInvalidMessage, invalidMessages } =
     useInput({ phone: "" });
   let navigate = useNavigate();
@@ -50,24 +52,10 @@ const OrderPage = () => {
     isFirstCodeSet,
     isSecondCodeSet,
     isRepeatClicked,
+    isOrderAborted,
   } = useSelector(orderSelector);
 
-  const { setDateCounterValue, dateCounter } = useContext(CounterValueContext);
-
-  // const abortController = new AbortController();
-
-  // useEffect(() => {
-  //   const params = {
-  //     auth_data: {
-  //       auth: tgHash.checkDataString,
-  //       hash: tgHash.hash,
-  //     },
-  //     country_id: selectedOptions.country.id,
-  //     service_id: selectedOptions.service.id,
-  //   };
-  //
-  //   dispatch(makeOrder({ params, signal: abortController.signal }));
-  // }, []);
+  const { setDateCounterValue } = useContext(CounterValueContext);
 
   function handleInputChange(event) {
     handleInput(event);
@@ -75,6 +63,8 @@ const OrderPage = () => {
 
   function onCounterEnd() {
     dispatch(setIsTimerEnd(true));
+    dispatch(abortOrder(true));
+    dispatch(resetFirstCode());
   }
 
   function onCancellClick() {
@@ -93,29 +83,30 @@ const OrderPage = () => {
     dispatch(resetSelectedOption());
     dispatch(setIsOrderDone(false));
     resetTimerToZero("end_date");
-    navigate("/");
+    resetCounter(counter, "end_date");
+    navigate("/main");
   }
 
   function onChangeClick() {
-    // const orderParams = {
-    //   auth_data: {
-    //     auth: tgHash.checkDataString,
-    //     hash: tgHash.hash,
-    //   },
-    //   country_id: selectedOptions.country.id,
-    //   service_id: selectedOptions.service.id,
-    // };
-    // const cancelParams = {
-    //   auth_data: {
-    //     auth: tgHash.checkDataString,
-    //     hash: tgHash.hash,
-    //   },
-    //   id: orderId,
-    // };
-    // dispatch(cancelOrder(cancelParams));
-    // dispatch(makeOrder({ params: orderParams }));
-    // setCounter(initialCounter);
+    const orderParams = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      country_id: selectedOptions.country.id,
+      service_id: selectedOptions.service.id,
+    };
+    const cancelParams = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      id: orderId,
+    };
+    dispatch(cancelOrder(cancelParams));
+    dispatch(makeOrderAsync({ params: orderParams }));
     dispatch(setIsTimerEnd(false));
+    dispatch(abortOrder(false));
     resetCounter(counter, "end_date");
   }
 
@@ -147,7 +138,7 @@ const OrderPage = () => {
     dispatch(setIsOrderDone(false));
     resetTimerToZero("end_date");
     dispatch(setIsTimerEnd(false));
-    navigate("/");
+    navigate("/main");
   }
 
   return (
@@ -182,13 +173,19 @@ const OrderPage = () => {
         <Input
           label="YOUR SMS CODE"
           name="sms"
-          value={orderInfo?.first_code}
+          value={isOrderAborted ? "" : orderInfo?.first_code}
           onChange={handleInputChange}
           onInvalid={handleInvalidMessage}
           error={invalidMessages}
-          placeholder={orderInfoLoading ? "" : "Wait"}
+          placeholder={
+            orderInfoLoading
+              ? ""
+              : isOrderAborted
+                ? "Sorry, no SMS received"
+                : "Wait"
+          }
           wrapperClass="sm-border-none sm-bg-grey"
-          isLoading={!orderInfo?.first_code}
+          isLoading={isOrderAborted ? false : !orderInfo?.first_code}
           hasLoader={true}
           copiable={true}
           readOnly={true}
@@ -224,11 +221,17 @@ const OrderPage = () => {
         </IsVisible>
         <IsVisible isVisible={!isTimerEnd}>
           <IsVisible isVisible={!isFirstCodeSet}>
-            <Button text="CANCEL" variant="dark" onClick={onCancellClick} />
+            <Button
+              text="CANCEL"
+              variant="dark"
+              onClick={onCancellClick}
+              disabled={orderInfoLoading}
+            />
             <Button
               text="CHANGE NUMBER"
               variant="light"
               onClick={onChangeClick}
+              // disabled={orderInfoLoading || !orderInfo?.first_code}
             />
           </IsVisible>
           <IsVisible isVisible={isFirstCodeSet}>
@@ -238,6 +241,7 @@ const OrderPage = () => {
                 variant="dark"
                 onClick={onRepeatCode}
                 className="w-75"
+                disabled={orderInfoLoading || !orderInfo?.first_code}
               />
             </IsVisible>
             <Button
@@ -245,6 +249,7 @@ const OrderPage = () => {
               variant="light"
               onClick={onDoneClik}
               className="w-75"
+              disabled={orderInfoLoading || !orderInfo?.first_code}
             />
           </IsVisible>
         </IsVisible>

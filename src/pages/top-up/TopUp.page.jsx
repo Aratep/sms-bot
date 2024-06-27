@@ -8,7 +8,7 @@ import { Container } from "components/container/Container.component";
 import Button from "components/button/Button.component";
 import MoneyInput from "components/money-input/MoneyInput.component";
 // ACTIONS
-import { createInvoice } from "store/order/order.actions";
+import { createInvoice, resetInvoiceData } from "store/order/order.actions";
 // SLICES
 import { pricesSelector } from "store/prices/prices.slice";
 import { commonSelector } from "store/common/common.slice";
@@ -29,6 +29,10 @@ const TopUpPage = () => {
       notify("Top Up Your Balance to continue!", "success");
     }
   }, [priceData]);
+
+  useEffect(() => {
+    return () => dispatch(resetInvoiceData());
+  }, []);
 
   function handleChange(e) {
     setAmount(e.value);

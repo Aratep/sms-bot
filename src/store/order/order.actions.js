@@ -9,42 +9,57 @@ import {
   setFirstCodeReducer,
   setSecondCodeReducer,
   setIsRepeatClickedReducer,
+  resetInvoiceReducer,
+  abortOrderReducer,
+  resetFirstCodeReducer,
+  // make order
+  makeOrderStartReducer,
+  makeOrderSuccessReducer,
+  makeOrderFailedReducer,
 } from "./order.slice";
 // ACTIONS
 import { setIsOrderDone } from "store/common/common.actions";
 
-export const makeOrder = createAsyncThunk(
-  "fetch/create/order",
-  async ({ params, signal }, { dispatch }) => {
-    const res = await smsAPI.fetchOrderCreate(params);
-    const orderInfoParams = { auth_data: params.auth_data, id: res.data };
-    const orderRes = await dispatch(
-      getOrderInfo({ params: orderInfoParams, signal })
-    ).unwrap();
-    dispatch(setOrderInfo(orderRes));
+export const makeOrderAsync =
+  ({ params }) =>
+  async (dispatch) => {
+    try {
+      dispatch(makeOrderStartReducer());
+      const orderCreateRes = await smsAPI.fetchOrderCreate(params);
+      const orderInfoParams = {
+        auth_data: params.auth_data,
+        id: orderCreateRes.data,
+      };
 
-    const intervalId = setInterval(async () => {
-      const reOrderRes = await dispatch(
-        getOrderInfo({ params: orderInfoParams, signal })
+      const orderRes = await dispatch(
+        getOrderInfo({ params: orderInfoParams })
       ).unwrap();
-      const updatedFirstCode = reOrderRes?.first_code;
+      dispatch(setOrderInfo(orderRes));
 
-      if (updatedFirstCode !== undefined && updatedFirstCode !== "") {
-        dispatch(setOrderInfo(reOrderRes));
-        dispatch(setIsFirstCode(true));
-        dispatch(setIsOrderDone(true));
-        clearInterval(intervalId);
-      }
-    }, 2000);
+      const intervalId = setInterval(async () => {
+        const reOrderRes = await dispatch(
+          getOrderInfo({ params: orderInfoParams })
+        ).unwrap();
+        const updatedFirstCode = reOrderRes?.first_code;
 
-    return res.data;
-  }
-);
+        if (updatedFirstCode !== undefined && updatedFirstCode !== "") {
+          dispatch(setOrderInfo(reOrderRes));
+          dispatch(setIsFirstCode(true));
+          dispatch(setIsOrderDone(true));
+          clearInterval(intervalId);
+        }
+      }, 2000);
+
+      dispatch(makeOrderSuccessReducer(orderCreateRes.data));
+    } catch (error) {
+      dispatch(makeOrderFailedReducer(error.response.data));
+    }
+  };
 
 export const getOrderInfo = createAsyncThunk(
   "fetch/get/order",
-  async ({ params, signal }) => {
-    const res = await smsAPI.fetchOrderGet(params, signal);
+  async ({ params }) => {
+    const res = await smsAPI.fetchOrderGet(params);
     return res.data;
   }
 );
@@ -66,11 +81,15 @@ export const getSecondCode = createAsyncThunk(
       id: params.order_id,
     };
 
-    const orderRes = await dispatch(getOrderInfo(orderInfoParams)).unwrap();
+    const orderRes = await dispatch(
+      getOrderInfo({ params: orderInfoParams })
+    ).unwrap();
     dispatch(setOrderInfo(orderRes));
 
     const intervalId = setInterval(async () => {
-      const reOrderRes = await dispatch(getOrderInfo(orderInfoParams)).unwrap();
+      const reOrderRes = await dispatch(
+        getOrderInfo({ params: orderInfoParams })
+      ).unwrap();
       const updatedSecondCode = reOrderRes?.second_code;
 
       if (updatedSecondCode !== undefined && updatedSecondCode !== "") {
@@ -109,4 +128,16 @@ export const setIsSecondCode = (payload) => (dispatch) => {
 
 export const setIsRepeatClicked = (payload) => (dispatch) => {
   dispatch(setIsRepeatClickedReducer(payload));
+};
+
+export const resetInvoiceData = () => (dispatch) => {
+  dispatch(resetInvoiceReducer());
+};
+
+export const resetFirstCode = () => (dispatch) => {
+  dispatch(resetFirstCodeReducer());
+};
+
+export const abortOrder = (payload) => (dispatch) => {
+  dispatch(abortOrderReducer(payload));
 };

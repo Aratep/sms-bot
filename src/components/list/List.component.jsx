@@ -51,6 +51,9 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
         <span className="sm-list__title">{title}</span>
       </IsVisible>
       <div className="sm-list__container">
+        <IsVisible isVisible={items.length === 0}>
+          <div className="sm-list__container-noitems">No items yet</div>
+        </IsVisible>
         {items.slice(0, visibleCount).map((item) => {
           const listItemClasses = classNames("sm-list__container-item", {
             "sm-list__container-item__active": selectedItemId === item.id,
@@ -92,16 +95,18 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
           );
         })}
       </div>
-      <IsVisible isVisible={isShowAllBtn}>
-        <div className="sm-list__show">
-          <IsVisible isVisible={visibleCount >= items.length}>
-            <span onClick={showLess}>Show less</span>
-          </IsVisible>
-          <IsVisible isVisible={visibleCount < items.length}>
-            <span onClick={showMore}>Show More</span>
-          </IsVisible>
-          <Image src={arrow} alt="arrow" className={arrowClasses} />
-        </div>
+      <IsVisible isVisible={items.length > 0}>
+        <IsVisible isVisible={isShowAllBtn}>
+          <div className="sm-list__show">
+            <IsVisible isVisible={visibleCount >= items.length}>
+              <span onClick={showLess}>Show less</span>
+            </IsVisible>
+            <IsVisible isVisible={visibleCount < items.length}>
+              <span onClick={showMore}>Show More</span>
+            </IsVisible>
+            <Image src={arrow} alt="arrow" className={arrowClasses} />
+          </div>
+        </IsVisible>
       </IsVisible>
     </div>
   );

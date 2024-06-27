@@ -15,7 +15,7 @@ const NavBar = () => {
     {
       id: 1,
       icon: SmsIcon,
-      href: "/",
+      href: "/main",
       isActive: getActiveItem(mainRoutes, pathname),
     },
     {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,17 +18,20 @@ import { FocusedProvider } from "context/IsFocused.context";
 import { CounterValueProvider } from "context/CounterValue.context";
 // ACTIONS
 import { setTgHash } from "store/common/common.actions";
-import { getUser } from "store/user/user.actions";
 // SLICES
 import { commonSelector } from "./store/common/common.slice";
+import { userSelector } from "store/user/user.slice";
 // STYLES
 import "./App.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const dispatch = useDispatch();
-  const { isOrderDone, tgHash } = useSelector(commonSelector);
   let navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const { isOrderDone } = useSelector(commonSelector);
+  const { data: userData } = useSelector(userSelector);
 
   useEffect(() => {
     dispatch(setTgHash());
@@ -36,13 +39,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const params = {
-      auth_data: {
-        auth: tgHash.checkDataString,
-        hash: tgHash.hash,
-      },
-    };
-    // dispatch(getUser(params));
+    if (userData?.subscribed === true) {
+      navigate(pathname);
+    } else {
+      navigate("/");
+    }
   }, []);
 
   useEffect(() => {
@@ -56,7 +57,8 @@ function App() {
       <FocusedProvider>
         <CounterValueProvider>
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/main" element={<MainPage />} />
             <Route path="/order" element={<OrderPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/language" element={<LanguagePage />} />
@@ -64,7 +66,6 @@ function App() {
             <Route path="/referral" element={<ReferralPage />} />
             <Route path="/support" element={<SupportPage />} />
             <Route path="/top-up" element={<TopUpPage />} />
-            <Route path="/welcome" element={<WelcomePage />} />
           </Routes>
           <ToastContainer />
         </CounterValueProvider>

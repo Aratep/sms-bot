@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // ACTIONS
-import {
-  makeOrder,
-  getSecondCode,
-  createInvoice,
-} from "store/order/order.actions";
+import { getSecondCode, createInvoice } from "store/order/order.actions";
 // UTILS
 import { notify } from "utils/helper-functions";
 
@@ -29,6 +25,7 @@ const initialState = {
   isFirstCodeSet: false,
   isSecondCodeSet: false,
   isRepeatClicked: false,
+  isOrderAborted: false,
 };
 
 export const orderSlice = createSlice({
@@ -37,6 +34,15 @@ export const orderSlice = createSlice({
   reducers: {
     setOrderInfoReducer: (state, action) => {
       state.orderInfo = action.payload;
+    },
+    resetInvoiceReducer: (state) => {
+      state.invoiceData = "";
+    },
+    resetFirstCodeReducer: (state) => {
+      state.orderInfo.first_code = "";
+    },
+    abortOrderReducer: (state, action) => {
+      state.isOrderAborted = action.payload;
     },
     resetOrderInfoReducer: (state) => {
       state.orderInfo = {};
@@ -52,21 +58,34 @@ export const orderSlice = createSlice({
     setIsRepeatClickedReducer: (state, action) => {
       state.isRepeatClicked = action.payload;
     },
+    // ORDER INFO
+    makeOrderStartReducer: (state) => {
+      state.orderInfoLoading = true;
+    },
+    makeOrderSuccessReducer: (state, { payload }) => {
+      state.orderId = payload;
+      state.orderInfoLoading = false;
+    },
+    makeOrderFailedReducer: (state, { payload }) => {
+      state.orderInfoError = payload;
+      notify(`${payload.message}`, "error");
+      state.orderInfoLoading = false;
+    },
   },
   extraReducers: (builder) => {
     // MAKE ORDER
-    builder.addCase(makeOrder.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(makeOrder.fulfilled, (state, action) => {
-      state.loading = false;
-      state.orderId = action.payload;
-    });
-    builder.addCase(makeOrder.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error;
-      notify(`Order: ${action.error.message}`, "error");
-    });
+    // builder.addCase(makeOrder.pending, (state) => {
+    //   state.loading = true;
+    // });
+    // builder.addCase(makeOrder.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   state.orderId = action.payload;
+    // });
+    // builder.addCase(makeOrder.rejected, (state, action) => {
+    //   state.loading = false;
+    //   state.error = action.error;
+    //   notify(`Order: ${action.error.message}`, "error");
+    // });
     // GET ORDER INFO
     // builder.addCase(getOrderInfo.pending, (state) => {
     //   state.orderInfoLoading = true;
@@ -115,6 +134,13 @@ export const {
   setFirstCodeReducer,
   setSecondCodeReducer,
   setIsRepeatClickedReducer,
+  resetInvoiceReducer,
+  abortOrderReducer,
+  resetFirstCodeReducer,
+  // make order
+  makeOrderStartReducer,
+  makeOrderSuccessReducer,
+  makeOrderFailedReducer,
 } = orderSlice.actions;
 
 export const orderSelector = (state) => state.order;

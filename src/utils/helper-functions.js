@@ -57,13 +57,6 @@ export function getLocalStorageValue(s) {
   return localStorage.getItem(s);
 }
 
-export function resetCounter(counter, name, setDateCounterValue) {
-  const newDate = Date.now();
-  const newDelay = counter;
-  localStorage.setItem(name, JSON.stringify(newDate + newDelay));
-  setDateCounterValue({ date: newDate, delay: newDelay });
-}
-
 export function generateOrderOptions(data) {
   const options = Object.values(data);
   let res = [];
@@ -85,7 +78,7 @@ export function formatUserData(data) {
   data?.first_name || data?.last_name
     ? (newData.name = `${data.first_name || ""} ${data.last_name || ""}`)
     : (newData.name = "--");
-  data?.image_url !== ""
+  data?.image_url !== "" && data?.image_url !== null
     ? (newData.image_url = data?.image_url)
     : (newData.image_url = defaultAvatar);
   data?.username ? (newData.username = `${data?.username}`) : "--";

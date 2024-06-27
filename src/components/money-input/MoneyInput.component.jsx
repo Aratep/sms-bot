@@ -13,7 +13,7 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-  }, []); // Empty dependency array ensures this runs only once after the initial render
+  }); // Empty dependency array ensures this runs only once after the initial render
 
   function handleInputChange(event) {
     onChange(event.target);

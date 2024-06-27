@@ -19,7 +19,7 @@ import { commonSelector } from "store/common/common.slice";
 import { getCountries } from "store/countries/countries.actions";
 import { getServices } from "store/services/services.actions";
 import { getPrice } from "store/prices/prices.actions";
-// import { makeOrder } from "store/order/order.actions";
+import { makeOrderAsync } from "store/order/order.actions";
 import {
   setSelectedOption,
   resetSelectedOption,
@@ -50,6 +50,8 @@ const MainPage = () => {
     if (window.performance) {
       if (performance.navigation.type == 1) {
         dispatch(resetSelectedOption());
+        dispatch(getCountries({ name: formData.country, service_id: null }));
+        dispatch(getServices({ name: formData.service, country_id: null }));
       }
     }
   }, []);
@@ -108,16 +110,16 @@ const MainPage = () => {
   }
 
   function onButtonClick() {
-    // const params = {
-    //   auth_data: {
-    //     auth: tgHash.checkDataString,
-    //     hash: tgHash.hash,
-    //   },
-    //   country_id: selectedOptions.country.id,
-    //   service_id: selectedOptions.service.id,
-    // };
-    //
-    // dispatch(makeOrder({ params, signal: abortController.signal }));
+    const params = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+      country_id: selectedOptions.country.id,
+      service_id: selectedOptions.service.id,
+    };
+
+    dispatch(makeOrderAsync({ params }));
     navigate("/order");
     setFormState({ service: "", country: "" });
   }

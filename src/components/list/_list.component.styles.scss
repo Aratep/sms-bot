@@ -12,6 +12,10 @@
   }
 
   &__container {
+    &-noitems {
+      text-align: center;
+    }
+
     &-item {
       @include flexAlignCenter;
       @include spaceBetween;
