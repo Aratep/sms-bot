@@ -30,12 +30,10 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
       <label htmlFor={id}>
         <IsVisible isVisible={!!value}>
           <div className="money-input__text">
-            {integral && (
-              <span className="money-input__integral">
-                {integral}
-                {!decimal && <span className="money-input__decimal">.00</span>}
-              </span>
-            )}
+            <span className="money-input__integral">
+              {integral}
+              {!decimal && <span className="money-input__decimal">.00</span>}
+            </span>
             {decimal && (
               <span className="money-input__decimal">.{decimal}</span>
             )}
@@ -50,7 +48,7 @@ const MoneyInput = ({ name, value, onChange, id = "sm-input", ...rest }) => {
         onChange={handleInputChange}
         type="number"
         pattern="\d*"
-        inputMode="numeric"
+        inputMode="decimal"
         step="0.01"
         className="w-0"
         {...rest}

@@ -9,6 +9,7 @@ import Button from "components/button/Button.component";
 import { Container } from "components/container/Container.component";
 import List from "components/list/List.component";
 import IsVisible from "components/is-visible/IsVisible.component";
+import Loader from "components/loader/Loader.component";
 // CONTEXT
 import { CounterValueContext } from "context/CounterValue.context";
 // SLICES
@@ -34,8 +35,8 @@ import {
 // EFFECTS
 import useInput from "effects/useInput.effect";
 // UTILS
-import { initialCounter } from "utils/constants";
-import { generateOrderOptions, resetTimerToZero } from "utils/helper-functions";
+import { initialCounter, API_URL } from "utils/constants";
+import { resetTimerToZero } from "utils/helper-functions";
 
 const OrderPage = () => {
   const [counter] = useState(initialCounter);
@@ -158,14 +159,24 @@ const OrderPage = () => {
     navigate("/main");
   }
 
+  const countryInfo = {
+    id: "1",
+    title: orderInfo?.country?.name,
+    src: `${API_URL}${orderInfo?.country?.image_url}`,
+  };
+  const serviceInfo = {
+    id: "2",
+    title: orderInfo?.service?.name,
+    src: `${API_URL}${orderInfo?.service?.image_url}`,
+  };
+
   return (
     <PageWrapper>
-      <Container className="pd-b-25">
-        <List
-          title="YOUR ORDER"
-          items={generateOrderOptions(selectedOptions)}
-        />
-      </Container>
+      <Loader isLoading={orderInfoLoading}>
+        <Container className="pd-b-25">
+          <List title="YOUR ORDER" items={[serviceInfo, countryInfo]} />
+        </Container>
+      </Loader>
       <Container className="pd-b-25">
         <Input
           label="YOUR NUMBER"

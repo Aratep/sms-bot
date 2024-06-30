@@ -53,7 +53,11 @@
     }
 
     &:active {
-      background-color: #f8d394;
+      border: 1px solid #f8d394;
+
+      button {
+        color: #f8d394;
+      }
     }
   }
 

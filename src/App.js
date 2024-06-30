@@ -67,7 +67,7 @@ function App() {
       if (performance.navigation.type == 1) {
         navigate(pathname);
       }
-    } else alert("SOMEEE");
+    }
   }, []);
 
   return (
