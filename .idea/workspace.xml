@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48a637e5-8ae6-4020-9110-eabf1c472d4b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/effects/usetTextFromVisibility.effect.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/button/_button.component.styles.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/list/List.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/List.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/list/_list.component.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/list/_list.component.styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/money-input/MoneyInput.component.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Main.page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/_main.page.styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/_main.page.styles.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/order/Order.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/top-up/TopUp.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/welcome/Welcome.page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/welcome/Welcome.page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/nav-bar/NavBar.screen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/nav-bar/NavBar.screen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/common/common.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/common/common.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/order/order.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/order/order.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/order/order.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helper-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helper-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +135,10 @@
       <workItem from="1719320961717" duration="1751000" />
       <workItem from="1719407742383" duration="6539000" />
       <workItem from="1719424750179" duration="15888000" />
-      <workItem from="1719462625837" duration="18891000" />
+      <workItem from="1719462625837" duration="19792000" />
+      <workItem from="1719586949257" duration="10347000" />
+      <workItem from="1719685363649" duration="2522000" />
+      <workItem from="1719724420495" duration="2657000" />
     </task>
     <servers />
   </component>

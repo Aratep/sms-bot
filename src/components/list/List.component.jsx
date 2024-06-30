@@ -12,6 +12,7 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
   const initialListSize = 5;
   const [isMore, setIsMore] = useState(true);
   const [selectedItemId, setSelectedItemId] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [visibleCount, setVisibleCount] = useState(initialListSize);
 
   useEffect(() => {
@@ -20,14 +21,16 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
     }
   }, [visibleCount, items]);
 
-  const handleTouchEnd = (id) => {
+  const handleTouchEnd = (id, index) => {
     if (!isItemClickable) return false;
     setSelectedItemId(id);
+    setSelectedIndex(index);
   };
 
   function onCloseBtnClick(e) {
     e.stopPropagation();
     setSelectedItemId(null);
+    setSelectedIndex(null);
   }
 
   function showMore() {
@@ -54,15 +57,19 @@ const List = ({ title, items, isShowAllBtn, isItemClickable = false }) => {
         <IsVisible isVisible={items.length === 0}>
           <div className="sm-list__container-noitems">No items yet</div>
         </IsVisible>
-        {items.slice(0, visibleCount).map((item) => {
+        {items.slice(0, visibleCount).map((item, index) => {
           const listItemClasses = classNames("sm-list__container-item", {
             "sm-list__container-item__active": selectedItemId === item.id,
+            "sm-list__container-item__rounded-prev":
+              selectedIndex !== null && selectedIndex - 1 === index,
+            "sm-list__container-item__rounded-next":
+              selectedIndex !== null && selectedIndex + 1 === index,
           });
           return (
             <Fragment key={item.id}>
               <div
                 className={listItemClasses}
-                onClick={() => handleTouchEnd(item.id)}
+                onClick={() => handleTouchEnd(item.id, index)}
               >
                 <div>
                   <Image src={item.src} alt={item.src} />

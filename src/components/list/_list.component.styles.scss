@@ -69,6 +69,18 @@
         border-radius: 20px !important;
         background-color: rgba(255, 255, 255, 0.2);
       }
+
+      &__rounded-prev {
+        //border-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        border-bottom-left-radius: 20px !important;
+      }
+
+      &__rounded-next {
+        //border-radius: 20px !important;
+        border-top-right-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+      }
     }
 
     .ReactVirtualized__Grid {

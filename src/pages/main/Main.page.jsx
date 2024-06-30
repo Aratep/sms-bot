@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -10,6 +10,9 @@ import Button from "components/button/Button.component";
 import IsVisible from "components/is-visible/IsVisible.component";
 // EFFECTS
 import useDebouncedValue from "effects/useDebouncedValue.effect";
+import useTextFromVisibility from "effects/usetTextFromVisibility.effect";
+// CONTEXT
+import { CounterValueContext } from "context/CounterValue.context";
 // SLICES
 import { countriesSelector } from "store/countries/countries.slice";
 import { servicesSelector } from "store/services/services.slice";
@@ -26,14 +29,17 @@ import {
 } from "store/common/common.actions";
 // UTILS
 import { generateList } from "utils/helper-functions";
+import { initialCounter } from "utils/constants";
 
 const MainPage = () => {
   const [formData, setFormData] = useState({ service: "", country: "" });
   const [isFormReady, setIsFormReady] = useState(false);
   const [formState, setFormState] = useState({ service: "", country: "" });
   const [firstClickedOption, setFirstClickedOption] = useState("");
+  const [canceledOptionName, setCanceledOptionName] = useState("");
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  const { setDateCounterValue } = useContext(CounterValueContext);
 
   const { loading: countriesLoading, data: countriesData } =
     useSelector(countriesSelector);
@@ -45,6 +51,7 @@ const MainPage = () => {
 
   const debouncedCountryTerm = useDebouncedValue(formData.country, 500);
   const debouncedServiceTerm = useDebouncedValue(formData.service, 500);
+  const { isTextVisible } = useTextFromVisibility(formData);
 
   useEffect(() => {
     if (window.performance) {
@@ -109,6 +116,13 @@ const MainPage = () => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   }
 
+  function resetCounter(counter, name) {
+    const newDate = Date.now();
+    const newDelay = counter;
+    localStorage.setItem(name, JSON.stringify(newDate + newDelay));
+    setDateCounterValue({ date: newDate, delay: newDelay });
+  }
+
   function onButtonClick() {
     const params = {
       auth_data: {
@@ -120,6 +134,7 @@ const MainPage = () => {
     };
 
     dispatch(makeOrderAsync({ params }));
+    resetCounter(initialCounter, "end_date");
     navigate("/order");
     setFormState({ service: "", country: "" });
   }
@@ -149,6 +164,7 @@ const MainPage = () => {
       dispatch(getServices({ name: formData.service }));
     }
     setFirstClickedOption("");
+    setCanceledOptionName(name);
   }
 
   return (
@@ -165,7 +181,11 @@ const MainPage = () => {
           isLoading={servicesLoading}
           handleOptionClick={handleOptionClick}
           onClose={onClose}
-          hasFromText={firstClickedOption !== "country"}
+          hasFromText={
+            (firstClickedOption !== "country" &&
+              canceledOptionName !== "service") ||
+            isTextVisible
+          }
         />
       </Container>
       <Container className="pd-b-25">
@@ -180,7 +200,9 @@ const MainPage = () => {
           isLoading={countriesLoading}
           handleOptionClick={handleOptionClick}
           onClose={onClose}
-          hasFromText={false}
+          hasFromText={
+            firstClickedOption !== "service" && canceledOptionName !== "country"
+          }
         />
       </Container>
       <IsVisible isVisible={isFormReady && priceData?.availability === true}>
@@ -188,7 +210,6 @@ const MainPage = () => {
           <Button
             className="pay-btn"
             onClick={onButtonClick}
-            isLoading={pricesLoading}
             text={`BUY ${priceData.price} USDT`}
             disabled={pricesLoading}
           />

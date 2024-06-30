@@ -57,6 +57,21 @@ const OrderPage = () => {
 
   const { setDateCounterValue } = useContext(CounterValueContext);
 
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(resetOrderInfo());
+  //     dispatch(setIsFirstCode(false));
+  //     dispatch(setIsSecondCode(false));
+  //     dispatch(setIsRepeatClicked(false));
+  //     dispatch(resetSelectedOption());
+  //     dispatch(setIsOrderDone(false));
+  //     dispatch(setIsTimerEnd(false));
+  //     resetTimerToZero("end_date");
+  //     resetCounter(initialCounter, "end_date");
+  //     dispatch(abortOrder(false));
+  //   };
+  // }, []);
+
   function handleInputChange(event) {
     handleInput(event);
   }
@@ -84,6 +99,7 @@ const OrderPage = () => {
     dispatch(setIsOrderDone(false));
     resetTimerToZero("end_date");
     resetCounter(counter, "end_date");
+    dispatch(abortOrder(false));
     navigate("/main");
   }
 
@@ -138,6 +154,7 @@ const OrderPage = () => {
     dispatch(setIsOrderDone(false));
     resetTimerToZero("end_date");
     dispatch(setIsTimerEnd(false));
+    dispatch(abortOrder(false));
     navigate("/main");
   }
 
@@ -173,7 +190,7 @@ const OrderPage = () => {
         <Input
           label="YOUR SMS CODE"
           name="sms"
-          value={isOrderAborted ? "" : orderInfo?.first_code}
+          value={orderInfo?.first_code}
           onChange={handleInputChange}
           onInvalid={handleInvalidMessage}
           error={invalidMessages}

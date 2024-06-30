@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,6 +33,16 @@ function App() {
   const { isOrderDone } = useSelector(commonSelector);
   const { data: userData } = useSelector(userSelector);
 
+  const [isFirstLaunch, setIsFirstLaunch] = useState(false);
+
+  useEffect(() => {
+    const hasLaunched = localStorage.getItem("hasLaunched");
+    if (!hasLaunched) {
+      setIsFirstLaunch(true);
+      localStorage.setItem("hasLaunched", "true");
+    }
+  }, []);
+
   useEffect(() => {
     dispatch(setTgHash());
     if (window.Telegram !== undefined) window.Telegram.WebApp.expand();
@@ -47,9 +57,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (isOrderDone === true) {
+    if (isOrderDone === true && isFirstLaunch === false) {
       navigate("/order");
     }
+  }, []);
+
+  useEffect(() => {
+    if (window.performance) {
+      if (performance.navigation.type == 1) {
+        navigate(pathname);
+      }
+    } else alert("SOMEEE");
   }, []);
 
   return (
