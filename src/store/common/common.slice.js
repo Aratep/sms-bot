@@ -11,6 +11,7 @@ const initialState = {
   },
   isOrderDone: false,
   isTimerEnd: false,
+  isInsufficientFunds: true,
 };
 
 export const commonSlice = createSlice({
@@ -35,6 +36,9 @@ export const commonSlice = createSlice({
     setIsTimerEndReducer: (state, action) => {
       state.isTimerEnd = action.payload;
     },
+    setIsTInsufficientFundsReducer: (state, action) => {
+      state.isInsufficientFunds = action.payload;
+    },
   },
 });
 
@@ -44,6 +48,7 @@ export const {
   resetSelectedOptionReducer,
   setIsOrderDoneReducer,
   setIsTimerEndReducer,
+  setIsTInsufficientFundsReducer,
 } = commonSlice.actions;
 
 export const commonSelector = (state) => state.common;

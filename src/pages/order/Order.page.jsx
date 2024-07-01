@@ -58,21 +58,6 @@ const OrderPage = () => {
 
   const { setDateCounterValue } = useContext(CounterValueContext);
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(resetOrderInfo());
-  //     dispatch(setIsFirstCode(false));
-  //     dispatch(setIsSecondCode(false));
-  //     dispatch(setIsRepeatClicked(false));
-  //     dispatch(resetSelectedOption());
-  //     dispatch(setIsOrderDone(false));
-  //     dispatch(setIsTimerEnd(false));
-  //     resetTimerToZero("end_date");
-  //     resetCounter(initialCounter, "end_date");
-  //     dispatch(abortOrder(false));
-  //   };
-  // }, []);
-
   function handleInputChange(event) {
     handleInput(event);
   }
@@ -85,6 +70,7 @@ const OrderPage = () => {
     dispatch(setIsFirstCode(false));
     dispatch(setIsRepeatClicked(false));
     dispatch(resetSelectedOption());
+    dispatch(setIsOrderDone(false));
     resetCounter(counter, "end_date");
     navigate("/main");
   }

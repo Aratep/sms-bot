@@ -21,7 +21,7 @@ import { commonSelector } from "store/common/common.slice";
 // ACTIONS
 import { getCountries } from "store/countries/countries.actions";
 import { getServices } from "store/services/services.actions";
-import { getPrice } from "store/prices/prices.actions";
+import { getPrice, resetPricesData } from "store/prices/prices.actions";
 import { makeOrderAsync } from "store/order/order.actions";
 import {
   setSelectedOption,
@@ -61,6 +61,7 @@ const MainPage = () => {
         dispatch(getServices({ name: formData.service, country_id: null }));
       }
     }
+    return () => dispatch(resetPricesData());
   }, []);
 
   // debounced search of countries and services
@@ -92,7 +93,10 @@ const MainPage = () => {
   }, [formState]);
 
   useEffect(() => {
-    if (priceData?.availability === false) {
+    if (
+      priceData?.availability !== undefined &&
+      priceData?.availability === false
+    ) {
       navigate("/top-up");
     }
   }, [priceData]);
@@ -215,12 +219,6 @@ const MainPage = () => {
           />
         </Container>
       </IsVisible>
-      <Button
-        className="pay-btn"
-        onClick={onButtonClick}
-        text={`BUY ${priceData.price} USDT`}
-        disabled={pricesLoading}
-      />
     </PageWrapper>
   );
 };

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
@@ -7,28 +8,23 @@ import Loader from "components/loader/Loader.component";
 import { Container } from "components/container/Container.component";
 // SLICES
 import { userSelector } from "store/user/user.slice";
-import { commonSelector } from "store/common/common.slice";
-// ACTIONS
-import { getUser } from "store/user/user.actions";
 // ICONS
 import DangerTriangleIcon from "components/icons/DangerTriangleIcon.component";
 import Button from "components/button/Button.component";
 
 const WelcomePage = () => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { tgHash } = useSelector(commonSelector);
-  const { loading: userDataLoading } = useSelector(userSelector);
+  const { loading: userDataLoading, data: userData } =
+    useSelector(userSelector);
 
   useEffect(() => {
-    const params = {
-      auth_data: {
-        auth: tgHash.checkDataString,
-        hash: tgHash.hash,
-      },
-    };
-    dispatch(getUser(params));
-  }, []);
+    if (userData?.subscribed) {
+      navigate("/main");
+    } else {
+      navigate("/");
+    }
+  }, [userData]);
 
   return (
     <PageWrapper hasHeader={false} className="welcome-page">

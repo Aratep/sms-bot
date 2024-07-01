@@ -14,6 +14,11 @@ const initialState = {
 export const pricesSlice = createSlice({
   name: "prices",
   initialState,
+  reducers: {
+    resetPricesDataReducer: (state) => {
+      state.data = initialState.data;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getPrice.pending, (state) => {
       state.loading = true;
@@ -29,5 +34,5 @@ export const pricesSlice = createSlice({
     });
   },
 });
-
+export const { resetPricesDataReducer } = pricesSlice.actions;
 export const pricesSelector = (state) => state.prices;

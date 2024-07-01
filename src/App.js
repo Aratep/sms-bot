@@ -20,6 +20,7 @@ import { FocusedProvider } from "context/IsFocused.context";
 import { CounterValueProvider } from "context/CounterValue.context";
 // ACTIONS
 import { setTgHash } from "store/common/common.actions";
+import { getUser } from "store/user/user.actions";
 // SLICES
 import { commonSelector } from "./store/common/common.slice";
 import { userSelector } from "store/user/user.slice";
@@ -32,7 +33,7 @@ function App() {
   let navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const { isOrderDone } = useSelector(commonSelector);
+  const { isOrderDone, tgHash } = useSelector(commonSelector);
   const { data: userData } = useSelector(userSelector);
 
   const [isFirstLaunch, setIsFirstLaunch] = useState(false);
@@ -62,6 +63,24 @@ function App() {
         navigate(pathname);
       }
     }
+  }, []);
+
+  useEffect(() => {
+    if (userData?.subscribed) {
+      navigate(pathname);
+    } else {
+      navigate("/");
+    }
+  }, []);
+
+  useEffect(() => {
+    const params = {
+      auth_data: {
+        auth: tgHash.checkDataString,
+        hash: tgHash.hash,
+      },
+    };
+    dispatch(getUser(params));
   }, []);
 
   return (
@@ -102,7 +121,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/*<Route path="/my-orders" element={<MyOrdersPage />} />*/}
             <Route
               path="/my-orders"
               element={
