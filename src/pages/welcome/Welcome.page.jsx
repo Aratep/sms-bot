@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 // COMPONENTS
 import PageWrapper from "components/page-wrapper/PageWrapper.component";
@@ -17,11 +16,9 @@ import Button from "components/button/Button.component";
 
 const WelcomePage = () => {
   const dispatch = useDispatch();
-  let navigate = useNavigate();
 
   const { tgHash } = useSelector(commonSelector);
-  const { loading: userDataLoading, data: userData } =
-    useSelector(userSelector);
+  const { loading: userDataLoading } = useSelector(userSelector);
 
   useEffect(() => {
     const params = {
@@ -32,14 +29,6 @@ const WelcomePage = () => {
     };
     dispatch(getUser(params));
   }, []);
-
-  useEffect(() => {
-    if (userData?.subscribed === true) {
-      navigate("/main");
-    } else {
-      navigate("/");
-    }
-  }, [userData]);
 
   return (
     <PageWrapper hasHeader={false} className="welcome-page">

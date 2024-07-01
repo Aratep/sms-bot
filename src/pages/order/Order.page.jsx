@@ -81,6 +81,12 @@ const OrderPage = () => {
     dispatch(setIsTimerEnd(true));
     dispatch(abortOrder(true));
     dispatch(resetFirstCode());
+    dispatch(resetOrderInfo());
+    dispatch(setIsFirstCode(false));
+    dispatch(setIsRepeatClicked(false));
+    dispatch(resetSelectedOption());
+    resetCounter(counter, "end_date");
+    navigate("/main");
   }
 
   function onCancellClick() {
@@ -259,7 +265,6 @@ const OrderPage = () => {
               text="CHANGE NUMBER"
               variant="light"
               onClick={onChangeClick}
-              // disabled={orderInfoLoading || !orderInfo?.first_code}
             />
           </IsVisible>
           <IsVisible isVisible={isFirstCodeSet}>

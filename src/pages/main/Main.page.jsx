@@ -215,6 +215,12 @@ const MainPage = () => {
           />
         </Container>
       </IsVisible>
+      <Button
+        className="pay-btn"
+        onClick={onButtonClick}
+        text={`BUY ${priceData.price} USDT`}
+        disabled={pricesLoading}
+      />
     </PageWrapper>
   );
 };
